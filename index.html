@@ -108,324 +108,296 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .phrase-grid-item:hover{background:rgba(139,32,32,0.25);border-left-color:#8B2020;}
 .pg-cat{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.08em;margin-bottom:4px;}
 .pg-phrase{font-family:var(--mono);font-size:12px;color:#CC7070;text-decoration:line-through;text-decoration-color:rgba(139,32,32,0.6);}
-
 /* ============================================
 QUICK CHECK — INTEGRATED SECTION
+PATCH 1: All CSS vars use -- (double hyphen), not en-dash
 ============================================ */
 .qc-section{padding:64px 0;border-bottom:1px solid #2A2A28;}
-.qc-wrap{background:#1A1A18;border:1px solid #2A2A28;border-top:4px solid var(–amber);padding:40px;margin-top:32px;}
-.qc-header-line{font-family:var(–serif);font-size:28px;font-weight:700;color:#F5F5F0;margin-bottom:6px;line-height:1.2;}
-.qc-subhead{font-family:var(–mono);font-size:12px;color:var(–offwht);margin-bottom:32px;font-style:italic;letter-spacing:0.02em;}
-.qc-type-label{font-family:var(–mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;display:block;}
+.qc-wrap{background:#1A1A18;border:1px solid #2A2A28;border-top:4px solid var(--amber);padding:40px;margin-top:32px;}
+.qc-header-line{font-family:var(--serif);font-size:28px;font-weight:700;color:#F5F5F0;margin-bottom:6px;line-height:1.2;}
+.qc-subhead{font-family:var(--mono);font-size:12px;color:var(--offwht);margin-bottom:32px;font-style:italic;letter-spacing:0.02em;}
+.qc-type-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;display:block;}
 .qc-types{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
-.qc-type-btn{font-family:var(–mono);font-size:11px;font-weight:400;letter-spacing:0.04em;padding:8px 14px;border:1.5px solid #2A2A28;background:transparent;color:#888880;cursor:pointer;transition:all 0.15s ease;border-radius:1px;}
-.qc-type-btn:hover{border-color:var(–amber-d);color:#F5F5F0;background:#2C2C28;}
-.qc-type-btn.selected{border-color:var(–amber);background:var(–amber);color:#0A0A09;}
-.qc-input-label{font-family:var(–mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
-.qc-textarea{width:100%;min-height:180px;padding:18px;font-family:var(–serif);font-size:15px;line-height:1.7;color:#F5F5F0;background:#111110;border:1.5px solid #2A2A28;border-radius:1px;resize:vertical;transition:border-color 0.2s;outline:none;margin-bottom:16px;}
-.qc-textarea:focus{border-color:var(–amber-d);background:#0A0A09;}
+.qc-type-btn{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.04em;padding:8px 14px;border:1.5px solid #2A2A28;background:transparent;color:#888880;cursor:pointer;transition:all 0.15s ease;border-radius:1px;}
+.qc-type-btn:hover{border-color:var(--amber-d);color:#F5F5F0;background:#2C2C28;}
+.qc-type-btn.selected{border-color:var(--amber);background:var(--amber);color:#0A0A09;}
+.qc-input-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.qc-textarea{width:100%;min-height:180px;padding:18px;font-family:var(--serif);font-size:15px;line-height:1.7;color:#F5F5F0;background:#111110;border:1.5px solid #2A2A28;border-radius:1px;resize:vertical;transition:border-color 0.2s;outline:none;margin-bottom:16px;}
+.qc-textarea:focus{border-color:var(--amber-d);background:#0A0A09;}
 .qc-textarea::placeholder{color:#555550;font-style:italic;}
-.qc-submit{width:100%;padding:16px 32px;font-family:var(–mono);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(–amber);color:#0A0A09;border:none;cursor:pointer;transition:all 0.2s ease;}
-.qc-submit:hover:not(:disabled){background:var(–amber-f);transform:translateY(-1px);}
+.qc-submit{width:100%;padding:16px 32px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--amber);color:#0A0A09;border:none;cursor:pointer;transition:all 0.2s ease;}
+.qc-submit:hover:not(:disabled){background:var(--amber-f);transform:translateY(-1px);}
 .qc-submit:disabled{background:#2C2C28;color:#555550;cursor:not-allowed;transform:none;}
-.qc-submit.checking{background:#3d3530;color:var(–offwht);}
+.qc-submit.checking{background:#3d3530;color:var(--offwht);}
 .qc-divider{border:none;border-top:1px solid #2A2A28;margin:32px 0;}
 .qc-output{display:none;animation:qcFadeIn 0.35s ease;}
 .qc-output.visible{display:block;}
 @keyframes qcFadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
-/* Failure panel */
 .qc-fail{background:rgba(139,32,32,0.1);border:1.5px solid rgba(139,32,32,0.4);border-left:4px solid #8B2020;padding:24px;margin-bottom:20px;}
-.qc-fail-label{font-family:var(–mono);font-size:9px;color:#CC7070;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
-.qc-fail-main{font-family:var(–serif);font-size:19px;font-weight:700;color:#F5F5F0;line-height:1.3;margin-bottom:10px;}
-.qc-fail-detail{font-family:var(–sans);font-size:14px;color:var(–offwht);line-height:1.7;margin-bottom:0;}
+.qc-fail-label{font-family:var(--mono);font-size:9px;color:#CC7070;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
+.qc-fail-main{font-family:var(--serif);font-size:19px;font-weight:700;color:#F5F5F0;line-height:1.3;margin-bottom:10px;}
+.qc-fail-detail{font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;margin-bottom:0;}
 .qc-flags{margin-top:18px;border-top:1px solid rgba(139,32,32,0.3);padding-top:14px;}
 .qc-flag-item{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
-.qc-flag-type{font-family:var(–mono);font-size:9px;color:#CC7070;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;padding-top:2px;min-width:120px;}
-.qc-flag-msg{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.6;}
-
-/* Rewrite section */
+.qc-flag-type{font-family:var(--mono);font-size:9px;color:#CC7070;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;padding-top:2px;min-width:120px;}
+.qc-flag-msg{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;}
 .qc-rewrite{margin-top:20px;}
-.qc-rewrite-label{font-family:var(–mono);font-size:9px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
-.qc-rewrite-prompt{font-family:var(–mono);font-size:14px;color:#F5F5F0;font-weight:600;font-style:italic;margin-bottom:14px;padding:12px 16px;background:#2C2C28;border-left:3px solid var(–amber);}
-.qc-again-btn{width:100%;padding:13px 32px;font-family:var(–mono);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:var(–amber);border:1.5px solid var(–amber-d);cursor:pointer;transition:all 0.2s ease;margin-top:12px;}
-.qc-again-btn:hover{background:var(–amber);color:#0A0A09;}
-
-/* Success panel */
+.qc-rewrite-label{font-family:var(--mono);font-size:9px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.qc-rewrite-prompt{font-family:var(--mono);font-size:14px;color:#F5F5F0;font-weight:600;font-style:italic;margin-bottom:14px;padding:12px 16px;background:#2C2C28;border-left:3px solid var(--amber);}
+.qc-again-btn{width:100%;padding:13px 32px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:var(--amber);border:1.5px solid var(--amber-d);cursor:pointer;transition:all 0.2s ease;margin-top:12px;}
+.qc-again-btn:hover{background:var(--amber);color:#0A0A09;}
 .qc-success{background:rgba(26,96,48,0.12);border:1.5px solid rgba(26,96,48,0.5);border-left:4px solid #1A6030;padding:24px;margin-bottom:20px;}
-.qc-success-label{font-family:var(–mono);font-size:9px;color:#70CC90;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
-.qc-success-main{font-family:var(–serif);font-size:20px;font-weight:700;color:#70CC90;line-height:1.3;margin-bottom:8px;}
-.qc-success-sub{font-family:var(–sans);font-size:15px;font-style:italic;color:rgba(112,204,144,0.8);line-height:1.6;margin-bottom:0;}
-.qc-proof-line{font-family:var(–sans);font-size:13px;color:var(–offwht);margin-top:12px;padding-top:12px;border-top:1px solid rgba(26,96,48,0.4);}
-.qc-standard-link{margin-top:10px;font-family:var(–mono);font-size:11px;color:#5a8a6a;letter-spacing:0.04em;}
+.qc-success-label{font-family:var(--mono);font-size:9px;color:#70CC90;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
+.qc-success-main{font-family:var(--serif);font-size:20px;font-weight:700;color:#70CC90;line-height:1.3;margin-bottom:8px;}
+.qc-success-sub{font-family:var(--sans);font-size:15px;font-style:italic;color:rgba(112,204,144,0.8);line-height:1.6;margin-bottom:0;}
+.qc-proof-line{font-family:var(--sans);font-size:13px;color:var(--offwht);margin-top:12px;padding-top:12px;border-top:1px solid rgba(26,96,48,0.4);}
+.qc-standard-link{margin-top:10px;font-family:var(--mono);font-size:11px;color:#5a8a6a;letter-spacing:0.04em;}
 .qc-standard-link a{color:#70CC90;text-decoration:underline;text-underline-offset:3px;}
-.qc-retention{font-family:var(–serif);font-style:italic;font-size:14px;color:#888880;line-height:1.7;padding:16px 0;border-top:1px solid #2A2A28;border-bottom:1px solid #2A2A28;margin-bottom:16px;}
-.qc-share-btn{font-family:var(–mono);font-size:11px;color:#888880;letter-spacing:0.04em;cursor:pointer;text-decoration:underline;text-underline-offset:3px;background:none;border:none;padding:0;display:block;margin-bottom:6px;}
+.qc-retention{font-family:var(--serif);font-style:italic;font-size:14px;color:#888880;line-height:1.7;padding:16px 0;border-top:1px solid #2A2A28;border-bottom:1px solid #2A2A28;margin-bottom:16px;}
+.qc-share-btn{font-family:var(--mono);font-size:11px;color:#888880;letter-spacing:0.04em;cursor:pointer;text-decoration:underline;text-underline-offset:3px;background:none;border:none;padding:0;display:block;margin-bottom:6px;}
 .qc-share-btn:hover{color:#F5F5F0;}
-.qc-copy-confirm{display:none;font-family:var(–mono);font-size:10px;color:#70CC90;letter-spacing:0.06em;}
+.qc-copy-confirm{display:none;font-family:var(--mono);font-size:10px;color:#70CC90;letter-spacing:0.06em;}
 .qc-copy-confirm.visible{display:block;}
-.qc-reset-btn{font-family:var(–mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#555550;background:none;border:none;cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px;margin-top:8px;}
-.qc-reset-btn:hover{color:var(–offwht);}
-
-/* Simulator (score bar removed) */
-.simulator{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(–amber);padding:32px;margin:40px 0;}
-.sim-title{font-family:var(–serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
-.sim-sub{font-family:var(–sans);font-size:14px;color:var(–offwht);margin-bottom:24px;font-weight:300;}
-.sim-input{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(–sans);font-size:14px;padding:14px 16px;outline:none;transition:border-color 0.2s;resize:vertical;min-height:80px;margin-bottom:12px;}
-.sim-input:focus{border-color:var(–amber);}
+.qc-reset-btn{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#555550;background:none;border:none;cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px;margin-top:8px;}
+.qc-reset-btn:hover{color:var(--offwht);}
+.simulator{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
+.sim-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
+.sim-sub{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;}
+.sim-input{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--sans);font-size:14px;padding:14px 16px;outline:none;transition:border-color 0.2s;resize:vertical;min-height:80px;margin-bottom:12px;}
+.sim-input:focus{border-color:var(--amber);}
 .sim-result{display:none;margin-top:16px;}
 .sim-result.visible{display:block;}
-.sim-verdict{font-family:var(–mono);font-size:13px;font-weight:600;letter-spacing:0.08em;padding:10px 14px;margin-bottom:12px;}
+.sim-verdict{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:0.08em;padding:10px 14px;margin-bottom:12px;}
 .sim-verdict.high{background:rgba(139,32,32,0.15);color:#CC7070;border-left:3px solid #8B2020;}
-.sim-verdict.mid{background:rgba(139,105,20,0.15);color:var(–amber);border-left:3px solid var(–amber-d);}
+.sim-verdict.mid{background:rgba(139,105,20,0.15);color:var(--amber);border-left:3px solid var(--amber-d);}
 .sim-verdict.low{background:rgba(26,96,48,0.15);color:#70CC90;border-left:3px solid #1A6030;}
 .sim-flags{margin-bottom:12px;}
-.sim-flag{font-family:var(–mono);font-size:11px;color:#CC7070;padding:8px 12px;background:rgba(139,32,32,0.12);border-left:2px solid #8B2020;margin-bottom:4px;}
+.sim-flag{font-family:var(--mono);font-size:11px;color:#CC7070;padding:8px 12px;background:rgba(139,32,32,0.12);border-left:2px solid #8B2020;margin-bottom:4px;}
 .sim-suggestion{background:rgba(26,96,48,0.15);border-top:2px solid #1A6030;padding:16px;}
-.sim-sug-label{font-family:var(–mono);font-size:9px;color:#70CC90;letter-spacing:0.1em;margin-bottom:8px;}
-.sim-sug-text{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.6;}
-
-/* All other existing styles */
-.micro-cert{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(–amber);padding:32px;margin:40px 0;}
-.mc-title{font-family:var(–serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
-.mc-sub{font-family:var(–sans);font-size:14px;color:var(–offwht);margin-bottom:24px;font-weight:300;}
+.sim-sug-label{font-family:var(--mono);font-size:9px;color:#70CC90;letter-spacing:0.1em;margin-bottom:8px;}
+.sim-sug-text{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;}
+.micro-cert{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
+.mc-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
+.mc-sub{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;}
 .mc-challenge{background:#2C2C28;padding:20px 24px;margin-bottom:16px;}
-.mc-statement{font-family:var(–serif);font-style:italic;font-size:18px;color:#F5F5F0;margin-bottom:16px;line-height:1.5;}
+.mc-statement{font-family:var(--serif);font-style:italic;font-size:18px;color:#F5F5F0;margin-bottom:16px;line-height:1.5;}
 .mc-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
-.mc-opt{font-family:var(–mono);font-size:12px;padding:10px 16px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;text-align:left;}
-.mc-opt:hover{color:#F5F5F0;border-color:var(–amber-d);}
+.mc-opt{font-family:var(--mono);font-size:12px;padding:10px 16px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;text-align:left;}
+.mc-opt:hover{color:#F5F5F0;border-color:var(--amber-d);}
 .mc-opt.correct{background:rgba(26,96,48,0.15);color:#70CC90;border-color:#1A6030;}
 .mc-opt.wrong{background:rgba(139,32,32,0.15);color:#CC7070;border-color:#8B2020;}
 .mc-feedback{display:none;padding:16px;margin-top:8px;}
 .mc-feedback.visible{display:block;}
-.mc-score{font-family:var(–mono);font-size:24px;color:var(–amber);font-weight:600;margin-bottom:8px;}
-.mc-timer{font-family:var(–mono);font-size:11px;color:#888880;margin-bottom:16px;}
+.mc-score{font-family:var(--mono);font-size:24px;color:var(--amber);font-weight:600;margin-bottom:8px;}
+.mc-timer{font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:16px;}
 .mc-progress{display:flex;gap:4px;margin-bottom:20px;}
 .mc-dot{width:12px;height:12px;background:#2C2C28;border:1px solid #2A2A28;}
-.mc-dot.done{background:var(–amber);}
-.mc-dot.current{background:transparent;border-color:var(–amber);}
-.mc-cert-preview{background:#2C2C28;border:1px solid var(–amber-d);padding:20px;margin-top:16px;text-align:center;display:none;}
+.mc-dot.done{background:var(--amber);}
+.mc-dot.current{background:transparent;border-color:var(--amber);}
+.mc-cert-preview{background:#2C2C28;border:1px solid var(--amber-d);padding:20px;margin-top:16px;text-align:center;display:none;}
 .mc-cert-preview.visible{display:block;}
 .scorecard{background:#1A1A18;border:1px solid #2A2A28;padding:28px 32px;margin:32px 0;}
-.sc-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:12px;display:block;}
-.sc-title{font-family:var(–serif);font-size:20px;color:#F5F5F0;margin-bottom:8px;}
+.sc-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:12px;display:block;}
+.sc-title{font-family:var(--serif);font-size:20px;color:#F5F5F0;margin-bottom:8px;}
 .sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:16px 0;}
 .sc-item{background:#2C2C28;padding:16px;border-top:2px solid #2A2A28;}
 .sc-item.strong{border-top-color:#1A6030;}
 .sc-item.weak{border-top-color:#8B2020;}
-.sc-item.mid{border-top-color:var(–amber-d);}
-.sc-metric{font-family:var(–mono);font-size:10px;color:#888880;letter-spacing:0.06em;margin-bottom:6px;}
-.sc-val{font-family:var(–mono);font-size:24px;font-weight:600;margin-bottom:4px;}
+.sc-item.mid{border-top-color:var(--amber-d);}
+.sc-metric{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.06em;margin-bottom:6px;}
+.sc-val{font-family:var(--mono);font-size:24px;font-weight:600;margin-bottom:4px;}
 .sc-item.strong .sc-val{color:#70CC90;}
 .sc-item.weak .sc-val{color:#CC7070;}
-.sc-item.mid .sc-val{color:var(–amber);}
-.sc-desc{font-family:var(–sans);font-size:11px;color:#888880;line-height:1.4;}
+.sc-item.mid .sc-val{color:var(--amber);}
+.sc-desc{font-family:var(--sans);font-size:11px;color:#888880;line-height:1.4;}
 .enforcement-section{background:#1A1A18;border:1px solid #2A2A28;padding:32px;margin:32px 0;}
-.es-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:16px;display:block;}
+.es-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:16px;display:block;}
 .enforcement-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:16px 0;}
-.ef-item{background:#2C2C28;padding:20px;border-left:3px solid var(–amber-d);position:relative;}
+.ef-item{background:#2C2C28;padding:20px;border-left:3px solid var(--amber-d);position:relative;}
 .ef-item.hard{border-left-color:#CC7070;}
-.ef-item.soft{border-left-color:var(–amber);}
+.ef-item.soft{border-left-color:var(--amber);}
 .ef-item.silent{border-left-color:#70CC90;}
-.ef-type{font-family:var(–mono);font-size:9px;letter-spacing:0.1em;margin-bottom:8px;}
+.ef-type{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;margin-bottom:8px;}
 .ef-item.hard .ef-type{color:#CC7070;}
-.ef-item.soft .ef-type{color:var(–amber);}
+.ef-item.soft .ef-type{color:var(--amber);}
 .ef-item.silent .ef-type{color:#70CC90;}
-.ef-name{font-family:var(–sans);font-size:14px;color:#F5F5F0;font-weight:500;margin-bottom:6px;}
-.ef-power{font-family:var(–sans);font-size:12px;color:var(–offwht);line-height:1.5;}
-.ef-penalty{font-family:var(–mono);font-size:11px;color:var(–amber);margin-top:8px;}
+.ef-name{font-family:var(--sans);font-size:14px;color:#F5F5F0;font-weight:500;margin-bottom:6px;}
+.ef-power{font-family:var(--sans);font-size:12px;color:var(--offwht);line-height:1.5;}
+.ef-penalty{font-family:var(--mono);font-size:11px;color:var(--amber);margin-top:8px;}
 .case-law{display:flex;flex-direction:column;gap:2px;margin:24px 0;}
-.case-item{background:#1A1A18;border-left:3px solid var(–amber-d);padding:16px 20px;}
-.case-name{font-family:var(–mono);font-size:11px;color:var(–amber);font-weight:600;letter-spacing:0.04em;margin-bottom:4px;}
-.case-desc{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.5;margin-bottom:6px;}
-.case-implication{font-family:var(–mono);font-size:11px;color:#70CC90;}
+.case-item{background:#1A1A18;border-left:3px solid var(--amber-d);padding:16px 20px;}
+.case-name{font-family:var(--mono);font-size:11px;color:var(--amber);font-weight:600;letter-spacing:0.04em;margin-bottom:4px;}
+.case-desc{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.5;margin-bottom:6px;}
+.case-implication{font-family:var(--mono);font-size:11px;color:#70CC90;}
 .steps-visual{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;gap:0;margin:40px 0;align-items:start;}
-.step-box{background:#1A1A18;border-top:3px solid var(–amber);padding:24px 20px;}
-.step-num{font-family:var(–mono);font-size:11px;color:var(–amber);letter-spacing:0.1em;margin-bottom:12px;}
-.step-head{font-family:var(–serif);font-size:17px;color:#F5F5F0;margin-bottom:10px;line-height:1.3;}
-.step-body{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.5;font-weight:300;}
-.step-arrow{display:flex;align-items:center;justify-content:center;font-family:var(–mono);font-size:18px;color:var(–amber-d);padding-top:48px;}
+.step-box{background:#1A1A18;border-top:3px solid var(--amber);padding:24px 20px;}
+.step-num{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.1em;margin-bottom:12px;}
+.step-head{font-family:var(--serif);font-size:17px;color:#F5F5F0;margin-bottom:10px;line-height:1.3;}
+.step-body{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.5;font-weight:300;}
+.step-arrow{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:18px;color:var(--amber-d);padding-top:48px;}
 .standard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin:32px 0;}
-.standard-item{background:#1A1A18;border-top:2px solid var(–amber);padding:20px;}
-.standard-num{font-family:var(–mono);font-size:28px;color:var(–amber-d);font-weight:600;margin-bottom:8px;}
-.standard-text{font-family:var(–sans);font-size:14px;color:var(–offwht);line-height:1.5;}
-.simple-version{background:#1A1A18;border:1px solid var(–amber);padding:20px 24px;margin-top:24px;}
-.simple-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
-.simple-text{font-family:var(–mono);font-size:18px;color:#F5F5F0;font-weight:600;}
+.standard-item{background:#1A1A18;border-top:2px solid var(--amber);padding:20px;}
+.standard-num{font-family:var(--mono);font-size:28px;color:var(--amber-d);font-weight:600;margin-bottom:8px;}
+.standard-text{font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.5;}
+.simple-version{background:#1A1A18;border:1px solid var(--amber);padding:20px 24px;margin-top:24px;}
+.simple-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
+.simple-text{font-family:var(--mono);font-size:18px;color:#F5F5F0;font-weight:600;}
 .trust-bar{display:flex;gap:2px;margin:32px 0;flex-wrap:wrap;}
-.trust-item{background:#1A1A18;border-left:3px solid var(–amber-d);padding:12px 16px;flex:1;min-width:140px;}
-.trust-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.08em;margin-bottom:4px;}
-.trust-desc{font-family:var(–sans);font-size:11px;color:#888880;line-height:1.4;}
-.shrm-signal{background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(–amber);padding:16px 20px;margin:24px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.shrm-badge{font-family:var(–mono);font-size:10px;color:#0A0A09;background:var(–amber);padding:4px 10px;letter-spacing:0.08em;flex-shrink:0;}
-.shrm-text{font-family:var(–sans);font-size:13px;color:var(–offwht);font-weight:300;}
+.trust-item{background:#1A1A18;border-left:3px solid var(--amber-d);padding:12px 16px;flex:1;min-width:140px;}
+.trust-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.08em;margin-bottom:4px;}
+.trust-desc{font-family:var(--sans);font-size:11px;color:#888880;line-height:1.4;}
+.shrm-signal{background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(--amber);padding:16px 20px;margin:24px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.shrm-badge{font-family:var(--mono);font-size:10px;color:#0A0A09;background:var(--amber);padding:4px 10px;letter-spacing:0.08em;flex-shrink:0;}
+.shrm-text{font-family:var(--sans);font-size:13px;color:var(--offwht);font-weight:300;}
 .shrm-text strong{color:#F5F5F0;}
 .trigger-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:24px 0;}
 .trigger-item{background:#1A1A18;border-top:2px solid #2A2A28;padding:18px 20px;position:relative;overflow:hidden;cursor:default;}
-.trigger-item::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:var(–amber);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;}
+.trigger-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;}
 .trigger-item:hover::before{transform:scaleX(1);}
-.trigger-moment{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.08em;margin-bottom:8px;}
-.trigger-desc{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.5;font-weight:300;}
+.trigger-moment{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.08em;margin-bottom:8px;}
+.trigger-desc{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.5;font-weight:300;}
 .tab-nav{display:flex;gap:2px;margin-bottom:2px;flex-wrap:wrap;}
-.tab-btn{font-family:var(–mono);font-size:11px;letter-spacing:0.06em;padding:10px 18px;background:#1A1A18;color:#888880;border:none;cursor:pointer;transition:all 0.2s;border-top:2px solid transparent;}
+.tab-btn{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;padding:10px 18px;background:#1A1A18;color:#888880;border:none;cursor:pointer;transition:all 0.2s;border-top:2px solid transparent;}
 .tab-btn:hover{color:#F5F5F0;}
-.tab-btn.active{background:#2C2C28;color:var(–amber);border-top-color:var(–amber);}
-.tab-pane{display:none;background:#1A1A18;padding:32px;border-top:2px solid var(–amber);}
+.tab-btn.active{background:#2C2C28;color:var(--amber);border-top-color:var(--amber);}
+.tab-pane{display:none;background:#1A1A18;padding:32px;border-top:2px solid var(--amber);}
 .tab-pane.active{display:block;}
-.tab-pane h3{font-family:var(–serif);font-size:20px;color:#F5F5F0;margin-bottom:12px;}
-.tab-pane p{font-size:14px;color:var(–offwht);margin-bottom:12px;}
-.tab-pain{font-family:var(–mono);font-size:12px;color:#CC7070;margin-bottom:8px;padding:10px 14px;background:rgba(139,32,32,0.12);border-left:2px solid #8B2020;}
-.tab-solution{font-family:var(–mono);font-size:12px;color:#70CC90;margin-bottom:16px;padding:10px 14px;background:rgba(26,96,48,0.12);border-left:2px solid #1A6030;}
+.tab-pane h3{font-family:var(--serif);font-size:20px;color:#F5F5F0;margin-bottom:12px;}
+.tab-pane p{font-size:14px;color:var(--offwht);margin-bottom:12px;}
+.tab-pain{font-family:var(--mono);font-size:12px;color:#CC7070;margin-bottom:8px;padding:10px 14px;background:rgba(139,32,32,0.12);border-left:2px solid #8B2020;}
+.tab-solution{font-family:var(--mono);font-size:12px;color:#70CC90;margin-bottom:16px;padding:10px 14px;background:rgba(26,96,48,0.12);border-left:2px solid #1A6030;}
 .tab-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
 .phrase-list{margin:24px 0;display:flex;flex-direction:column;gap:2px;}
 .phrase-item{display:grid;grid-template-columns:160px 1fr;background:#1A1A18;}
-.phrase-cat{font-family:var(–mono);font-size:11px;color:var(–amber);font-weight:600;padding:12px 16px;border-right:1px solid #2A2A28;letter-spacing:0.04em;display:flex;align-items:center;}
-.phrase-examples{font-family:var(–mono);font-size:12px;color:#CC7070;padding:12px 16px;line-height:1.6;}
+.phrase-cat{font-family:var(--mono);font-size:11px;color:var(--amber);font-weight:600;padding:12px 16px;border-right:1px solid #2A2A28;letter-spacing:0.04em;display:flex;align-items:center;}
+.phrase-examples{font-family:var(--mono);font-size:12px;color:#CC7070;padding:12px 16px;line-height:1.6;}
 .reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:24px 0;}
-.reg-item{background:#1A1A18;padding:20px;border-left:3px solid var(–amber-d);}
-.reg-name{font-family:var(–mono);font-size:12px;color:var(–amber);font-weight:600;margin-bottom:6px;letter-spacing:0.04em;}
-.reg-desc{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.5;font-weight:300;}
+.reg-item{background:#1A1A18;padding:20px;border-left:3px solid var(--amber-d);}
+.reg-name{font-family:var(--mono);font-size:12px;color:var(--amber);font-weight:600;margin-bottom:6px;letter-spacing:0.04em;}
+.reg-desc{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.5;font-weight:300;}
 .tier-clarifier{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:24px 0 32px;}
 .tier-col{background:#1A1A18;border-top:2px solid #2A2A28;padding:20px 24px;}
-.tier-col.individual{border-top-color:var(–amber-d);}
-.tier-col.org{border-top-color:var(–amber);}
-.tier-col-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
-.tier-col h4{font-family:var(–serif);font-size:18px;color:#F5F5F0;margin-bottom:8px;}
-.tier-col p{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.6;font-weight:300;margin:0;}
+.tier-col.individual{border-top-color:var(--amber-d);}
+.tier-col.org{border-top-color:var(--amber);}
+.tier-col-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
+.tier-col h4{font-family:var(--serif);font-size:18px;color:#F5F5F0;margin-bottom:8px;}
+.tier-col p{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;font-weight:300;margin:0;}
 .compare-wrap{overflow-x:auto;margin:32px 0;}
 .compare-table{width:100%;border-collapse:collapse;}
-.compare-table th{font-family:var(–mono);font-size:11px;letter-spacing:0.08em;padding:14px 18px;text-align:left;background:#1A1A18;color:#888880;border-bottom:2px solid #2A2A28;}
-.compare-table th.hi{background:#2C2C28;color:var(–amber);border-bottom-color:var(–amber);}
-.compare-table td{font-family:var(–sans);font-size:13px;padding:11px 18px;border-bottom:1px solid #2A2A28;color:var(–offwht);vertical-align:top;line-height:1.5;}
+.compare-table th{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;padding:14px 18px;text-align:left;background:#1A1A18;color:#888880;border-bottom:2px solid #2A2A28;}
+.compare-table th.hi{background:#2C2C28;color:var(--amber);border-bottom-color:var(--amber);}
+.compare-table td{font-family:var(--sans);font-size:13px;padding:11px 18px;border-bottom:1px solid #2A2A28;color:var(--offwht);vertical-align:top;line-height:1.5;}
 .compare-table td.hi{background:rgba(139,105,20,0.08);}
 .compare-table tr:hover td{background:rgba(255,255,255,0.02);}
 .compare-table tr:hover td.hi{background:rgba(139,105,20,0.14);}
-.check{color:#70CC90;font-family:var(–mono);}
-.cross{color:#CC7070;font-family:var(–mono);}
-.popular-badge{display:inline-block;font-family:var(–mono);font-size:9px;letter-spacing:0.1em;background:var(–amber);color:#0A0A09;padding:2px 7px;margin-left:6px;vertical-align:middle;}
-.team-spotlight{background:#1A1A18;border:2px solid var(–amber);padding:28px 32px;margin:24px 0;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
-.ts-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
-.ts-name{font-family:var(–serif);font-size:22px;color:#F5F5F0;margin-bottom:6px;}
-.ts-price{font-family:var(–mono);font-size:24px;color:var(–amber);font-weight:600;margin-bottom:6px;}
-.ts-desc{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.6;font-weight:300;}
+.check{color:#70CC90;font-family:var(--mono);}
+.cross{color:#CC7070;font-family:var(--mono);}
+.popular-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:0.1em;background:var(--amber);color:#0A0A09;padding:2px 7px;margin-left:6px;vertical-align:middle;}
+.team-spotlight{background:#1A1A18;border:2px solid var(--amber);padding:28px 32px;margin:24px 0;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+.ts-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
+.ts-name{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:6px;}
+.ts-price{font-family:var(--mono);font-size:24px;color:var(--amber);font-weight:600;margin-bottom:6px;}
+.ts-desc{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;font-weight:300;}
 .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:32px 0;}
 .product-card{background:#1A1A18;border-top:2px solid #2A2A28;padding:28px;position:relative;}
-.product-card.featured{border-top-color:var(–amber);}
-.product-tier{font-family:var(–mono);font-size:10px;color:#888880;letter-spacing:0.1em;margin-bottom:12px;display:block;}
-.product-tier.amber{color:var(–amber);}
-.product-name{font-family:var(–serif);font-size:22px;font-weight:700;color:#F5F5F0;margin-bottom:8px;line-height:1.2;}
-.product-price{font-family:var(–mono);font-size:30px;color:var(–amber);font-weight:600;margin-bottom:4px;}
-.product-price-note{font-family:var(–mono);font-size:10px;color:#888880;margin-bottom:16px;letter-spacing:0.04em;}
-.product-desc{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.6;font-weight:300;margin-bottom:20px;}
+.product-card.featured{border-top-color:var(--amber);}
+.product-tier{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.1em;margin-bottom:12px;display:block;}
+.product-tier.amber{color:var(--amber);}
+.product-name{font-family:var(--serif);font-size:22px;font-weight:700;color:#F5F5F0;margin-bottom:8px;line-height:1.2;}
+.product-price{font-family:var(--mono);font-size:30px;color:var(--amber);font-weight:600;margin-bottom:4px;}
+.product-price-note{font-family:var(--mono);font-size:10px;color:#888880;margin-bottom:16px;letter-spacing:0.04em;}
+.product-desc{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;font-weight:300;margin-bottom:20px;}
 .product-features{list-style:none;margin-bottom:24px;}
-.product-features li{font-family:var(–mono);font-size:11px;color:#888880;padding:6px 0;border-bottom:1px solid #2A2A28;display:flex;align-items:flex-start;gap:8px;}
-.product-features li::before{content:’>’;color:var(–amber);flex-shrink:0;}
-.enterprise-card{background:#1A1A18;border:1px solid var(–amber-d);padding:32px;margin-top:2px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
-.enterprise-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
-.enterprise-name{font-family:var(–serif);font-size:22px;font-weight:700;color:#F5F5F0;margin-bottom:8px;}
-.enterprise-desc{font-family:var(–sans);font-size:13px;color:var(–offwht);font-weight:300;line-height:1.6;}
+.product-features li{font-family:var(--mono);font-size:11px;color:#888880;padding:6px 0;border-bottom:1px solid #2A2A28;display:flex;align-items:flex-start;gap:8px;}
+.product-features li::before{content:'>';color:var(--amber);flex-shrink:0;}
+.enterprise-card{background:#1A1A18;border:1px solid var(--amber-d);padding:32px;margin-top:2px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
+.enterprise-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:8px;display:block;}
+.enterprise-name{font-family:var(--serif);font-size:22px;font-weight:700;color:#F5F5F0;margin-bottom:8px;}
+.enterprise-desc{font-family:var(--sans);font-size:13px;color:var(--offwht);font-weight:300;line-height:1.6;}
 .enterprise-process{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:32px 0;}
-.ep-step{background:#1A1A18;border-top:2px solid var(–amber-d);padding:24px 20px;}
-.ep-step.active{border-top-color:var(–amber);}
-.ep-num{font-family:var(–mono);font-size:28px;color:var(–amber-d);font-weight:600;margin-bottom:8px;}
-.ep-step.active .ep-num{color:var(–amber);}
-.ep-head{font-family:var(–serif);font-size:16px;color:#F5F5F0;margin-bottom:8px;line-height:1.3;}
-.ep-body{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.5;font-weight:300;}
-.ep-timeline{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.08em;margin-top:12px;}
+.ep-step{background:#1A1A18;border-top:2px solid var(--amber-d);padding:24px 20px;}
+.ep-step.active{border-top-color:var(--amber);}
+.ep-num{font-family:var(--mono);font-size:28px;color:var(--amber-d);font-weight:600;margin-bottom:8px;}
+.ep-step.active .ep-num{color:var(--amber);}
+.ep-head{font-family:var(--serif);font-size:16px;color:#F5F5F0;margin-bottom:8px;line-height:1.3;}
+.ep-body{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.5;font-weight:300;}
+.ep-timeline{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.08em;margin-top:12px;}
 .roi-calc{background:#1A1A18;border:1px solid #2A2A28;padding:32px;margin:40px 0;}
-.roi-title{font-family:var(–mono);font-size:11px;color:var(–amber);letter-spacing:0.1em;margin-bottom:20px;}
+.roi-title{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.1em;margin-bottom:20px;}
 .roi-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px;}
-.roi-field label{font-family:var(–mono);font-size:10px;color:#888880;letter-spacing:0.06em;display:block;margin-bottom:8px;}
-.roi-field input,.roi-field select{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(–mono);font-size:14px;padding:10px 12px;outline:none;transition:border-color 0.2s;}
+.roi-field label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.06em;display:block;margin-bottom:8px;}
+.roi-field input,.roi-field select{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:14px;padding:10px 12px;outline:none;transition:border-color 0.2s;}
 .roi-field select option{background:#2C2C28;}
-.roi-field input:focus,.roi-field select:focus{border-color:var(–amber);}
-.roi-result{background:#2C2C28;border-top:2px solid var(–amber);padding:20px 24px;}
-.roi-result-label{font-family:var(–mono);font-size:10px;color:#888880;letter-spacing:0.08em;margin-bottom:8px;}
-.roi-result-number{font-family:var(–mono);font-size:32px;color:var(–amber);font-weight:600;margin-bottom:4px;}
-.roi-result-note{font-family:var(–sans);font-size:12px;color:#888880;line-height:1.5;}
-.quiz-block{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(–amber);padding:32px;margin:40px 0;}
-.quiz-title{font-family:var(–serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
-.quiz-sub{font-family:var(–sans);font-size:14px;color:var(–offwht);margin-bottom:24px;font-weight:300;}
+.roi-field input:focus,.roi-field select:focus{border-color:var(--amber);}
+.roi-result{background:#2C2C28;border-top:2px solid var(--amber);padding:20px 24px;}
+.roi-result-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.08em;margin-bottom:8px;}
+.roi-result-number{font-family:var(--mono);font-size:32px;color:var(--amber);font-weight:600;margin-bottom:4px;}
+.roi-result-note{font-family:var(--sans);font-size:12px;color:#888880;line-height:1.5;}
+.quiz-block{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
+.quiz-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
+.quiz-sub{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;}
 .quiz-questions{display:flex;flex-direction:column;gap:16px;margin-bottom:24px;}
 .quiz-q{background:#2C2C28;padding:16px 20px;}
-.quiz-q-text{font-family:var(–sans);font-size:14px;color:#F5F5F0;margin-bottom:12px;font-weight:400;}
+.quiz-q-text{font-family:var(--sans);font-size:14px;color:#F5F5F0;margin-bottom:12px;font-weight:400;}
 .quiz-opts{display:flex;gap:8px;flex-wrap:wrap;}
-.quiz-opt{font-family:var(–mono);font-size:11px;padding:7px 14px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;}
-.quiz-opt:hover,.quiz-opt.selected{background:#2C2C28;color:var(–amber);border-color:var(–amber-d);}
+.quiz-opt{font-family:var(--mono);font-size:11px;padding:7px 14px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;}
+.quiz-opt:hover,.quiz-opt.selected{background:#2C2C28;color:var(--amber);border-color:var(--amber-d);}
 .quiz-email-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:8px;}
-.quiz-email-row input{background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(–mono);font-size:13px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;}
-.quiz-email-row input:focus{border-color:var(–amber);}
-.quiz-result{display:none;background:#2C2C28;border-top:2px solid var(–amber);padding:20px 24px;margin-top:16px;}
+.quiz-email-row input{background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:13px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;}
+.quiz-email-row input:focus{border-color:var(--amber);}
+.quiz-result{display:none;background:#2C2C28;border-top:2px solid var(--amber);padding:20px 24px;margin-top:16px;}
 .quiz-result.visible{display:block;}
-.quiz-result-score{font-family:var(–mono);font-size:22px;color:var(–amber);font-weight:600;margin-bottom:8px;}
-.quiz-result-label{font-family:var(–sans);font-size:14px;color:var(–offwht);margin-bottom:12px;}
-.blindspot-item{background:#1A1A18;border-left:3px solid var(–amber);padding:24px 28px;margin-bottom:2px;}
-.blindspot-num{font-family:var(–mono);font-size:12px;color:var(–amber);letter-spacing:0.08em;margin-bottom:8px;}
-.blindspot-head{font-family:var(–sans);font-size:15px;color:#F5F5F0;font-weight:500;margin-bottom:8px;}
-.blindspot-body{font-family:var(–sans);font-size:14px;color:rgba(245,245,240,0.8);line-height:1.7;font-weight:300;margin-bottom:10px;}
-.blindspot-fix{font-family:var(–mono);font-size:12px;color:#70CC90;padding:10px 14px;background:rgba(26,96,48,0.12);border-left:2px solid #1A6030;margin-top:8px;}
+.quiz-result-score{font-family:var(--mono);font-size:22px;color:var(--amber);font-weight:600;margin-bottom:8px;}
+.quiz-result-label{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:12px;}
+.blindspot-item{background:#1A1A18;border-left:3px solid var(--amber);padding:24px 28px;margin-bottom:2px;}
+.blindspot-num{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:0.08em;margin-bottom:8px;}
+.blindspot-head{font-family:var(--sans);font-size:15px;color:#F5F5F0;font-weight:500;margin-bottom:8px;}
+.blindspot-body{font-family:var(--sans);font-size:14px;color:rgba(245,245,240,0.8);line-height:1.7;font-weight:300;margin-bottom:10px;}
+.blindspot-fix{font-family:var(--mono);font-size:12px;color:#70CC90;padding:10px 14px;background:rgba(26,96,48,0.12);border-left:2px solid #1A6030;margin-top:8px;}
 .terms-block{background:#1A1A18;padding:28px;margin:24px 0;}
-.terms-block h3{font-family:var(–mono);font-size:12px;color:var(–amber);letter-spacing:0.08em;margin-bottom:12px;}
+.terms-block h3{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:0.08em;margin-bottom:12px;}
 .terms-block p{font-size:13px;color:#888880;margin-bottom:8px;}
 .closing{padding:80px 0;text-align:left;}
-.closing-line1{font-family:var(–serif);font-style:italic;font-size:28px;color:var(–offwht);margin-bottom:8px;}
-.closing-line2{font-family:var(–serif);font-style:italic;font-size:28px;color:#F5F5F0;font-weight:700;}
+.closing-line1{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--offwht);margin-bottom:8px;}
+.closing-line2{font-family:var(--serif);font-style:italic;font-size:28px;color:#F5F5F0;font-weight:700;}
 footer{background:#111110;border-top:1px solid #2A2A28;padding:32px 0;}
 .footer-inner{max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.footer-brand{font-family:var(–mono);font-size:11px;color:#888880;}
+.footer-brand{font-family:var(--mono);font-size:11px;color:#888880;}
 .footer-links{display:flex;gap:24px;}
-.footer-links a{font-family:var(–mono);font-size:11px;color:#888880;text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(–amber);}
-.free-resource{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(–amber);padding:32px;margin:32px 0;}
-.fr-label{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.1em;margin-bottom:12px;display:block;}
-.fr-title{font-family:var(–serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
-.fr-body{font-family:var(–sans);font-size:13px;color:var(–offwht);line-height:1.6;font-weight:300;margin-bottom:20px;}
+.footer-links a{font-family:var(--mono);font-size:11px;color:#888880;text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--amber);}
+.free-resource{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:32px 0;}
+.fr-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:12px;display:block;}
+.fr-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
+.fr-body{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;font-weight:300;margin-bottom:20px;}
 .phrase-table{width:100%;border-collapse:collapse;margin:16px 0;}
-.phrase-table th{font-family:var(–mono);font-size:8px;color:#888880;letter-spacing:0.1em;padding:8px 12px;text-align:left;background:#2C2C28;border-bottom:1px solid #2A2A28;}
-.phrase-table td{font-family:var(–mono);font-size:11px;padding:8px 12px;border-bottom:1px solid #2A2A28;vertical-align:top;line-height:1.5;}
+.phrase-table th{font-family:var(--mono);font-size:8px;color:#888880;letter-spacing:0.1em;padding:8px 12px;text-align:left;background:#2C2C28;border-bottom:1px solid #2A2A28;}
+.phrase-table td{font-family:var(--mono);font-size:11px;padding:8px 12px;border-bottom:1px solid #2A2A28;vertical-align:top;line-height:1.5;}
 .phrase-table td.phrase-col{color:#CC7070;}
 .phrase-table td.risk-col{color:#888880;font-size:10px;}
 .phrase-table td.replace-col{color:#70CC90;font-size:10px;}
-.workflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:24px 0;}
-.wf-item{background:#1A1A18;padding:20px;border-top:2px solid #2A2A28;}
-.wf-item.active-wf{border-top-color:var(–amber);}
-.wf-platform{font-family:var(–mono);font-size:10px;color:var(–amber);letter-spacing:0.08em;margin-bottom:6px;}
-.wf-moment{font-family:var(–sans);font-size:13px;color:#F5F5F0;font-weight:500;margin-bottom:6px;line-height:1.4;}
-.wf-desc{font-family:var(–sans);font-size:12px;color:var(–offwht);line-height:1.5;font-weight:300;}
-.sector-note{background:#2C2C28;border-left:3px solid var(–amber-d);padding:12px 16px;margin:12px 0 16px;}
-.sector-note-label{font-family:var(–mono);font-size:9px;color:var(–amber);letter-spacing:0.1em;margin-bottom:4px;}
-.sector-note-text{font-family:var(–sans);font-size:12px;color:var(–offwht);line-height:1.6;}
+.sector-note{background:#2C2C28;border-left:3px solid var(--amber-d);padding:12px 16px;margin:12px 0 16px;}
+.sector-note-label{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.1em;margin-bottom:4px;}
+.sector-note-text{font-family:var(--sans);font-size:12px;color:var(--offwht);line-height:1.6;}
 .faq-item{border-bottom:1px solid #2A2A28;padding:0;}
-.faq-q{font-family:var(–sans);font-size:15px;color:#F5F5F0;font-weight:500;padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;}
-.faq-q:hover{color:var(–amber);}
-.faq-icon{font-family:var(–mono);font-size:18px;color:var(–amber);flex-shrink:0;transition:transform 0.2s;}
+.faq-q{font-family:var(--sans);font-size:15px;color:#F5F5F0;font-weight:500;padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;}
+.faq-q:hover{color:var(--amber);}
+.faq-icon{font-family:var(--mono);font-size:18px;color:var(--amber);flex-shrink:0;transition:transform 0.2s;}
 .faq-icon.open{transform:rotate(45deg);}
-.faq-a{font-family:var(–sans);font-size:14px;color:var(–offwht);line-height:1.75;font-weight:300;padding:0 0 18px;display:none;}
+.faq-a{font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.75;font-weight:300;padding:0 0 18px;display:none;}
 .faq-a.open{display:block;}
 .faq-tab-nav{display:flex;gap:2px;margin-bottom:16px;flex-wrap:wrap;}
-.faq-tab-btn{font-family:var(–mono);font-size:10px;padding:8px 14px;background:#1A1A18;color:#888880;border:none;cursor:pointer;letter-spacing:0.06em;transition:all 0.2s;border-top:2px solid transparent;}
+.faq-tab-btn{font-family:var(--mono);font-size:10px;padding:8px 14px;background:#1A1A18;color:#888880;border:none;cursor:pointer;letter-spacing:0.06em;transition:all 0.2s;border-top:2px solid transparent;}
 .faq-tab-btn:hover{color:#F5F5F0;}
-.faq-tab-btn.active{background:#2C2C28;color:var(–amber);border-top-color:var(–amber);}
+.faq-tab-btn.active{background:#2C2C28;color:var(--amber);border-top-color:var(--amber);}
 .faq-group{display:none;}
 .faq-group.active{display:block;}
-.methodology-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin:32px 0;}
-.ms-item{background:#1A1A18;border-top:3px solid var(–amber);padding:20px 16px;}
-.ms-num{font-family:var(–mono);font-size:22px;color:var(–amber-d);font-weight:600;margin-bottom:8px;}
-.ms-head{font-family:var(–serif);font-size:14px;color:#F5F5F0;margin-bottom:8px;line-height:1.3;}
-.ms-body{font-family:var(–sans);font-size:12px;color:var(–offwht);line-height:1.5;font-weight:300;}
-.price-anchor{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:24px 0;}
-.pa-item{background:#1A1A18;padding:20px;border-top:2px solid #2A2A28;}
-.pa-item.pa-featured{border-top-color:var(–amber);}
-.pa-tier{font-family:var(–mono);font-size:9px;color:#888880;letter-spacing:0.1em;margin-bottom:8px;}
-.pa-driver{font-family:var(–sans);font-size:13px;color:#F5F5F0;font-weight:500;margin-bottom:6px;}
-.pa-detail{font-family:var(–sans);font-size:12px;color:var(–offwht);line-height:1.5;font-weight:300;}
-.pa-price{font-family:var(–mono);font-size:16px;color:var(–amber);font-weight:600;margin-top:8px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .fade-up{animation:fadeUp 0.6s ease both;}
 .fade-up-1{animation-delay:0.1s;}.fade-up-2{animation-delay:0.25s;}
 .fade-up-3{animation-delay:0.4s;}.fade-up-4{animation-delay:0.55s;}
 @media(max-width:768px){
-body::after{display:none;}.line-numbers{display:none;}
+body::after{display:none;}
 .container{padding:0 24px;}.doc-header-inner{padding:0 24px;}
 .footer-inner{padding:0 24px;}.clarity-bar-inner{padding:0 24px;}
 .countdown-inner{padding:0 24px;}
@@ -446,7 +418,6 @@ nav{display:none;}
 .qc-flag-type{min-width:auto;}
 }
 </style>
-
 </head>
 <body>
 <div class="line-numbers" id="lineNumbers"></div>
@@ -510,14 +481,13 @@ nav{display:none;}
   </div>
 </div>
 
-<!-- HERO -->
-
 <div class="container">
 <section class="hero">
   <span class="category-tag fade-up fade-up-1">JUSTIFICATION REVIEW STANDARD &nbsp;|&nbsp; OPERATIONAL STANDARD FOR AI DOCUMENTATION RISK</span>
   <h1 class="hero-title fade-up fade-up-2">AI Is Not<br>Your Risk.<br><span>Your Records Are.</span></h1>
   <div class="amber-rule fade-up fade-up-3"></div>
-  <p class="hero-sub fade-up fade-up-3">Every day, people lose jobs and get passed over for promotions based on AI-generated language that nobody stopped to examine. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
+  <!-- PATCH 5: Updated hero subhead -->
+  <p class="hero-sub fade-up fade-up-3">Every day, people lose jobs and opportunities based on AI-generated language that nobody checked before it became the record. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
   <div class="stat-bar fade-up fade-up-3">
     <div class="stat-item"><div class="stat-number">$700M+</div><div class="stat-label">Recovered by EEOC for discrimination claimants in FY2024 alone</div></div>
     <div class="stat-item"><div class="stat-number">5 min</div><div class="stat-label">Time required to apply JRS&#x2122; before any record is finalized</div></div>
@@ -558,16 +528,12 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- ============================================
-     QUICK CHECK SECTION
-     ============================================ -->
-
 <div class="container" id="quick-check">
 <section class="qc-section">
   <span class="section-label">JRS&#x2122; QUICK CHECK &nbsp;|&nbsp; PRE-SAVE DOCUMENTATION CONTROL</span>
   <h2>Before you save, make it stand on its own.</h2>
   <div class="amber-underline"></div>
-  <p>This will be read later without you. Paste what you're about to save — a review, note, decision, or disciplinary record. The check tells you whether it holds up.</p>
+  <p>This will be read later without you. Paste what you are about to save — a review, note, decision, or disciplinary record. The check tells you whether it holds.</p>
   <p style="font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:0;">No login. No scoring. No onboarding. &nbsp;|&nbsp; Paste &#8594; Check &#8594; Fix &#8594; Save</p>
 
   <div class="qc-wrap">
@@ -593,7 +559,6 @@ nav{display:none;}
 
 <div class="qc-output" id="qcOutput">
 
-  <!-- FAILURE -->
   <div id="qcFailure" style="display:none;">
     <div class="qc-fail">
       <div class="qc-fail-label">Review finding</div>
@@ -609,13 +574,14 @@ nav{display:none;}
     </div>
   </div>
 
-  <!-- SUCCESS -->
   <div id="qcSuccess" style="display:none;">
     <div class="qc-success">
       <div class="qc-success-label">Review finding</div>
       <div class="qc-success-main">This stands on its own under review.</div>
       <div class="qc-success-sub">A third party could understand this without you.</div>
+      <!-- PATCH 4: Confidence close -->
       <div class="qc-proof-line">Records that stand on their own are the ones that hold up later. This is one of them.</div>
+      <div class="qc-proof-line" style="font-style:normal;font-weight:500;color:#70CC90;margin-top:6px;">No additional explanation required.</div>
       <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://wikesphere.gumroad.com/l/usbtna" target="_blank">View the Standard</a></div>
     </div>
     <div class="qc-retention" id="qcRetention"></div>
@@ -631,20 +597,16 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- AUTHORITY BLOCK -->
-
 <div class="container">
 <div class="authority-block">
   <div class="authority-icon">&#9632;</div>
   <div>
     <span class="authority-label">WHY THIS STANDARD EXISTS &nbsp;|&nbsp; THE ORIGIN</span>
-    <p class="authority-text"><strong>As a former Lead Civil Rights Officer, I reviewed hundreds of discrimination complaints.</strong> The pattern was remarkably consistent across organizations, industries, and decision types. The issue was rarely the decision. It was almost always how the decision was explained. AI has made that problem worse at a scale no organization has fully reckoned with. JRS&#x2122; was built to close that gap at the only point where it actually can be closed: before the record is saved.</p>
+    <p class="authority-text"><strong>As a former Lead Civil Rights Officer, I reviewed hundreds of discrimination complaints.</strong> The pattern was consistent across organizations, industries, and decision types. The issue was rarely the decision. It was almost always how the decision was explained. AI has made that problem worse at a scale no organization has fully reckoned with. JRS&#x2122; was built to close that gap at the only point where it can be closed: before the record is saved.</p>
     <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:8px 0 0;letter-spacing:0.04em;">Phillip Wikes &nbsp;|&nbsp; AI Governance and Cognitive Risk Advisor &nbsp;|&nbsp; Creator of JRS&#x2122;</p>
   </div>
 </div>
 </div>
-
-<!-- EARLY ADOPTER -->
 
 <div class="container">
 <div style="background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(--amber-d);padding:24px 32px;margin:0 0 8px;">
@@ -654,8 +616,6 @@ nav{display:none;}
   <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" style="font-size:11px;">Share Your Experience &nbsp;&#8594;</a>
 </div>
 </div>
-
-<!-- FREE RESOURCE -->
 
 <div class="container" id="free-resource">
 <div class="free-resource">
@@ -688,8 +648,6 @@ nav{display:none;}
   <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-secondary" target="_blank" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
 </div>
 </div>
-
-<!-- STANDARD SECTION -->
 
 <div class="container" id="standard">
 <section>
@@ -745,8 +703,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- SIMULATOR (score bar removed) -->
-
 <div class="container" id="simulator">
 <section>
   <span class="section-label">SECTION 02 &nbsp;|&nbsp; LANGUAGE SIMULATOR</span>
@@ -768,8 +724,6 @@ nav{display:none;}
   </div>
 </section>
 </div>
-
-<!-- JUSTIFICATION GATE -->
 
 <div class="container" id="gate">
 <section>
@@ -805,8 +759,6 @@ nav{display:none;}
   </div>
 </section>
 </div>
-
-<!-- WHO IT SERVES -->
 
 <div class="container" id="audience">
 <section>
@@ -873,8 +825,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- ENFORCERS -->
-
 <div class="container" id="enforcers">
 <section>
   <span class="section-label">SECTION 04 &nbsp;|&nbsp; WHO ENFORCES THIS GLOBALLY</span>
@@ -907,8 +857,6 @@ nav{display:none;}
   <div class="pull-quote"><p>"You do not need a new law to make this standard matter. The laws that already exist are already doing that work."</p></div>
 </section>
 </div>
-
-<!-- THE RISK -->
 
 <div class="container" id="risk">
 <section>
@@ -943,8 +891,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- FORENSIC CHALLENGE -->
-
 <div class="container">
 <section>
   <span class="section-label">SECTION 06 &nbsp;|&nbsp; FORENSIC CHALLENGE</span>
@@ -974,8 +920,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- BLINDSPOTS -->
-
 <div class="container" id="blindspots">
 <section>
   <span class="section-label">SECTION 07 &nbsp;|&nbsp; WHAT JRS&#x2122; CANNOT DO ALONE</span>
@@ -992,8 +936,6 @@ nav{display:none;}
   <div class="pull-quote" style="margin-top:40px;"><p>Apply the standard with discipline. Verify that the evidence it references actually exists. That is what defensible by design actually means.</p></div>
 </section>
 </div>
-
-<!-- FAQ -->
 
 <div class="container" id="faq">
 <section>
@@ -1036,8 +978,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- PRODUCTS -->
-
 <div class="container" id="products">
 <section>
   <span class="section-label">SECTION 09 &nbsp;|&nbsp; APPLY THE STANDARD</span>
@@ -1072,7 +1012,7 @@ nav{display:none;}
         <tr><td style="color:#F5F5F0;font-weight:500;">Price</td>
           <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">Free</td>
           <td class="hi" style="font-family:var(--mono);color:var(--amber);font-size:18px;font-weight:600;">$97</td>
-          <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">$500–$2,000</td></tr>
+          <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">$500 to $2,000</td></tr>
         <tr><td></td>
           <td><a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
           <td class="hi"><a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
@@ -1143,8 +1083,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- ASSESS -->
-
 <div class="container" id="assess">
 <section>
   <span class="section-label">SECTION 10 &nbsp;|&nbsp; DOCUMENTATION DEFENSIBILITY ASSESSMENT</span>
@@ -1162,7 +1100,7 @@ nav{display:none;}
       <div class="quiz-q"><div class="quiz-q-text">5. Are your managers aware of the EU AI Act employment documentation obligations taking effect August 2, 2026?</div><div class="quiz-opts"><div class="quiz-opt" onclick="selectOpt(this,'q5',0)">Yes, actively preparing</div><div class="quiz-opt" onclick="selectOpt(this,'q5',1)">Aware but not yet acting</div><div class="quiz-opt" onclick="selectOpt(this,'q5',2)">Not aware</div></div></div>
     </div>
     <div class="quiz-email-row">
-      <input type="email" id="quiz-email" placeholder="your@email.com — score sent immediately, no follow-up">
+      <input type="email" id="quiz-email" placeholder="your@email.com">
       <button class="btn btn-primary" onclick="submitQuiz()">Get My Score &nbsp;&#8594;</button>
     </div>
     <div id="quiz-result" class="quiz-result">
@@ -1175,8 +1113,6 @@ nav{display:none;}
 </section>
 </div>
 
-<!-- TERMS -->
-
 <div class="container">
 <section>
   <span class="section-label">SECTION 11 &nbsp;|&nbsp; TERMS OF USE</span>
@@ -1188,8 +1124,6 @@ nav{display:none;}
   <div class="terms-block"><h3>TRADEMARK</h3><p>JRS&#x2122; is a trademark of Phillip Wikes. Unauthorized commercial use of the JRS&#x2122; name or standard is prohibited. All rights reserved.</p></div>
 </section>
 </div>
-
-<!-- CLOSING -->
 
 <div class="container">
 <div class="closing">
@@ -1253,6 +1187,11 @@ calcROI();
 
 // ============================================
 // QUICK CHECK ENGINE
+// PATCH 1: CSS vars fixed throughout
+// PATCH 2: "A reviewer will ask" replacing bureaucratic role language
+// PATCH 3: Pre-save trigger injected in qcShowFailure
+// PATCH 4: Confidence close in success HTML above
+// PATCH 8: Upgraded bias_risk detection patterns
 // ============================================
 let qcSelectedType = null;
 let qcUseCount = 0;
@@ -1272,10 +1211,21 @@ function qcUpdateSubmit() {
   document.getElementById('qcSubmit').disabled = !(hasText && qcSelectedType);
 }
 
-// Detection flags
+// PATCH 8: Upgraded bias_risk patterns — catches more phrasing variants
 const qcFlags = {
   vague: { patterns: [/\battitude\b/i,/difficult to work with/i,/not meeting expectations/i,/needs improvement/i,/unprofessional/i,/negative (attitude|behavior)/i,/poor performance/i,/not a (good |strong )?fit/i,/cultural fit/i,/lacks professionalism/i], type: 'Vague language' },
-  bias_risk: { patterns: [/not a (strong |good )?cultural fit/i,/cultural fit/i,/lacks executive presence/i,/executive presence/i,/not assertive enough/i,/too aggressive/i,/not adaptable/i,/struggles with change/i,/lacks energy/i,/communication (style|barrier)/i,/does not integrate/i,/not polished/i,/difficult personality/i,/abrasive/i,/not a team player/i], type: 'Pattern risk language' },
+  bias_risk: { patterns: [
+    /not a (strong |good )?cultural fit/i,/cultural fit/i,
+    /lacks executive presence/i,/executive presence/i,
+    /not assertive enough/i,/too aggressive/i,
+    /not adaptable/i,/struggles with change/i,/lacks energy/i,
+    /communication (style|barrier)/i,/does not integrate/i,/not polished/i,
+    /difficult personality/i,/abrasive/i,/not a team player/i,
+    /\bhard\s+to\s+work\s+with\b/i,
+    /\btoo\s+(emotional|intense|sensitive)\b/i,
+    /\blacks?\s+energy\b/i,
+    /\bnot\s+adaptable\b/i
+  ], type: 'Pattern risk language' },
   criteria: { patterns: [/not (quite |yet )?ready/i,/needs (more )?development/i,/shows potential/i,/revisit in/i,/next level/i,/not mature/i,/lacks (leadership|maturity|executive presence)/i,/leadership maturity/i], type: 'Missing criteria' },
   process: { patterns: [/after (reviewing|review|investigation|looking into)/i,/upon investigation/i,/we determined/i,/found to be (unfounded|unsubstantiated)/i,/considered closed/i,/matter is closed/i,/unfounded/i,/unsubstantiated/i,/no merit/i,/after careful review/i], type: 'Undocumented process' },
   timeline: { patterns: [/repeated(ly)?/i,/multiple times/i,/on several occasions/i,/ongoing (issue|problem|concern)/i,/pattern of/i,/previously (discussed|addressed|documented)/i,/has been told/i,/numerous times/i], type: 'Unanchored timeline' },
@@ -1283,10 +1233,10 @@ const qcFlags = {
   accommodation: { patterns: [/attendance (issues|problems|concerns)/i,/inconsistent (performance|attendance)/i,/needs too much support/i,/unreliable/i,/frequently absent/i,/misses (work|shifts|days)/i,/attendance affecting/i,/excessive (absences|tardiness)/i], type: 'Accommodation status' }
 };
 
-// Output language — calibrated by record type, with human face
+// PATCH 2: All "approver/supervisor/HR partner/manager who approved" → "A reviewer"
 const qcOutput = {
   'manager-note': {
-    vague: { main:'This relies on interpretation.', detail:'What specifically happened? A reviewer cannot evaluate an impression — only what was observed.', rewrite:'Replace interpretation with observation. What was seen or heard?' },
+    vague: { main:'This relies on interpretation.', detail:'What specifically happened? A reviewer cannot evaluate an impression. Only what was observed is on record.', rewrite:'Replace interpretation with observation. What was seen or heard?' },
     bias_risk: { main:'This language carries pattern risk.', detail:'Phrases like this appear across protected categories in discrimination complaints. Replace with observable, defined criteria.', rewrite:'Replace this phrase with a defined, observable standard.' },
     intent: { main:'This documents intent, not observation.', detail:'What happened in this conversation that should be on record?', rewrite:'Replace intent with observation. What happened that belongs in this record?' },
     timeline: { main:'This references prior events without dates.', detail:'A reviewer cannot reconstruct what happened or when.', rewrite:'Add dates and prior documentation references.' },
@@ -1294,32 +1244,32 @@ const qcOutput = {
     default: { main:'This would not hold without explanation.', detail:'A reviewer would ask: "Based on what?"', rewrite:'Make this defensible without explanation.' }
   },
   'performance-review': {
-    vague: { main:'This reads as a conclusion, not evidence.', detail:'The approver who signs this will be asked: what specifically happened that supports this statement? That answer must be in the record.', rewrite:'Replace interpretation with observation. What was seen, measured, or documented?' },
-    bias_risk: { main:'This language carries significant pattern risk.', detail:'The approver who signs this will be asked: what defined standard was this based on, and was it applied consistently across this role?', rewrite:'Replace this phrase with a defined, observable standard. What specifically was measured?' },
-    criteria: { main:'This documents a conclusion without a standard.', detail:'The approver who signs this will be asked: what criteria was this measured against, and was the same standard applied to others in this role?', rewrite:'State the standard before the conclusion. What was this measured against?' },
+    vague: { main:'This reads as a conclusion, not evidence.', detail:'A reviewer will ask: what specifically happened that supports this statement? That answer must be in the record.', rewrite:'Replace interpretation with observation. What was seen, measured, or documented?' },
+    bias_risk: { main:'This language carries significant pattern risk.', detail:'A reviewer will ask: what defined standard was this based on, and was it applied consistently across this role?', rewrite:'Replace this phrase with a defined, observable standard. What specifically was measured?' },
+    criteria: { main:'This documents a conclusion without a standard.', detail:'A reviewer will ask: what criteria was this measured against, and was the same standard applied to others in this role?', rewrite:'State the standard before the conclusion. What was this measured against?' },
     timeline: { main:'This references a pattern without documentation.', detail:'What occurred, and when was each instance documented?', rewrite:'Add dates and prior documentation references.' },
     accommodation: { main:'This references performance without noting accommodation status.', detail:'If a disability or accommodation request exists, this record must note its current status.', rewrite:'Note the current accommodation status before finalizing this record.' },
     default: { main:'This would not hold under independent review.', detail:'A reviewer would ask: "Based on what?" The answer must be in the record.', rewrite:'Make this defensible without explanation.' }
   },
   'discipline': {
-    vague: { main:'This would not hold under review.', detail:'The supervisor who wrote this will be asked: what behavior was observed, and when? That answer must be in the record — not recalled from memory.', rewrite:'Replace interpretation with observation. What behavior was observed, and when?' },
-    bias_risk: { main:'This language carries pattern risk.', detail:'The supervisor who wrote this will be asked: what defined standard was this based on? Phrases like this appear disproportionately in disciplinary records for protected class employees.', rewrite:'Replace this phrase with a defined, observable standard.' },
+    vague: { main:'This would not hold under review.', detail:'A reviewer will ask: what behavior was observed, and when? That answer must be in the record, not recalled from memory.', rewrite:'Replace interpretation with observation. What behavior was observed, and when?' },
+    bias_risk: { main:'This language carries pattern risk.', detail:'A reviewer will ask: what defined standard was this based on? Phrases like this appear disproportionately in disciplinary records for protected class employees.', rewrite:'Replace this phrase with a defined, observable standard.' },
     timeline: { main:'This references prior events without dates or documentation.', detail:'Prior counseling sessions must be dated and documented.', rewrite:'Add dates and prior documentation references.' },
     accommodation: { main:'This references performance or attendance without noting accommodation status.', detail:'If a disability or accommodation request exists, this record must note its current status before a formal warning is issued.', rewrite:'Note the current accommodation status.' },
     default: { main:'This would not hold under review.', detail:'What behavior was observed, and when? Point to specific documented events.', rewrite:'Make this defensible without explanation.' }
   },
   'termination': {
-    vague: { main:'This would not hold under review.', detail:'The manager who approved this will be asked: what specifically happened, and when was it documented? That answer must be in the record.', rewrite:'Replace interpretation with observation. What behavior was observed, and when?' },
-    bias_risk: { main:'This language carries significant pattern risk.', detail:'The manager who approved this will be asked: what defined standard was this based on, and was it applied consistently? Phrases like this appear disproportionately in termination records for protected class employees.', rewrite:'Replace this phrase with a defined, observable standard.' },
-    criteria: { main:'This references expectations but does not define them.', detail:'The manager who approved this will be asked: what was the stated standard, and where was it documented?', rewrite:'State the standard before the conclusion. What was this measured against?' },
-    timeline: { main:'This references prior conversations without dates or documentation.', detail:'The manager who approved this will be asked: when did these conversations occur, and what was documented from them?', rewrite:'Add dates and prior documentation references.' },
+    vague: { main:'This would not hold under review.', detail:'A reviewer will ask: what specifically happened, and when was it documented? That answer must be in the record.', rewrite:'Replace interpretation with observation. What behavior was observed, and when?' },
+    bias_risk: { main:'This language carries significant pattern risk.', detail:'A reviewer will ask: what defined standard was this based on, and was it applied consistently? Phrases like this appear disproportionately in termination records for protected class employees.', rewrite:'Replace this phrase with a defined, observable standard.' },
+    criteria: { main:'This references expectations but does not define them.', detail:'A reviewer will ask: what was the stated standard, and where was it documented?', rewrite:'State the standard before the conclusion. What was this measured against?' },
+    timeline: { main:'This references prior conversations without dates or documentation.', detail:'A reviewer will ask: when did these conversations occur, and what was documented from them?', rewrite:'Add dates and prior documentation references.' },
     accommodation: { main:'This references performance or attendance without noting accommodation status.', detail:'If a disability or accommodation request exists and is not noted here, this termination record is incomplete and creates significant exposure.', rewrite:'Note the current accommodation status before finalizing this record.' },
     default: { main:'This would not hold under review.', detail:'What would a third party point to as the reason? Use only what is written.', rewrite:'Make this defensible without explanation.' }
   },
   'investigation': {
-    process: { main:'This record implies a process occurred. That process is not documented here.', detail:'The HR partner who closed this will be asked: who was interviewed, what was reviewed, what standard was applied? If it cannot be reconstructed, this record creates liability — not protection.', rewrite:'Document the process, not just the outcome. Who was interviewed? What was reviewed? What standard was applied?' },
-    vague: { main:'This record states a conclusion without showing the reasoning.', detail:'The HR partner who closed this will be asked: based on what? A finding without documented reasoning cannot be defended.', rewrite:'Document what was reviewed and what standard was applied to reach this conclusion.' },
-    default: { main:'This record implies a conclusion without showing the reasoning.', detail:'If the process cannot be reconstructed from this record, it creates liability — not protection.', rewrite:'Document the process, not just the outcome.' }
+    process: { main:'This record implies a process occurred. That process is not documented here.', detail:'A reviewer will ask: who was interviewed, what was reviewed, what standard was applied? If it cannot be reconstructed, this record creates liability, not protection.', rewrite:'Document the process, not just the outcome. Who was interviewed? What was reviewed? What standard was applied?' },
+    vague: { main:'This record states a conclusion without showing the reasoning.', detail:'A reviewer will ask: based on what? A finding without documented reasoning cannot be defended.', rewrite:'Document what was reviewed and what standard was applied to reach this conclusion.' },
+    default: { main:'This record implies a conclusion without showing the reasoning.', detail:'If the process cannot be reconstructed from this record, it creates liability, not protection.', rewrite:'Document the process, not just the outcome.' }
   },
   'other': {
     vague: { main:'This relies on interpretation.', detail:'A reviewer would ask: "Based on what?" Replace impression with observation.', rewrite:'Replace interpretation with observation.' },
@@ -1331,10 +1281,10 @@ const qcOutput = {
 
 const qcRetentionMessages = [
   'Most records only get reviewed when something goes wrong. Use this before your next one.',
-  'The manager who didn\'t check is the one who gets called later. You checked.',
+  'The manager who did not check is the one who gets called later. You checked.',
   'Apply this to your next review before the cycle closes.',
-  'Records that hold up don\'t happen by accident. You just made one.',
-  'Most people miss this the first time. You didn\'t.',
+  'Records that hold up do not happen by accident. You just made one.',
+  'Most people miss this the first time. You did not.',
   'The ones who catch this are the ones responsible for what gets written.'
 ];
 
@@ -1386,6 +1336,15 @@ function qcShowFailure(detected, type) {
 
   const primary = detected[0];
   const out = qcGetOutput(type, primary.key);
+
+  // PATCH 3: Pre-save trigger — always shown at top of fail panel
+  const oldPresave = document.getElementById('qcPresaveTrigger');
+  if (oldPresave) oldPresave.remove();
+  const presaveEl = document.createElement('div');
+  presaveEl.id = 'qcPresaveTrigger';
+  presaveEl.style.cssText = 'font-style:italic;font-size:14px;color:rgba(245,245,240,0.65);padding:0 0 12px;border-bottom:1px solid rgba(139,32,32,0.25);margin-bottom:14px;line-height:1.5;';
+  presaveEl.textContent = 'This will be read later without you. Does it hold?';
+  document.getElementById('qcFailure').querySelector('.qc-fail').prepend(presaveEl);
 
   document.getElementById('qcFailMain').textContent = out.main;
   document.getElementById('qcFailDetail').textContent = out.detail;
@@ -1448,7 +1407,7 @@ function qcReset() {
 }
 
 // ============================================
-// SIMULATOR (score bar removed)
+// SIMULATOR
 // ============================================
 const riskPhrases = [
   {pattern:/cultural fit/i,risk:'PATTERN RISK: RACE / BACKGROUND',explanation:'"Cultural fit" has no observable definition. It cannot be evaluated independently and is one of the most cited phrases in EEOC discrimination complaints. Replace with defined collaboration criteria grounded in documented feedback.'},
@@ -1498,7 +1457,7 @@ const challenges = [
 let currentChallenge=0; let challengeScore=0; let timerStart=null;
 function initMicroCert() { const prog=document.getElementById('mcProgress'); prog.innerHTML=challenges.map((_,i)=>'<div class="mc-dot'+(i===0?' current':'')+'" id="mcdot'+i+'"></div>').join(''); loadChallenge(0); }
 function loadChallenge(idx) { const c=challenges[idx]; timerStart=Date.now(); document.getElementById('mcStatement').textContent=c.statement; document.getElementById('mcTimer').textContent='Time: 0s'; document.getElementById('mcFeedback').classList.remove('visible'); document.getElementById('mcNextBtn').style.display='inline-block'; document.getElementById('mcCertPreview').classList.remove('visible'); document.getElementById('mcOpts').innerHTML=c.options.map((o,i)=>'<button class="mc-opt" onclick="answerChallenge('+i+')">'+o+'</button>').join(''); document.querySelectorAll('.mc-dot').forEach((d,i)=>{d.className='mc-dot'+(i<idx?' done':i===idx?' current':'');}); const timer=setInterval(()=>{if(document.getElementById('mcFeedback').classList.contains('visible')){clearInterval(timer);return;} document.getElementById('mcTimer').textContent='Time: '+Math.floor((Date.now()-timerStart)/1000)+'s';},1000); }
-function answerChallenge(idx) { const c=challenges[currentChallenge]; const opts=document.querySelectorAll('.mc-opt'); opts.forEach((o,i)=>{o.onclick=null;if(i===c.correct)o.classList.add('correct');else if(i===idx&&idx!==c.correct)o.classList.add('wrong');}); const correct=idx===c.correct; if(correct)challengeScore++; document.getElementById('mcFeedbackText').textContent=correct?'✓ Correct':'✗ Not quite'; document.getElementById('mcFeedbackText').style.color=correct?'#70CC90':'#CC7070'; document.getElementById('mcExplain').textContent=c.explanation; document.getElementById('mcFeedback').classList.add('visible'); if(currentChallenge===challenges.length-1){document.getElementById('mcNextBtn').textContent='See Result';} }
+function answerChallenge(idx) { const c=challenges[currentChallenge]; const opts=document.querySelectorAll('.mc-opt'); opts.forEach((o,i)=>{o.onclick=null;if(i===c.correct)o.classList.add('correct');else if(i===idx&&idx!==c.correct)o.classList.add('wrong');}); const correct=idx===c.correct; if(correct)challengeScore++; document.getElementById('mcFeedbackText').textContent=correct?'Correct':'Not quite'; document.getElementById('mcFeedbackText').style.color=correct?'#70CC90':'#CC7070'; document.getElementById('mcExplain').textContent=c.explanation; document.getElementById('mcFeedback').classList.add('visible'); if(currentChallenge===challenges.length-1){document.getElementById('mcNextBtn').textContent='See Result';} }
 function nextChallenge() { if(currentChallenge===challenges.length-1){document.getElementById('mcFeedbackText').textContent=challengeScore+'/'+challenges.length+' Correct'; document.getElementById('mcExplain').textContent=challengeScore>=4?'Good result. Apply this in practice.':'Review the redlines in the Implementation Kit to strengthen your pattern recognition.'; document.getElementById('mcNextBtn').style.display='none'; document.getElementById('mcCertPreview').classList.add('visible'); document.querySelectorAll('.mc-dot').forEach(d=>d.className='mc-dot done'); return;} currentChallenge++; loadChallenge(currentChallenge); }
 initMicroCert();
 
