@@ -133,10 +133,10 @@ PATCH 1: All CSS vars use -- (double hyphen), not en-dash
 .qc-output{display:none;animation:qcFadeIn 0.35s ease;}
 .qc-output.visible{display:block;}
 @keyframes qcFadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.qc-fail{background:rgba(139,32,32,0.1);border:1.5px solid rgba(139,32,32,0.4);border-left:4px solid #8B2020;padding:24px;margin-bottom:20px;}
-.qc-fail-label{font-family:var(--mono);font-size:9px;color:#CC7070;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
-.qc-fail-main{font-family:var(--serif);font-size:19px;font-weight:700;color:#F5F5F0;line-height:1.3;margin-bottom:10px;}
-.qc-fail-detail{font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;margin-bottom:0;}
+.qc-fail{background:rgba(139,32,32,0.12);border:2px solid rgba(139,32,32,0.5);border-left:5px solid #8B2020;padding:28px;margin-bottom:20px;}
+.qc-fail-label{font-family:var(--mono);font-size:9px;color:#CC7070;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;}
+.qc-fail-main{font-family:var(--serif);font-size:24px;font-weight:700;color:#F5F5F0;line-height:1.25;margin-bottom:14px;}
+.qc-fail-detail{font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.8;margin-bottom:0;}
 .qc-flags{margin-top:18px;border-top:1px solid rgba(139,32,32,0.3);padding-top:14px;}
 .qc-flag-item{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
 .qc-flag-type{font-family:var(--mono);font-size:9px;color:#CC7070;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;padding-top:2px;min-width:120px;}
@@ -456,7 +456,7 @@ nav{display:none;}
 <div class="clarity-bar">
   <div class="clarity-bar-inner">
     <span class="clarity-tag">IF YOU USE AI TO WRITE RECORDS</span>
-    <p class="clarity-text"><strong>This applies to you.</strong> Every performance review, termination letter, PIP, or hiring decision drafted with AI becomes a permanent record. It will be read by people who were not in the room when it was written. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
+    <p class="clarity-text"><strong>For HR directors, compliance heads, and employment attorneys.</strong> Every performance review, termination letter, PIP, or hiring decision drafted with AI becomes a permanent record. It will be read by people who were not in the room. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
   </div>
 </div>
 
@@ -520,11 +520,11 @@ nav{display:none;}
     </div>
   </div>
   <div class="hero-cta fade-up fade-up-4">
-    <a href="#quick-check" class="btn btn-primary">Run the Quick Check &nbsp;&#8594;</a>
+    <a href="#quick-check" class="btn btn-primary">Test a real record in 10 seconds &nbsp;&#8594;</a>
     <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
     <a href="#assess" class="btn btn-secondary">Assess Your Risk &nbsp;&#8594;</a>
   </div>
-  <p class="hero-statement" style="margin-top:28px;">The record is what gets reviewed. Not your intent. Not your memory. Not your explanation after the fact.<br>Once it is in the record, you do not control how it is interpreted.<br>Only what is written will remain.</p>
+  <p class="hero-statement" style="margin-top:28px;">Built for HR directors, compliance heads, and employment attorneys who are responsible for what enters the record.<br>The record is what gets reviewed. Not your intent. Not your memory. Not your explanation after the fact.<br>Once it is in the record, you do not control how it is interpreted.</p>
 </section>
 </div>
 
@@ -533,7 +533,7 @@ nav{display:none;}
   <span class="section-label">JRS&#x2122; QUICK CHECK &nbsp;|&nbsp; PRE-SAVE DOCUMENTATION CONTROL</span>
   <h2>Before you save, make it stand on its own.</h2>
   <div class="amber-underline"></div>
-  <p>This will be read later without you. Paste what you are about to save — a review, note, decision, or disciplinary record. The check tells you whether it holds.</p>
+  <p>Paste any record you are about to finalize. The check runs instantly. If anything needs attention, you will know before it becomes permanent.</p>
   <p style="font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:0;">No login. No scoring. No onboarding. &nbsp;|&nbsp; Paste &#8594; Check &#8594; Fix &#8594; Save</p>
 
   <div class="qc-wrap">
@@ -864,6 +864,7 @@ nav{display:none;}
   <h2>AI Documentation Risk</h2>
   <div class="amber-underline"></div>
   <p>There is a concept worth naming here: Documentation Debt. It builds up whenever AI writes the reasoning for an employment record and no one stops to check whether that reasoning actually holds. Every record saved without that check adds to the debt. When it is reviewed later, the debt comes due.</p>
+  <p>This is moving from best practice to expected documentation standard. The EU AI Act, state bias audit mandates, and ongoing litigation are not creating new obligations so much as making existing ones visible. Organizations that have documentation controls in place will be in a meaningfully different position from those that do not. That window is open now.</p>
   <p>The people most affected are often the most vulnerable. People of color, women, older workers, people with disabilities, and anyone whose background sits outside what the organization silently treats as the default.</p>
   <div class="pull-quote"><p>"The issue was rarely the decision. It was almost always how the decision was explained."</p></div>
   <div class="phrase-list">
@@ -875,6 +876,8 @@ nav{display:none;}
     <div class="phrase-item"><span class="phrase-cat">NATIONAL ORIGIN</span><span class="phrase-examples">"communication barriers" &nbsp;&nbsp; "does not integrate well"</span></div>
     <div class="phrase-item"><span class="phrase-cat">RELIGION</span><span class="phrase-examples">"scheduling conflicts" &nbsp;&nbsp; "not fully committed"</span></div>
   </div>
+  <p style="font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:0.04em;margin-top:20px;padding:12px 16px;background:rgba(196,150,30,0.06);border-left:3px solid var(--amber-d);">These are the exact phrases the Quick Check flags. Paste any record containing this language and the check will tell you what a reviewer would ask.</p>
+
   <p id="case-law" style="margin-top:40px;margin-bottom:16px;font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.12em;">KEY LITIGATION &nbsp;|&nbsp; WHAT COURTS ARE FINDING</p>
   <div class="case-law">
     <div class="case-item"><div class="case-name">MOBLEY v. WORKDAY &nbsp;|&nbsp; Collective certification granted May 2025</div><div class="case-desc">Plaintiff alleges AI screening tools discriminated based on age, race, and disability. Court certified a collective, establishing that both AI vendors and the employers who use them can share liability.</div><div class="case-implication">JRS&#x2122; implication: Organizations using AI-assisted hiring tools need contemporaneous documentation that human judgment was applied before decisions entered the record.</div></div>
