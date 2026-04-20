@@ -439,6 +439,88 @@ nav{display:none;}
   </div>
 </header>
 
+<div style="background:var(--near);border-bottom:2px solid var(--amber);padding:16px 0;">
+  <div style="max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <div>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;display:block;margin-bottom:4px;">Free Standard + Quick Check</span>
+      <span style="font-family:var(--sans);font-size:14px;color:#F5F5F0;font-weight:300;">No login. No cost. Apply it before the next record you save.</span>
+    </div>
+    <div style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;">
+      <a href="#quick-check" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;padding:10px 20px;background:var(--amber);color:#0A0A09;text-decoration:none;">Run the Quick Check &nbsp;&#8594;</a>
+      <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;padding:10px 20px;background:transparent;color:var(--amber);border:1px solid var(--amber-d);text-decoration:none;">Download the Standard &nbsp;&#8594;</a>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="quick-check">
+<section class="qc-section">
+  <span class="section-label">JRS&#x2122; QUICK CHECK &nbsp;|&nbsp; PRE-SAVE DOCUMENTATION CONTROL</span>
+  <h2>Before you save, make it stand on its own.</h2>
+  <div class="amber-underline"></div>
+  <p>Paste any record you are about to finalize. The check runs instantly. If anything needs attention, you will know before it becomes permanent.</p>
+  <p style="font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:0;">No login. No scoring. No onboarding. &nbsp;|&nbsp; Paste &#8594; Check &#8594; Fix &#8594; Save</p>
+
+  <div class="qc-wrap">
+    <div class="qc-header-line">Check your record.</div>
+    <div class="qc-subhead">If someone asked "Based on what?" — could the record answer on its own?</div>
+
+```
+<span class="qc-type-label">What type of record is this?</span>
+<div class="qc-types" id="qcTypes">
+  <button class="qc-type-btn" data-type="manager-note">Manager note</button>
+  <button class="qc-type-btn" data-type="performance-review">Performance review</button>
+  <button class="qc-type-btn" data-type="discipline">Disciplinary record</button>
+  <button class="qc-type-btn" data-type="termination">Termination</button>
+  <button class="qc-type-btn" data-type="investigation">Investigation / complaint</button>
+  <button class="qc-type-btn" data-type="other">Other</button>
+</div>
+
+<span class="qc-input-label">Paste your documentation</span>
+<textarea class="qc-textarea" id="qcInput" placeholder="Paste your documentation here — review, note, decision, or record."></textarea>
+<button class="qc-submit" id="qcSubmit" disabled onclick="qcRunCheck()">Check it</button>
+
+<hr class="qc-divider" id="qcDivider" style="display:none;">
+
+<div class="qc-output" id="qcOutput">
+
+  <div id="qcFailure" style="display:none;">
+    <div class="qc-fail">
+      <div class="qc-fail-label">Review finding</div>
+      <div class="qc-fail-main" id="qcFailMain"></div>
+      <div class="qc-fail-detail" id="qcFailDetail"></div>
+      <div class="qc-flags" id="qcFlags" style="display:none;"></div>
+    </div>
+    <div class="qc-rewrite">
+      <span class="qc-rewrite-label">Revision prompt</span>
+      <div class="qc-rewrite-prompt" id="qcRewritePrompt"></div>
+      <textarea class="qc-textarea" id="qcRewriteArea" placeholder="Revise your documentation here..." style="min-height:140px;margin-top:12px;"></textarea>
+      <button class="qc-again-btn" onclick="qcCheckAgain()">Check again &#8594;</button>
+    </div>
+  </div>
+
+  <div id="qcSuccess" style="display:none;">
+    <div class="qc-success">
+      <div class="qc-success-label">Review finding</div>
+      <div class="qc-success-main">This stands on its own under review.</div>
+      <div class="qc-success-sub">A third party could understand this without you.</div>
+      <!-- PATCH 4: Confidence close -->
+      <div class="qc-proof-line">Records that stand on their own are the ones that hold up later. This is one of them.</div>
+      <div class="qc-proof-line" style="font-style:normal;font-weight:500;color:#70CC90;margin-top:6px;">No additional explanation required.</div>
+      <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">View the Standard</a></div>
+    </div>
+    <div class="qc-retention" id="qcRetention"></div>
+    <button class="qc-share-btn" onclick="qcCopyLink()">If someone on your team is about to save a record, send them here first.</button>
+    <div class="qc-copy-confirm" id="qcCopyConfirm">&#8593; Link copied to clipboard</div>
+    <button class="qc-reset-btn" onclick="qcReset()">Check another record</button>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+</div>
+
 <div class="countdown-banner">
   <div class="countdown-inner">
     <span class="countdown-label">EU AI ACT DEADLINE</span>
@@ -521,79 +603,10 @@ nav{display:none;}
   </div>
   <div class="hero-cta fade-up fade-up-4">
     <a href="#quick-check" class="btn btn-primary">Test a real record in 10 seconds &nbsp;&#8594;</a>
-    <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
+    <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
     <a href="#assess" class="btn btn-secondary">Assess Your Risk &nbsp;&#8594;</a>
   </div>
   <p class="hero-statement" style="margin-top:28px;">Built for HR directors, compliance heads, and employment attorneys who are responsible for what enters the record.<br>The record is what gets reviewed. Not your intent. Not your memory. Not your explanation after the fact.<br>Once it is in the record, you do not control how it is interpreted.</p>
-</section>
-</div>
-
-<div class="container" id="quick-check">
-<section class="qc-section">
-  <span class="section-label">JRS&#x2122; QUICK CHECK &nbsp;|&nbsp; PRE-SAVE DOCUMENTATION CONTROL</span>
-  <h2>Before you save, make it stand on its own.</h2>
-  <div class="amber-underline"></div>
-  <p>Paste any record you are about to finalize. The check runs instantly. If anything needs attention, you will know before it becomes permanent.</p>
-  <p style="font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:0;">No login. No scoring. No onboarding. &nbsp;|&nbsp; Paste &#8594; Check &#8594; Fix &#8594; Save</p>
-
-  <div class="qc-wrap">
-    <div class="qc-header-line">Check your record.</div>
-    <div class="qc-subhead">If someone asked "Based on what?" — could the record answer on its own?</div>
-
-```
-<span class="qc-type-label">What type of record is this?</span>
-<div class="qc-types" id="qcTypes">
-  <button class="qc-type-btn" data-type="manager-note">Manager note</button>
-  <button class="qc-type-btn" data-type="performance-review">Performance review</button>
-  <button class="qc-type-btn" data-type="discipline">Disciplinary record</button>
-  <button class="qc-type-btn" data-type="termination">Termination</button>
-  <button class="qc-type-btn" data-type="investigation">Investigation / complaint</button>
-  <button class="qc-type-btn" data-type="other">Other</button>
-</div>
-
-<span class="qc-input-label">Paste your documentation</span>
-<textarea class="qc-textarea" id="qcInput" placeholder="Paste your documentation here — review, note, decision, or record."></textarea>
-<button class="qc-submit" id="qcSubmit" disabled onclick="qcRunCheck()">Check it</button>
-
-<hr class="qc-divider" id="qcDivider" style="display:none;">
-
-<div class="qc-output" id="qcOutput">
-
-  <div id="qcFailure" style="display:none;">
-    <div class="qc-fail">
-      <div class="qc-fail-label">Review finding</div>
-      <div class="qc-fail-main" id="qcFailMain"></div>
-      <div class="qc-fail-detail" id="qcFailDetail"></div>
-      <div class="qc-flags" id="qcFlags" style="display:none;"></div>
-    </div>
-    <div class="qc-rewrite">
-      <span class="qc-rewrite-label">Revision prompt</span>
-      <div class="qc-rewrite-prompt" id="qcRewritePrompt"></div>
-      <textarea class="qc-textarea" id="qcRewriteArea" placeholder="Revise your documentation here..." style="min-height:140px;margin-top:12px;"></textarea>
-      <button class="qc-again-btn" onclick="qcCheckAgain()">Check again &#8594;</button>
-    </div>
-  </div>
-
-  <div id="qcSuccess" style="display:none;">
-    <div class="qc-success">
-      <div class="qc-success-label">Review finding</div>
-      <div class="qc-success-main">This stands on its own under review.</div>
-      <div class="qc-success-sub">A third party could understand this without you.</div>
-      <!-- PATCH 4: Confidence close -->
-      <div class="qc-proof-line">Records that stand on their own are the ones that hold up later. This is one of them.</div>
-      <div class="qc-proof-line" style="font-style:normal;font-weight:500;color:#70CC90;margin-top:6px;">No additional explanation required.</div>
-      <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://wikesphere.gumroad.com/l/usbtna" target="_blank">View the Standard</a></div>
-    </div>
-    <div class="qc-retention" id="qcRetention"></div>
-    <button class="qc-share-btn" onclick="qcCopyLink()">If someone on your team is about to save a record, send them here first.</button>
-    <div class="qc-copy-confirm" id="qcCopyConfirm">&#8593; Link copied to clipboard</div>
-    <button class="qc-reset-btn" onclick="qcReset()">Check another record</button>
-  </div>
-
-</div>
-```
-
-  </div>
 </section>
 </div>
 
@@ -645,7 +658,7 @@ nav{display:none;}
     </table>
   </div>
   <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:12px 0 8px;">The full Implementation Kit includes 30 forensic redlines with complete before-and-after examples across six decision categories.</p>
-  <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-secondary" target="_blank" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
+  <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
 </div>
 </div>
 
@@ -782,7 +795,7 @@ nav{display:none;}
       <p><strong>What JRS&#x2122; reduces for HR:</strong> Time spent rewriting records that were challenged after saving. Escalations that start with "this doesn't make sense." Complaints rooted in language that sounded reasonable and could not be defended. Pattern exposure discovered only during an audit.</p>
       <p><strong>What to do this week:</strong> Download the standard. Forward it to the three managers on your team most likely to be writing AI-assisted reviews. Ask them to apply the three questions before saving their next record. That is the whole implementation.</p>
       <div class="sector-note"><div class="sector-note-label">SECTOR NOTE &nbsp;|&nbsp; HEIGHTENED EXPOSURE</div><div class="sector-note-text"><strong>Healthcare:</strong> Clinician performance records and accommodation documentation carry additional exposure under ADA and state licensing board requirements. <strong>Financial services:</strong> FINRA-registered employment records may be subject to regulatory disclosure.</div></div>
-      <div class="tab-cta-row"><a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank">Get the Implementation Kit &nbsp;&#8594;</a><a href="#quick-check" class="btn btn-secondary">Run the Quick Check &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row"><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank">Get the Implementation Kit &nbsp;&#8594;</a><a href="#quick-check" class="btn btn-secondary">Run the Quick Check &nbsp;&#8594;</a></div>
     </div>
     <div id="tab-atty" class="tab-pane">
       <h3>Employment Attorneys and Law Firms</h3>
@@ -819,7 +832,7 @@ nav{display:none;}
       <div class="tab-pain">You are using AI to draft performance reviews, hiring notes, and termination letters. Nobody on a compliance team is reviewing that language before it becomes a permanent record.</div>
       <div class="tab-solution">JRS&#x2122; works for a single manager writing a single record today. You do not need an enterprise rollout. You need five minutes before you save.</div>
       <p>AI governance tools are built for large enterprises. JRS&#x2122; is built for the manager writing a performance review at 4pm on a Friday.</p>
-      <div class="tab-cta-row"><a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-primary" target="_blank">Download the Standard &nbsp;&#8594;</a><a href="#quick-check" class="btn btn-secondary">Run the Quick Check First &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row"><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank">Download the Standard &nbsp;&#8594;</a><a href="#quick-check" class="btn btn-secondary">Run the Quick Check First &nbsp;&#8594;</a></div>
     </div>
   </div>
 </section>
@@ -917,7 +930,7 @@ nav{display:none;}
     <div class="mc-cert-preview" id="mcCertPreview">
       <p style="font-family:var(--serif);font-size:18px;color:var(--amber);margin-bottom:8px;">Challenge complete.</p>
       <p style="font-family:var(--sans);font-size:13px;color:var(--offwht);margin-bottom:16px;line-height:1.6;">Apply what you have practiced. Before your next record is saved, ask the three questions.</p>
-      <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-primary" target="_blank">Download the Standard &nbsp;&#8594;</a>
+      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank">Download the Standard &nbsp;&#8594;</a>
     </div>
   </div>
 </section>
@@ -1017,8 +1030,8 @@ nav{display:none;}
           <td class="hi" style="font-family:var(--mono);color:var(--amber);font-size:18px;font-weight:600;">$97</td>
           <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">$500 to $2,000</td></tr>
         <tr><td></td>
-          <td><a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
-          <td class="hi"><a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
+          <td><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
+          <td class="hi"><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
           <td><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" style="font-size:11px;padding:8px 16px;">Enquire &nbsp;&#8594;</a></td>
         </tr>
       </tbody>
@@ -1049,7 +1062,7 @@ nav{display:none;}
         <li>The simple version for daily use</li>
         <li>Designed to align with NIST RMF and EU AI Act</li>
       </ul>
-      <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary btn-full" target="_blank">Download Free &nbsp;&#8594;</a>
+      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary btn-full" target="_blank">Download Free &nbsp;&#8594;</a>
     </div>
     <div class="product-card featured">
       <span class="product-tier amber">TIER 02 &nbsp;|&nbsp; COMPLETE SYSTEM &nbsp;|&nbsp; INDIVIDUAL LICENSE</span>
@@ -1066,7 +1079,7 @@ nav{display:none;}
         <li>Chain of Reasoning Audit tool</li>
         <li>Manager implementation guide</li>
       </ul>
-      <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary btn-full" target="_blank">Download &nbsp;&#8594;</a>
+      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary btn-full" target="_blank">Download &nbsp;&#8594;</a>
     </div>
   </div>
   <div class="enterprise-card" id="licensing" style="margin-top:2px;">
@@ -1110,7 +1123,7 @@ nav{display:none;}
       <div class="quiz-result-score" id="quiz-score-display"></div>
       <div class="quiz-result-label" id="quiz-score-label"></div>
       <p id="quiz-rec" style="font-size:13px;color:var(--offwht);"></p>
-      <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank" style="margin-top:12px;">Download the Implementation Kit &nbsp;&#8594;</a>
+      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank" style="margin-top:12px;">Download the Implementation Kit &nbsp;&#8594;</a>
     </div>
   </div>
 </section>
@@ -1140,7 +1153,7 @@ nav{display:none;}
   <br>
   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
     <a href="#quick-check" class="btn btn-primary">Run the Quick Check &nbsp;&#8594;</a>
-    <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
+    <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
     <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank">Enterprise &amp; Licensing &nbsp;&#8594;</a>
   </div>
 </div>
@@ -1151,7 +1164,7 @@ nav{display:none;}
     <span class="footer-brand">JRS&#x2122; &nbsp;|&nbsp; AI Documentation Risk &nbsp;|&nbsp; v1.0 &nbsp;|&nbsp; &copy; 2026 Phillip Wikes. All rights reserved.</span>
     <div class="footer-links">
       <a href="#quick-check">Quick Check</a>
-      <a href="https://wikesphere.gumroad.com/l/usbtna" target="_blank">Standard</a>
+      <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">Standard</a>
       <a href="#simulator">Simulator</a>
       <a href="#assess">Assess</a>
       <a href="https://www.linkedin.com/in/phillip-w-66192836b" target="_blank">LinkedIn</a>
