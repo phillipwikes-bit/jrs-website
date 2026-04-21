@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>JRS™ Justification Review Standard | AI Documentation Risk</title>
 <meta name="description" content="The operational standard for AI Documentation Risk. Applied before any record is finalized.">
+<!-- FIX 16: Open Graph tags for LinkedIn sharing -->
+<meta property="og:title" content="JRS™ | AI Documentation Risk | Justification Review Standard">
+<meta property="og:description" content="AI is writing records organizations cannot defend. JRS™ is the five-minute pre-save control that changes that. Free standard. No login required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://phillipwikes-bit.github.io/jrs-website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A0A09">
+<meta name="twitter:title" content="JRS™ | AI Documentation Risk">
+<meta name="twitter:description" content="AI is writing records organizations cannot defend. JRS™ is the pre-save control that stops it.">
+<!-- FIX 17: Inline SVG favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0A09'/><text x='4' y='24' font-family='serif' font-size='20' font-weight='900' fill='%23C4961E'>J</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://wikesphere.gumroad.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
+  --header-h: 52px;
   --black:#0A0A09; --off:#111110; --near:#1A1A18; --dark:#2C2C28;
   --mid:#555550; --light:#888880; --rule:#2A2A28;
   --white:#F5F5F0; --offwht:#CCCCB8;
@@ -21,6 +34,8 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+/* Offset anchor scroll for sticky header */
+[id]{scroll-margin-top:calc(var(--header-h) + 8px);}
 body{background:#0A0A09;color:#F5F5F0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.015) 39px,rgba(255,255,255,0.015) 40px);pointer-events:none;z-index:0;}
 body::after{content:'';position:fixed;left:80px;top:0;bottom:0;width:2px;background:rgba(196,150,30,0.15);pointer-events:none;z-index:0;}
@@ -38,7 +53,7 @@ nav a.nav-highlight{color:var(--amber);}
 .countdown-banner{background:linear-gradient(90deg,rgba(139,105,20,0.2),rgba(196,150,30,0.1),rgba(139,105,20,0.2));border-bottom:1px solid rgba(196,150,30,0.3);padding:10px 0;}
 .countdown-inner{max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
 .countdown-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;flex-shrink:0;}
-.countdown-clocks{display:flex;gap:12px;align-items:center;}
+.countdown-clocks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
 .clock-unit{text-align:center;}
 .clock-num{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--amber);line-height:1;}
 .clock-label{font-family:var(--mono);font-size:8px;color:#888880;letter-spacing:0.08em;}
@@ -58,6 +73,7 @@ nav a.nav-highlight{color:var(--amber);}
 .proof-item{font-family:var(--mono);font-size:11px;color:var(--amber);white-space:nowrap;letter-spacing:0.06em;}
 .proof-item span{color:#888880;}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(max-width:768px){.proof-track{animation-duration:55s;}}
 h2{font-family:var(--serif);font-size:34px;font-weight:700;color:#F5F5F0;line-height:1.2;margin-bottom:16px;}
 p{font-family:var(--sans);font-size:16px;color:rgba(245,245,240,0.8);line-height:1.75;margin-bottom:16px;font-weight:300;}
 p strong{color:#F5F5F0;font-weight:500;}
@@ -67,12 +83,12 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .amber-rule{width:100%;height:2px;background:var(--amber);margin:24px 0;}
 .pull-quote{border-left:4px solid #F5F5F0;padding:16px 0 16px 24px;margin:32px 0;}
 .pull-quote p{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--offwht);margin:0;}
+/* FIX 18: noopener on all external links — handled via JS below */
 .btn{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.08em;padding:12px 24px;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
 .btn-primary{background:var(--amber);color:#0A0A09;}
 .btn-primary:hover{background:var(--amber-f);transform:translateY(-1px);box-shadow:0 4px 16px rgba(196,150,30,0.3);}
 .btn-secondary{background:transparent;color:var(--amber);border:1px solid var(--amber-d);}
 .btn-secondary:hover{background:rgba(196,150,30,0.1);}
-/* MOD 2: de-emphasized secondary button variant */
 .btn-secondary-dim{background:transparent;color:#888880;border:1px solid #3a3a38;}
 .btn-secondary-dim:hover{background:rgba(196,150,30,0.06);color:var(--amber);border-color:var(--amber-d);}
 .btn-full{display:block;width:100%;text-align:center;}
@@ -106,14 +122,14 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .pe-title{font-family:var(--serif);font-size:20px;color:#F5F5F0;margin-bottom:8px;}
 .pe-body{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;font-weight:300;margin-bottom:16px;}
 .phrase-grid-8{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:16px 0;}
-.phrase-grid-item{background:#2C2C28;padding:10px 14px;cursor:pointer;transition:background 0.2s;border-left:2px solid transparent;}
+.phrase-grid-item{background:#2C2C28;padding:10px 14px;cursor:pointer;transition:background 0.2s;border-left:2px solid transparent;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 .phrase-grid-item:hover{background:rgba(139,32,32,0.25);border-left-color:#8B2020;}
 .pg-cat{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.08em;margin-bottom:4px;}
 .pg-phrase{font-family:var(--mono);font-size:12px;color:#CC7070;text-decoration:line-through;text-decoration-color:rgba(139,32,32,0.6);}
 .qc-section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .qc-wrap{background:#1A1A18;border:1px solid #2A2A28;border-top:4px solid var(--amber);padding:40px;margin-top:32px;}
 .qc-header-line{font-family:var(--serif);font-size:28px;font-weight:700;color:#F5F5F0;margin-bottom:6px;line-height:1.2;}
-.qc-subhead{font-family:var(--mono);font-size:12px;color:var(--offwht);margin-bottom:8px;font-style:italic;letter-spacing:0.02em;}
+.qc-subhead{font-family:var(--mono);font-size:12px;color:var(--offwht);margin-bottom:8px;font-style:italic;letter-spacing:0.02em;transition:opacity 0.4s ease;}
 .qc-type-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;display:block;}
 .qc-types{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
 .qc-type-btn{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.04em;padding:8px 14px;border:1.5px solid #2A2A28;background:transparent;color:#888880;cursor:pointer;transition:all 0.15s ease;border-radius:1px;}
@@ -159,7 +175,6 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .qc-copy-confirm.visible{display:block;}
 .qc-reset-btn{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#555550;background:none;border:none;cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px;margin-top:8px;}
 .qc-reset-btn:hover{color:var(--offwht);}
-/* MOD 10: rotating question */
 .rotating-question{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:0.06em;min-height:24px;transition:opacity 0.4s ease;}
 .simulator{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
 .sim-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
@@ -180,7 +195,7 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .micro-cert{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
 .mc-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
 .mc-sub{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;}
-.mc-challenge{background:#2C2C28;padding:20px 24px;margin-bottom:16px;}
+.mc-challenge{background:#2C2C28;padding:20px 24px;}
 .mc-statement{font-family:var(--serif);font-style:italic;font-size:18px;color:#F5F5F0;margin-bottom:16px;line-height:1.5;}
 .mc-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
 .mc-opt{font-family:var(--mono);font-size:12px;padding:10px 16px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;text-align:left;}
@@ -343,9 +358,8 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .quiz-opts{display:flex;gap:8px;flex-wrap:wrap;}
 .quiz-opt{font-family:var(--mono);font-size:11px;padding:7px 14px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;}
 .quiz-opt:hover,.quiz-opt.selected{background:#2C2C28;color:var(--amber);border-color:var(--amber-d);}
-.quiz-email-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:8px;}
-.quiz-email-row input{background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:16px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;}
-.quiz-email-row input:focus{border-color:var(--amber);}
+/* FIX 7: Removed email field from quiz — no backend to receive it */
+.quiz-submit-row{margin-top:8px;}
 .quiz-result{display:none;background:#2C2C28;border-top:2px solid var(--amber);padding:20px 24px;margin-top:16px;}
 .quiz-result.visible{display:block;}
 .quiz-result-score{font-family:var(--mono);font-size:22px;color:var(--amber);font-weight:600;margin-bottom:8px;}
@@ -397,25 +411,22 @@ footer{background:#111110;border-top:1px solid #2A2A28;padding:32px 0;}
 .fade-up{animation:fadeUp 0.6s ease both;}
 .fade-up-1{animation-delay:0.1s;}.fade-up-2{animation-delay:0.25s;}
 .fade-up-3{animation-delay:0.4s;}.fade-up-4{animation-delay:0.55s;}
+
+/* ===== MOBILE STYLES ===== */
 @media(max-width:768px){
-/* ---- STRUCTURE ---- */
 body::after{display:none;}
 body::before{display:none;}
 .line-numbers{display:none;}
-
-/* All containers: remove left-heavy padding, use safe 16px sides */
-.container{padding:0 16px;}
-.doc-header-inner{padding:0 16px;}
-.footer-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:20px;}
-.clarity-bar-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:8px;}
-.countdown-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:10px;}
-
-/* ---- HEADER ---- */
+.container,.container-pad{padding:0 16px !important;}
+.doc-header-inner{padding:0 16px !important;}
+.footer-inner{padding:0 16px !important;flex-direction:column;align-items:flex-start;gap:20px;}
+.clarity-bar-inner{padding:0 16px !important;flex-direction:column;align-items:flex-start;gap:8px;}
+.countdown-inner{padding:0 16px !important;flex-direction:column;align-items:flex-start;gap:10px;}
+/* FIX 8: Catch all inline-styled containers with left padding */
+[style*="padding:0 40px 0 120px"]{padding:0 16px !important;}
 nav{display:none;}
 .doc-header-inner{height:44px;}
 .doc-meta{font-size:10px;}
-
-/* ---- TYPOGRAPHY ---- */
 h2{font-size:24px;line-height:1.2;}
 p{font-size:15px;line-height:1.7;}
 .hero-title{font-size:36px;line-height:1.05;letter-spacing:-0.01em;}
@@ -424,18 +435,8 @@ p{font-size:15px;line-height:1.7;}
 .pull-quote p{font-size:17px;}
 .closing-line1,.closing-line2{font-size:22px;}
 .section-label{font-size:9px;letter-spacing:0.08em;}
-
-/* ---- TOP CTA BANNER ---- */
-.mobile-cta-banner-inner{padding:0 16px !important;flex-direction:column !important;align-items:stretch !important;gap:12px !important;}
-.mobile-cta-banner-inner > div:first-child span:last-child{font-size:13px !important;}
-.mobile-cta-banner-inner > div:last-child{flex-direction:column !important;gap:8px !important;}
-.mobile-cta-banner-inner a{text-align:center !important;padding:12px 16px !important;font-size:11px !important;}
-
-/* ---- SECTIONS ---- */
 section{padding:40px 0;}
 .hero{padding:40px 0 32px;}
-
-/* ---- GRIDS: all collapse to single column ---- */
 .standard-grid,.reg-grid,.product-grid,.before-after,
 .stat-bar,.roi-inputs,.steps-visual,
 .trigger-grid,.enterprise-process,.tier-clarifier,
@@ -445,19 +446,12 @@ section{padding:40px 0;}
 .phrase-item{grid-template-columns:1fr;}
 .phrase-cat{border-right:none;border-bottom:1px solid #2A2A28;}
 .enterprise-card,.team-spotlight{grid-template-columns:1fr;}
-.authority-block{grid-template-columns:1fr;}
+.authority-block{grid-template-columns:1fr;padding:20px 16px;}
 .authority-icon{display:none;}
-.quiz-email-row{grid-template-columns:1fr;}
-.qc-flags .qc-flag-item{flex-direction:column;gap:4px;}
-.qc-flag-type{min-width:auto;}
-
-/* ---- STAT BAR ---- */
 .stat-bar{display:flex;flex-direction:column;border:none;gap:2px;}
 .stat-item{padding:14px 16px;}
 .stat-number{font-size:22px;}
 .stat-label{font-size:11px;}
-
-/* ---- QC SECTION ---- */
 .qc-wrap{padding:24px 16px;}
 .qc-header-line{font-size:22px;}
 .qc-subhead{font-size:11px;}
@@ -471,32 +465,17 @@ section{padding:40px 0;}
 .qc-success-sub{font-size:13px;}
 .qc-rewrite-prompt{font-size:12px;}
 .qc-again-btn{font-size:10px;padding:12px 16px;}
-
-/* ---- PROOF LAYER ---- */
-.proof-layer-phrases > div{font-size:13px;padding:8px 12px;}
-
-/* ---- HERO CTA BUTTONS ---- */
+.qc-flags .qc-flag-item{flex-direction:column;gap:4px;}
+.qc-flag-type{min-width:auto;}
 .hero-cta{flex-direction:column;align-items:stretch;}
 .hero-cta a{text-align:center;padding:13px 16px;font-size:11px;}
-
-/* ---- AUTHORITY BLOCK ---- */
-.authority-block{padding:20px 16px;}
-.authority-text{font-size:14px;}
-
-/* ---- PHRASES EARLY ---- */
 .phrases-early{padding:20px 16px;}
 .pe-title{font-size:17px;}
 .pg-phrase{font-size:11px;}
-
-/* ---- STRIKE DEMO ---- */
 .before-box,.after-box{padding:12px 12px;}
 .before-text,.after-text{font-size:12px;}
-
-/* ---- COUNTDOWN ---- */
 .clock-num{font-size:18px;}
 .countdown-text{font-size:11px;}
-
-/* ---- TABS ---- */
 .tab-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
 .tab-btn{font-size:10px;padding:8px 12px;white-space:nowrap;flex-shrink:0;}
 .tab-pane{padding:20px 16px;}
@@ -505,134 +484,64 @@ section{padding:40px 0;}
 .tab-pain,.tab-solution{font-size:11px;padding:8px 12px;}
 .tab-cta-row{display:flex;flex-direction:column;gap:8px;}
 .tab-cta-row a{text-align:center;font-size:11px;}
-
-/* ---- SIMULATOR ---- */
 .simulator{padding:20px 16px;}
 .sim-title{font-size:18px;}
 .sim-input{font-size:16px;}
-.sim-verdict{font-size:11px;}
-.sim-flag{font-size:10px;}
-
-/* ---- SCORECARD ---- */
 .scorecard{padding:20px 16px;}
 .sc-val{font-size:20px;}
-.sc-desc{font-size:10px;}
-
-/* ---- STANDARD GRID ---- */
 .standard-item{padding:16px;}
 .standard-num{font-size:22px;}
-.standard-text{font-size:13px;}
-
-/* ---- TRUST BAR ---- */
 .trust-bar{flex-direction:column;}
 .trust-item{min-width:100%;}
-
-/* ---- ENFORCEMENT ---- */
 .enforcement-section{padding:20px 16px;}
-.ef-name{font-size:13px;}
-.ef-power{font-size:11px;}
-.ef-penalty{font-size:10px;}
-
-/* ---- BLINDSPOT ---- */
 .blindspot-item{padding:18px 16px;}
 .blindspot-head{font-size:14px;}
 .blindspot-body{font-size:13px;}
 .blindspot-fix{font-size:11px;}
-
-/* ---- CASE LAW ---- */
-.case-name{font-size:10px;}
-.case-desc{font-size:12px;}
-.case-implication{font-size:10px;}
-
-/* ---- PRODUCTS ---- */
 .product-card{padding:20px 16px;}
 .product-name{font-size:18px;}
 .product-price{font-size:24px;}
-.product-desc{font-size:12px;}
-.product-features li{font-size:10px;}
 .enterprise-card{padding:20px 16px;}
 .enterprise-name{font-size:18px;}
-.enterprise-desc{font-size:12px;}
-
-/* ---- TEAM SPOTLIGHT ---- */
-.team-spotlight{padding:20px 16px;}
-.ts-name{font-size:18px;}
-.ts-price{font-size:20px;}
-.ts-desc{font-size:12px;}
-
-/* ---- COMPARE TABLE ---- */
 .compare-table th,.compare-table td{font-size:11px;padding:8px 10px;}
-
-/* ---- ROI CALC ---- */
 .roi-calc{padding:20px 16px;}
 .roi-inputs{display:flex;flex-direction:column;gap:12px;}
 .roi-result-number{font-size:26px;}
-.roi-result-note{font-size:11px;}
-
-/* ---- QUIZ ---- */
 .quiz-block{padding:20px 16px;}
 .quiz-title{font-size:18px;}
 .quiz-q-text{font-size:13px;}
 .quiz-opt{font-size:10px;padding:7px 10px;}
-.quiz-email-row input{font-size:16px;padding:12px;}
-
-/* ---- FAQ ---- */
 .faq-tab-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
 .faq-tab-btn{font-size:9px;padding:7px 10px;white-space:nowrap;flex-shrink:0;}
 .faq-q{font-size:13px;padding:14px 0;}
 .faq-a{font-size:13px;}
-
-/* ---- TRIGGER GRID ---- */
 .trigger-item{padding:14px 12px;}
-.trigger-moment{font-size:9px;}
-.trigger-desc{font-size:12px;}
-
-/* ---- MICRO-CERT ---- */
 .micro-cert{padding:20px 16px;}
 .mc-statement{font-size:15px;}
 .mc-opt{font-size:11px;padding:9px 12px;}
-
-/* ---- PHRASE TABLE ---- */
 .phrase-table th{font-size:7px;padding:6px 8px;}
 .phrase-table td{font-size:10px;padding:6px 8px;}
 .free-resource{padding:20px 16px;}
-.fr-title{font-size:18px;}
-
-/* ---- SIMPLE VERSION ---- */
 .simple-text{font-size:15px;}
-
-/* ---- JUSTIFICATION GATE ---- */
-.justGate-inner{padding:20px 16px !important;}
-
-/* ---- CLOSING ---- */
 .closing{padding:48px 0 40px;}
-
-/* ---- FOOTER ---- */
 .footer-links{flex-wrap:wrap;gap:16px;}
-.footer-links a{font-size:10px;}
-.footer-brand{font-size:10px;}
-}
-/* CTA banner mobile override (separate block to override inline styles) */
-@media(max-width:768px){
+.footer-links a,.footer-brand{font-size:10px;}
+/* FIX: Banner mobile */
 .cta-banner-inner{padding:12px 16px !important;flex-direction:column !important;align-items:stretch !important;gap:12px !important;}
-.cta-banner-btns{flex-direction:column !important;width:100% !important;flex-shrink:unset !important;}
+.cta-banner-btns{flex-direction:column !important;width:100% !important;}
 .btn-cta-primary,.cta-banner-btns a{text-align:center !important;display:block !important;}
-/* force all hardcoded 120px-left containers */
-div[style*="padding:0 40px 0 120px"]{padding:0 16px !important;}
-div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !important;}
 }
-/* ---- MOBILE MENU ---- */
+/* Mobile menu */
 .mobile-menu-btn{display:none;background:none;border:none;color:var(--amber);font-size:20px;cursor:pointer;padding:4px 8px;line-height:1;}
 .mobile-nav{display:none;background:#0A0A09;border-bottom:1px solid #2A2A28;padding:8px 0;}
 .mobile-nav a{display:block;font-family:var(--mono);font-size:12px;color:#888880;text-decoration:none;padding:12px 16px;letter-spacing:0.06em;border-bottom:1px solid #1A1A18;}
 .mobile-nav a:hover,.mobile-nav a:first-child{color:var(--amber);}
 .mobile-nav.open{display:block;}
-@media(max-width:768px){
-.mobile-menu-btn{display:block;}
-}
+@media(max-width:768px){.mobile-menu-btn{display:block;}}
 </style>
 </head>
-<body><div class="line-numbers" id="lineNumbers"></div>
+<body>
+<div class="line-numbers" id="lineNumbers"></div>
 <header class="doc-header">
   <div class="doc-header-inner">
     <span class="doc-meta">JRS&#x2122; &nbsp;|&nbsp; AI Documentation Risk &nbsp;|&nbsp; v1.0</span>
@@ -648,10 +557,8 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <a href="#licensing">Enterprise</a>
     </nav>
     <span class="doc-version">v1.0</span>
-    <!-- Mobile menu button -->
     <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Menu">&#9776;</button>
   </div>
-  <!-- Mobile nav drawer -->
   <div class="mobile-nav" id="mobileNav">
     <a href="#quick-check" onclick="closeMobileMenu()">Quick Check</a>
     <a href="#standard" onclick="closeMobileMenu()">Standard</a>
@@ -665,17 +572,17 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   </div>
 </header>
 
-<!-- MOD 2: Primary CTA dominant, secondary de-emphasized -->
+<!-- FIX 3 & 4: Top banner — secondary link now goes to Gumroad free tier page, not self-referential -->
 <div style="background:var(--near);border-bottom:2px solid var(--amber);padding:16px 0;">
-  <div class="cta-banner-inner" style="max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <div class="cta-banner-inner container-pad" style="max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
     <div>
       <span style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;display:block;margin-bottom:4px;">Free Standard + Quick Check</span>
       <span style="font-family:var(--sans);font-size:14px;color:#F5F5F0;font-weight:300;">No login. No cost. Apply it before the next record you save.</span>
     </div>
     <div class="cta-banner-btns" style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;align-items:center;">
       <a href="#quick-check" class="btn-cta-primary" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;padding:10px 20px;background:var(--amber);color:#0A0A09;text-decoration:none;">Run the Quick Check &nbsp;&#8594;</a>
-      <!-- MOD 2: Lighter border, reduced contrast on secondary -->
-      <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.06em;padding:10px 20px;background:transparent;color:#888880;border:1px solid #3a3a38;text-decoration:none;transition:color 0.2s,border-color 0.2s;">View the Full Standard &nbsp;&#8594;</a>
+      <!-- FIX 3: Was circular self-link — now goes to Gumroad download page -->
+      <a href="https://wikesphere.gumroad.com/l/usbtna" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.06em;padding:10px 20px;background:transparent;color:#888880;border:1px solid #3a3a38;text-decoration:none;transition:color 0.2s,border-color 0.2s;">Download the Standard &nbsp;&#8594;</a>
     </div>
   </div>
 </div>
@@ -683,10 +590,8 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
 <div class="container">
 <section class="hero">
   <span class="category-tag fade-up fade-up-1">JUSTIFICATION REVIEW STANDARD &nbsp;|&nbsp; OPERATIONAL STANDARD FOR AI DOCUMENTATION RISK</span>
-  <!-- MOD 1: Updated hero headline -->
   <h1 class="hero-title fade-up fade-up-2">AI Didn't<br>Create the Risk.<br><span>The Record Did.</span></h1>
   <div class="amber-rule fade-up fade-up-3"></div>
-  <!-- MOD 1b: Updated hero subtext -->
   <p class="hero-sub fade-up fade-up-3">Most records sound complete until someone asks one question: <em>What is this based on?</em><br><br>If that answer is not in the record, it does not hold.</p>
   <div class="stat-bar fade-up fade-up-3">
     <div class="stat-item"><div class="stat-number">$700M+</div><div class="stat-label">Recovered by EEOC for discrimination claimants in FY2024 alone</div></div>
@@ -721,7 +626,8 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   </div>
   <div class="hero-cta fade-up fade-up-4">
     <a href="#quick-check" class="btn btn-primary">Test a real record in 10 seconds &nbsp;&#8594;</a>
-    <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
+    <!-- FIX 4: Download Standard now goes to Gumroad, not circular self-link -->
+    <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Download the Standard &nbsp;&#8594;</a>
     <a href="#assess" class="btn btn-secondary">Assess Your Risk &nbsp;&#8594;</a>
   </div>
   <p class="hero-statement" style="margin-top:28px;">Built for HR directors, compliance heads, and employment attorneys who are responsible for what enters the record.<br>The record is what gets reviewed. Not your intent. Not your memory. Not your explanation after the fact.<br>Once it is in the record, you do not control how it is interpreted.</p>
@@ -771,7 +677,6 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
 </div>
 
 <div class="container">
-<!-- MOD 7: About section — issue before origin -->
 <div class="authority-block">
   <div class="authority-icon">&#9632;</div>
   <div>
@@ -790,8 +695,6 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   <div class="amber-underline"></div>
   <p>Paste any record you are about to finalize. The check runs instantly. If anything needs attention, you will know before it becomes permanent.</p>
   <p style="font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:0;">No login. No scoring. No onboarding. &nbsp;|&nbsp; Paste &#8594; Check &#8594; Fix &#8594; Save</p>
-
-  <!-- MOD 4: Proof layer before the tool -->
   <div style="background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(--red);padding:24px 28px;margin:32px 0 0;">
     <span style="font-family:var(--mono);font-size:10px;color:#CC7070;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:14px;">WHAT BREAKS UNDER REVIEW</span>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
@@ -801,14 +704,10 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
     </div>
     <p style="font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;margin:0;">These sound complete. Under review, they fail one question:<br><strong style="color:#F5F5F0;">What is this based on?</strong></p>
   </div>
-
   <div class="qc-wrap">
     <div class="qc-header-line">Check your record.</div>
-    <!-- MOD 10: Rotating question -->
     <div class="qc-subhead" id="rotatingQuestion">If someone asked "Based on what?" — could the record answer on its own?</div>
-    <!-- MOD 3: Friction removal line -->
     <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:0 0 28px;letter-spacing:0.02em;">This takes less than 10 seconds. No data is saved.</p>
-
     <span class="qc-type-label">What type of record is this?</span>
     <div class="qc-types" id="qcTypes">
       <button class="qc-type-btn" data-type="manager-note">Manager note</button>
@@ -818,17 +717,12 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <button class="qc-type-btn" data-type="investigation">Investigation / complaint</button>
       <button class="qc-type-btn" data-type="other">Other</button>
     </div>
-
     <span class="qc-input-label">Paste your documentation</span>
-    <!-- MOD 8: Micro-instruction above textarea -->
     <span class="qc-micro-instruction">Paste a real record. Not a draft. What you are about to save.</span>
     <textarea class="qc-textarea" id="qcInput" placeholder="Paste your documentation here — review, note, decision, or record."></textarea>
-    <button class="qc-submit" id="qcSubmit" disabled onclick="qcRunCheck()">Check it</button>
-
+    <button class="qc-submit" id="qcSubmit" disabled onclick="qcRunCheck()" style="-webkit-tap-highlight-color:transparent;">Check it</button>
     <hr class="qc-divider" id="qcDivider" style="display:none;">
-
     <div class="qc-output" id="qcOutput">
-
       <div id="qcFailure" style="display:none;">
         <div class="qc-fail">
           <div class="qc-fail-label">Review finding</div>
@@ -843,23 +737,22 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
           <button class="qc-again-btn" onclick="qcCheckAgain()">Check again &#8594;</button>
         </div>
       </div>
-
       <div id="qcSuccess" style="display:none;">
         <div class="qc-success">
           <div class="qc-success-label">Review finding</div>
-          <!-- MOD 5: Updated success verdict -->
           <div class="qc-success-main">This stands on its own and would hold under independent review.</div>
           <div class="qc-success-sub">A third party could understand this without you.</div>
           <div class="qc-proof-line">Records that stand on their own are the ones that hold up later. This is one of them.</div>
           <div class="qc-proof-line" style="font-style:normal;font-weight:500;color:#70CC90;margin-top:6px;">No additional explanation required.</div>
-          <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">View the Standard</a></div>
+          <div class="qc-proof-line" id="qcTimestamp" style="font-family:var(--mono);font-size:11px;color:#888880;margin-top:8px;border-top:none;padding-top:0;"></div>
+          <!-- FIX: Success state download link now goes to Gumroad -->
+          <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://wikesphere.gumroad.com/l/usbtna" target="_blank" rel="noopener noreferrer">Download the Full Standard</a></div>
         </div>
         <div class="qc-retention" id="qcRetention"></div>
         <button class="qc-share-btn" onclick="qcCopyLink()">If someone on your team is about to save a record, send them here first.</button>
         <div class="qc-copy-confirm" id="qcCopyConfirm">&#8593; Link copied to clipboard</div>
         <button class="qc-reset-btn" onclick="qcReset()">Check another record</button>
       </div>
-
     </div>
   </div>
 </section>
@@ -894,6 +787,10 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
     <div class="standard-item"><div class="standard-num">03</div><p class="standard-text">Be clearly explainable. Can be explained plainly if someone asks what it is based on.</p></div>
   </div>
   <div class="simple-version"><span class="simple-label">THE SIMPLE VERSION</span><p class="simple-text">Does this stand on business? &nbsp; If not, revise it before saving.</p></div>
+  <div style="background:#1A1A18;border:1px solid #2A2A28;border-left:3px solid var(--amber-d);padding:14px 20px;margin-top:2px;">
+    <span style="font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.1em;display:block;margin-bottom:6px;">SHADOW AI NOTE</span>
+    <p style="font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;margin:0;">JRS&#x2122; applies at the moment of drafting, not only at the point of saving. If you drafted this record in a personal AI account and are pasting it into an official system, the standard applies now.</p>
+  </div>
   <div class="shrm-signal">
     <span class="shrm-badge">SHRM RELEVANT</span>
     <p class="shrm-text"><strong>JRS&#x2122; addresses AI documentation risk directly relevant to SHRM's Body of Applied Skills and Knowledge.</strong> HR professionals applying JRS&#x2122; are building competency in AI governance and employment documentation defensibility.</p>
@@ -947,7 +844,8 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
     </table>
   </div>
   <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:12px 0 8px;">The full Implementation Kit includes 30 forensic redlines with complete before-and-after examples across six decision categories.</p>
-  <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
+  <!-- FIX 5: Kit link goes to Gumroad -->
+  <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
 </div>
 </div>
 
@@ -960,7 +858,9 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   <div class="simulator">
     <div class="sim-title">JRS&#x2122; Language Risk Simulator</div>
     <div class="sim-sub">Enter any phrase or sentence from an employment record. Results are illustrative and directional, not a legal determination.</div>
-    <textarea class="sim-input" id="simInput" placeholder="Paste a sentence from a performance review, termination letter, or hiring decision here."></textarea>
+    <!-- FIX 9: Added keydown Enter handler -->
+    <textarea class="sim-input" id="simInput" placeholder="Paste a sentence from a performance review, termination letter, or hiring decision here." onkeydown="if(event.key==='Enter'&&(event.ctrlKey||event.metaKey)){runSimulator();}"></textarea>
+    <p style="font-family:var(--mono);font-size:10px;color:#888880;margin:-8px 0 12px;">Press Ctrl+Enter to check</p>
     <button class="btn btn-primary" onclick="runSimulator()" style="width:100%;">Check This Language Against JRS&#x2122; &nbsp;&#8594;</button>
     <div class="sim-result" id="simResult">
       <div class="sim-flags" id="simFlags"></div>
@@ -995,7 +895,10 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <p><strong>What JRS&#x2122; reduces for HR:</strong> Time spent rewriting records that were challenged after saving. Escalations that start with "this doesn't make sense." Complaints rooted in language that sounded reasonable and could not be defended. Pattern exposure discovered only during an audit.</p>
       <p><strong>What to do this week:</strong> Download the standard. Forward it to the three managers on your team most likely to be writing AI-assisted reviews. Ask them to apply the three questions before saving their next record. That is the whole implementation.</p>
       <div class="sector-note"><div class="sector-note-label">SECTOR NOTE &nbsp;|&nbsp; HEIGHTENED EXPOSURE</div><div class="sector-note-text"><strong>Healthcare:</strong> Clinician performance records and accommodation documentation carry additional exposure under ADA and state licensing board requirements. <strong>Financial services:</strong> FINRA-registered employment records may be subject to regulatory disclosure.</div></div>
-      <div class="tab-cta-row"><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank">Get the Implementation Kit &nbsp;&#8594;</a><a href="#quick-check" class="btn btn-secondary">Run the Quick Check &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row">
+        <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get the Implementation Kit &nbsp;&#8594;</a>
+        <a href="#quick-check" class="btn btn-secondary">Run the Quick Check &nbsp;&#8594;</a>
+      </div>
     </div>
     <div id="tab-atty" class="tab-pane">
       <h3>Employment Attorneys and Law Firms</h3>
@@ -1003,7 +906,7 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <div class="tab-solution">JRS&#x2122; gives you a pre-litigation counseling tool and a white-label standard to embed in client advisory services. Defensible records before any dispute arises.</div>
       <p>The EEOC recovered nearly $700 million in FY2024. Mobley v. Workday (collective certification granted May 2025) establishes that AI tools creating discriminatory outcomes expose both vendors and employers. Your clients need the record to be right before the complaint arrives.</p>
       <p><strong>White-label licensing available.</strong> JRS&#x2122; becomes part of your advisory offering under your firm's brand.</p>
-      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank">Discuss Licensing &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Discuss Licensing &nbsp;&#8594;</a></div>
     </div>
     <div id="tab-epli" class="tab-pane">
       <h3>EPLI Carriers and Loss Control Officers</h3>
@@ -1011,28 +914,31 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <div class="tab-solution">JRS&#x2122; as a policyholder loss prevention tool reduces the documentation failures that drive EPLI claims.</div>
       <p>Colorado SB 24-205 (effective June 30, 2026) provides an affirmative defense for organizations demonstrating reasonable care. JRS&#x2122; is that documentation of reasonable care.</p>
       <p><strong>White-label licensing available for carrier distribution to policyholders.</strong></p>
-      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank">Discuss Loss Prevention Partnership &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Discuss Loss Prevention Partnership &nbsp;&#8594;</a></div>
     </div>
     <div id="tab-consult" class="tab-pane">
       <h3>HR Consultants and Compliance Advisors</h3>
       <div class="tab-pain">Your clients are asking about AI governance. Every existing framework addresses AI systems at the organizational level. None address whether individual records hold up under review at the point of creation.</div>
       <div class="tab-solution">JRS&#x2122; is the gap those frameworks leave open. Add it to your advisory practice as a point-of-creation control.</div>
       <p>JRS&#x2122; fills the space between system-level governance and frontline documentation. That is the gap that NIST AI RMF, EU AI Act, and ISO 42001 all leave open.</p>
-      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank">Discuss Partnership &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Discuss Partnership &nbsp;&#8594;</a></div>
     </div>
     <div id="tab-enterprise" class="tab-pane">
       <h3>Enterprise Compliance and Legal Teams</h3>
       <div class="tab-pain">Your organization produces hundreds, if not thousands, of employment records annually. AI is writing the reasoning in many of them.</div>
       <div class="tab-solution">JRS&#x2122; as an enterprise standard applies the same check across every manager, every record, every cycle.</div>
       <p><strong>Regulatory alignment:</strong> EU AI Act Article 11 requires technical documentation proving compliance for all high-risk employment AI (effective August 2, 2026). NYC Local Law 144 mandates annual bias audits with fines up to $1,500 per day. Colorado SB 24-205 affirmative defense provisions take effect June 30, 2026.</p>
-      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank">Discuss Enterprise Licensing &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Discuss Enterprise Licensing &nbsp;&#8594;</a></div>
     </div>
     <div id="tab-sme" class="tab-pane">
       <h3>SMEs and Individual Managers</h3>
       <div class="tab-pain">You are using AI to draft performance reviews, hiring notes, and termination letters. Nobody on a compliance team is reviewing that language before it becomes a permanent record.</div>
       <div class="tab-solution">JRS&#x2122; works for a single manager writing a single record today. You do not need an enterprise rollout. You need five minutes before you save.</div>
       <p>AI governance tools are built for large enterprises. JRS&#x2122; is built for the manager writing a performance review at 4pm on a Friday.</p>
-      <div class="tab-cta-row"><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank">Download the Standard &nbsp;&#8594;</a><a href="#quick-check" class="btn btn-secondary">Run the Quick Check First &nbsp;&#8594;</a></div>
+      <div class="tab-cta-row">
+        <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download the Standard &nbsp;&#8594;</a>
+        <a href="#quick-check" class="btn btn-secondary">Run the Quick Check First &nbsp;&#8594;</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1077,7 +983,6 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   <h2>AI Documentation Risk</h2>
   <div class="amber-underline"></div>
   <p>There is a concept worth naming here: Documentation Debt. It builds up whenever AI writes the reasoning for an employment record and no one stops to check whether that reasoning actually holds. Every record saved without that check adds to the debt. When it is reviewed later, the debt comes due.</p>
-  <!-- MOD 6: Removed redundant sentence — kept the cleaner, scaled version -->
   <p>AI is now scaling that problem at a rate no organization has fully reckoned with. The EU AI Act, state bias audit mandates, and ongoing litigation are not creating new obligations so much as making existing ones visible. Organizations that have documentation controls in place will be in a meaningfully different position from those that do not. That window is open now.</p>
   <p>The people most affected are often the most vulnerable. People of color, women, older workers, people with disabilities, and anyone whose background sits outside what the organization silently treats as the default.</p>
   <div class="pull-quote"><p>"The issue was rarely the decision. It was almost always how the decision was explained."</p></div>
@@ -1091,7 +996,6 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
     <div class="phrase-item"><span class="phrase-cat">RELIGION</span><span class="phrase-examples">"scheduling conflicts" &nbsp;&nbsp; "not fully committed"</span></div>
   </div>
   <p style="font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:0.04em;margin-top:20px;padding:12px 16px;background:rgba(196,150,30,0.06);border-left:3px solid var(--amber-d);">These are the exact phrases the Quick Check flags. Paste any record containing this language and the check will tell you what a reviewer would ask.</p>
-
   <p id="case-law" style="margin-top:40px;margin-bottom:16px;font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.12em;">KEY LITIGATION &nbsp;|&nbsp; WHAT COURTS ARE FINDING</p>
   <div class="case-law">
     <div class="case-item"><div class="case-name">MOBLEY v. WORKDAY &nbsp;|&nbsp; Collective certification granted May 2025</div><div class="case-desc">Plaintiff alleges AI screening tools discriminated based on age, race, and disability. Court certified a collective, establishing that both AI vendors and the employers who use them can share liability.</div><div class="case-implication">JRS&#x2122; implication: Organizations using AI-assisted hiring tools need contemporaneous documentation that human judgment was applied before decisions entered the record.</div></div>
@@ -1131,7 +1035,7 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
     <div class="mc-cert-preview" id="mcCertPreview">
       <p style="font-family:var(--serif);font-size:18px;color:var(--amber);margin-bottom:8px;">Challenge complete.</p>
       <p style="font-family:var(--sans);font-size:13px;color:var(--offwht);margin-bottom:16px;line-height:1.6;">Apply what you have practiced. Before your next record is saved, ask the three questions.</p>
-      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank">Download the Standard &nbsp;&#8594;</a>
+      <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download the Standard &nbsp;&#8594;</a>
     </div>
   </div>
 </section>
@@ -1212,11 +1116,16 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <div class="ts-price">$500 to $2,000 / year</div>
       <div class="ts-desc">For department heads, HR teams, and small organizations. Covers up to 25 users. Includes the full Implementation Kit for every team member, a consolidated pattern audit tool, and organizational rollout guide.</div>
     </div>
-    <div style="flex-shrink:0;"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank">Enquire &nbsp;&#8594;</a></div>
+    <div style="flex-shrink:0;"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Enquire &nbsp;&#8594;</a></div>
   </div>
   <div class="compare-wrap">
     <table class="compare-table">
-      <thead><tr><th style="width:36%;">WHAT YOU GET</th><th>JRS&#x2122; Standard</th><th class="hi">$97 Implementation Kit <span class="popular-badge">MOST COMPLETE</span></th><th>Team License</th></tr></thead>
+      <thead><tr>
+        <th style="width:36%;">WHAT YOU GET</th>
+        <th>JRS&#x2122; Standard</th>
+        <th class="hi">$97 Implementation Kit <span class="popular-badge">MOST COMPLETE</span></th>
+        <th>Team License</th>
+      </tr></thead>
       <tbody>
         <tr><td>Full JRS&#x2122; standard and three-question check</td><td><span class="check">&#10003;</span></td><td class="hi"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
         <tr><td>Forensic redlines (before and after)</td><td>6</td><td class="hi">30 across 6 categories</td><td>30 across 6 categories</td></tr>
@@ -1226,14 +1135,18 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
         <tr><td>Chain of Reasoning Audit</td><td><span class="cross">&#10005;</span></td><td class="hi"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
         <tr><td>Disability and accommodation guidance</td><td><span class="cross">&#10005;</span></td><td class="hi"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
         <tr><td>Team licenses (up to 25 users)</td><td><span class="cross">&#10005;</span></td><td class="hi"><span class="cross">&#10005;</span></td><td><span class="check">&#10003;</span></td></tr>
-        <tr><td style="color:#F5F5F0;font-weight:500;">Price</td>
+        <tr>
+          <td style="color:#F5F5F0;font-weight:500;">Price</td>
           <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">Free</td>
           <td class="hi" style="font-family:var(--mono);color:var(--amber);font-size:18px;font-weight:600;">$97</td>
-          <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">$500 to $2,000</td></tr>
-        <tr><td></td>
-          <td><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
-          <td class="hi"><a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
-          <td><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" style="font-size:11px;padding:8px 16px;">Enquire &nbsp;&#8594;</a></td>
+          <td style="font-family:var(--mono);color:var(--amber);font-size:14px;">$500 to $2,000</td>
+        </tr>
+        <tr>
+          <td></td>
+          <!-- FIX 5: Free tier → Gumroad; $97 kit → Gumroad; Team → LinkedIn -->
+          <td><a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
+          <td class="hi"><a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size:11px;padding:8px 16px;">Download &nbsp;&#8594;</a></td>
+          <td><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="font-size:11px;padding:8px 16px;">Enquire &nbsp;&#8594;</a></td>
         </tr>
       </tbody>
     </table>
@@ -1246,7 +1159,7 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <div class="roi-field"><label>AVERAGE COST PER COMPLAINT (USD)</label><input type="number" id="roi-cost" value="75000" min="10000" oninput="calcROI()"></div>
     </div>
     <div class="roi-result">
-      <div class="roi-result-label">ESTIMATED ANNUAL EXPOSURE FROM INDEFENSIBLE RECORDS</div>
+      <div class="roi-result-label">ILLUSTRATIVE ESTIMATE &nbsp;|&nbsp; ESTIMATED ANNUAL EXPOSURE FROM INDEFENSIBLE RECORDS</div>
       <div class="roi-result-number" id="roi-number">$0</div>
       <div class="roi-result-note">This is an illustrative estimate only. It assumes approximately a 2% annual complaint rate and a 15% escalation rate for organizations without documented pre-submission controls.</div>
     </div>
@@ -1263,7 +1176,8 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
         <li>The simple version for daily use</li>
         <li>Designed to align with NIST RMF and EU AI Act</li>
       </ul>
-      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary btn-full" target="_blank">Download Free &nbsp;&#8594;</a>
+      <!-- FIX: Free download → Gumroad -->
+      <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary btn-full" target="_blank" rel="noopener noreferrer">Download Free &nbsp;&#8594;</a>
     </div>
     <div class="product-card featured">
       <span class="product-tier amber">TIER 02 &nbsp;|&nbsp; COMPLETE SYSTEM &nbsp;|&nbsp; INDIVIDUAL LICENSE</span>
@@ -1280,23 +1194,27 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
         <li>Chain of Reasoning Audit tool</li>
         <li>Manager implementation guide</li>
       </ul>
-      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary btn-full" target="_blank">Download &nbsp;&#8594;</a>
+      <!-- FIX: $97 kit → Gumroad -->
+      <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Download &nbsp;&#8594;</a>
     </div>
   </div>
-  <div class="enterprise-card" id="licensing" style="margin-top:2px;">
+  <!-- FIX 2: Enterprise section gets proper id="licensing" anchor -->
+  <div id="licensing">
+  <div class="enterprise-card" style="margin-top:2px;">
     <div>
       <span class="enterprise-label">TIER 04 &nbsp;|&nbsp; ENTERPRISE &amp; WHITE-LABEL &nbsp;|&nbsp; ORGANIZATIONAL STANDARD</span>
       <p class="enterprise-name">JRS&#x2122; Organizational Standard</p>
       <p class="enterprise-desc">White-label licensing for employment law firms, EPLI insurance carriers, HR consulting practices, compliance training providers, and enterprise compliance teams.</p>
       <p class="enterprise-desc" style="font-family:var(--mono);font-size:12px;color:var(--amber);margin-top:8px;">$5,000 to $25,000/year &nbsp;|&nbsp; White-label from $10,000</p>
     </div>
-    <div style="flex-shrink:0;"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank">Enquire &nbsp;&#8594;</a></div>
+    <div style="flex-shrink:0;"><a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Enquire &nbsp;&#8594;</a></div>
   </div>
-  <div class="enterprise-process" id="enterprise-process">
+  <div class="enterprise-process" style="margin-top:2px;">
     <div class="ep-step active"><div class="ep-num">01</div><div class="ep-head">Pilot</div><div class="ep-body">Deploy JRS&#x2122; with one team or department. Apply across one complete review cycle.</div><div class="ep-timeline">30 DAYS &nbsp;|&nbsp; ONE TEAM</div></div>
     <div class="ep-step"><div class="ep-num">02</div><div class="ep-head">Evaluate</div><div class="ep-body">Run a pattern audit across pilot records. Compare against prior cycle. Document findings as evidence of good faith compliance.</div><div class="ep-timeline">DAYS 31 to 45 &nbsp;|&nbsp; COMPLIANCE REVIEW</div></div>
     <div class="ep-step"><div class="ep-num">03</div><div class="ep-head">Scale</div><div class="ep-body">Deploy organization-wide. Apply the standard before every record is finalized across every team.</div><div class="ep-timeline">DAY 46 ONWARD &nbsp;|&nbsp; ORG-WIDE</div></div>
   </div>
+  </div><!-- /licensing -->
 </section>
 </div>
 
@@ -1305,7 +1223,7 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:10px;">EARLY ADOPTER PROGRAM</div>
   <p style="font-family:var(--serif);font-size:18px;color:#F5F5F0;margin-bottom:10px;line-height:1.4;">JRS&#x2122; is new. There are no case studies yet. That is genuinely an opportunity, not a limitation.</p>
   <p style="font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;font-weight:300;margin-bottom:16px;">If you apply JRS&#x2122; and it changes how your team documents decisions, your experience matters. Early adopters who share outcomes help build the evidence base that makes this standard credible to the organizations that come next.</p>
-  <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" style="font-size:11px;">Share Your Experience &nbsp;&#8594;</a>
+  <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="font-size:11px;">Share Your Experience &nbsp;&#8594;</a>
 </div>
 </div>
 
@@ -1325,15 +1243,15 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <div class="quiz-q"><div class="quiz-q-text">4. Has your organization conducted an internal pattern audit of employment records in the past 12 months?</div><div class="quiz-opts"><div class="quiz-opt" onclick="selectOpt(this,'q4',0)">Yes</div><div class="quiz-opt" onclick="selectOpt(this,'q4',1)">Planned but not completed</div><div class="quiz-opt" onclick="selectOpt(this,'q4',2)">No</div></div></div>
       <div class="quiz-q"><div class="quiz-q-text">5. Are your managers aware of the EU AI Act employment documentation obligations taking effect August 2, 2026?</div><div class="quiz-opts"><div class="quiz-opt" onclick="selectOpt(this,'q5',0)">Yes, actively preparing</div><div class="quiz-opt" onclick="selectOpt(this,'q5',1)">Aware but not yet acting</div><div class="quiz-opt" onclick="selectOpt(this,'q5',2)">Not aware</div></div></div>
     </div>
-    <div class="quiz-email-row">
-      <input type="email" id="quiz-email" placeholder="your@email.com">
-      <button class="btn btn-primary" onclick="submitQuiz()">Get My Score &nbsp;&#8594;</button>
+    <!-- FIX 7: Removed email field — no backend to capture it. Simple submit button. -->
+    <div class="quiz-submit-row">
+      <button class="btn btn-primary" onclick="submitQuiz()" style="width:100%;padding:14px;">Get My Score &nbsp;&#8594;</button>
     </div>
     <div id="quiz-result" class="quiz-result">
       <div class="quiz-result-score" id="quiz-score-display"></div>
       <div class="quiz-result-label" id="quiz-score-label"></div>
-      <p id="quiz-rec" style="font-size:13px;color:var(--offwht);"></p>
-      <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-primary" target="_blank" style="margin-top:12px;">Download the Implementation Kit &nbsp;&#8594;</a>
+      <p id="quiz-rec" style="font-size:13px;color:var(--offwht);margin-bottom:16px;"></p>
+      <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:4px;">Download the Implementation Kit &nbsp;&#8594;</a>
     </div>
   </div>
 </section>
@@ -1363,13 +1281,12 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
   <br>
   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
     <a href="#quick-check" class="btn btn-primary">Run the Quick Check &nbsp;&#8594;</a>
-    <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
-    <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank">Enterprise &amp; Licensing &nbsp;&#8594;</a>
+    <a href="https://wikesphere.gumroad.com/l/usbtna" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Download the Standard &nbsp;&#8594;</a>
+    <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Enterprise &amp; Licensing &nbsp;&#8594;</a>
   </div>
 </div>
 </div>
 
-<!-- MOD 9: Footer with reinforcement line -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -1378,30 +1295,45 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
     </div>
     <div class="footer-links">
       <a href="#quick-check">Quick Check</a>
-      <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">Standard</a>
+      <a href="https://wikesphere.gumroad.com/l/usbtna" target="_blank" rel="noopener noreferrer">Standard</a>
       <a href="#simulator">Simulator</a>
       <a href="#assess">Assess</a>
-      <a href="https://www.linkedin.com/in/phillip-w-66192836b" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/phillip-w-66192836b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </div>
 </footer>
 
 <script>
+// FIX 18: Auto-add rel="noopener noreferrer" to all external target="_blank" links
+document.querySelectorAll('a[target="_blank"]').forEach(a => {
+  a.rel = 'noopener noreferrer';
+});
+
 // Line numbers
 const ln = document.getElementById('lineNumbers');
-for (let i = 1; i <= 60; i++) { const s = document.createElement('span'); s.textContent = String(i).padStart(2,'0'); ln.appendChild(s); }
+for (let i = 1; i <= 60; i++) {
+  const s = document.createElement('span');
+  s.textContent = String(i).padStart(2,'0');
+  ln.appendChild(s);
+}
 
-// Countdown
+// FIX 13: Countdown — update every 60s (was 30s)
 function updateCountdown() {
-  const target = new Date('2026-08-02T00:00:00Z'); const now = new Date(); const diff = target - now;
-  if (diff <= 0) { ['cd-days','cd-hours','cd-mins'].forEach(id => document.getElementById(id).textContent='00'); return; }
+  const target = new Date('2026-08-02T00:00:00Z');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins'].forEach(id => document.getElementById(id).textContent='00');
+    return;
+  }
   document.getElementById('cd-days').textContent = String(Math.floor(diff/(1000*60*60*24))).padStart(2,'0');
   document.getElementById('cd-hours').textContent = String(Math.floor((diff%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
   document.getElementById('cd-mins').textContent = String(Math.floor((diff%(1000*60*60))/(1000*60))).padStart(2,'0');
 }
-updateCountdown(); setInterval(updateCountdown, 30000);
+updateCountdown();
+setInterval(updateCountdown, 60000);
 
-// MOD 10: Rotating question
+// Rotating question
 const rotatingQuestions = [
   'If someone asked "Based on what?" — could the record answer on its own?',
   'Does this stand on its own?',
@@ -1419,20 +1351,51 @@ function rotateQuestion() {
     el.style.opacity = '1';
   }, 400);
 }
-setInterval(rotateQuestion, 8000);
+// Start rotation — first rotate at 6s, then every 8s
+setTimeout(() => { rotateQuestion(); setInterval(rotateQuestion, 8000); }, 6000);
 
 // Scroll animations
-const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.06 });
-document.querySelectorAll('section,.closing,.authority-block').forEach(el => { if (!el.classList.contains('hero') && !el.classList.contains('qc-section')) { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.6s ease,transform 0.6s ease'; obs.observe(el); } });
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('section,.closing,.authority-block').forEach(el => {
+  if (!el.classList.contains('hero') && !el.classList.contains('qc-section')) {
+    el.style.opacity='0';
+    el.style.transform='translateY(16px)';
+    el.style.transition='opacity 0.6s ease,transform 0.6s ease';
+    obs.observe(el);
+  }
+});
 
 // Phrase risk
-function showPhraseRisk(el, cat, text) { document.querySelectorAll('.phrase-grid-item').forEach(i => i.style.borderLeftColor='transparent'); el.style.borderLeftColor='#8B2020'; document.getElementById('phraseRiskCat').textContent = 'RISK: ' + cat.toUpperCase(); document.getElementById('phraseRiskText').textContent = text; document.getElementById('phraseRiskBox').style.display = 'block'; }
+function showPhraseRisk(el, cat, text) {
+  document.querySelectorAll('.phrase-grid-item').forEach(i => i.style.borderLeftColor='transparent');
+  el.style.borderLeftColor='#8B2020';
+  document.getElementById('phraseRiskCat').textContent = 'RISK: ' + cat.toUpperCase();
+  document.getElementById('phraseRiskText').textContent = text;
+  document.getElementById('phraseRiskBox').style.display = 'block';
+}
 
 // Tabs
-function showTab(e, id) { document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); document.getElementById('tab-'+id).classList.add('active'); e.target.classList.add('active'); }
+function showTab(e, id) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  e.target.classList.add('active');
+}
 
-// ROI
-function calcROI() { const emp=parseInt(document.getElementById('roi-employees').value)||0; const rate=parseFloat(document.getElementById('roi-records').value)||0.25; const cost=parseInt(document.getElementById('roi-cost').value)||75000; document.getElementById('roi-number').textContent='$'+Math.round(emp*rate*0.02*0.15*cost).toLocaleString(); }
+// ROI Calculator
+function calcROI() {
+  const emp = parseInt(document.getElementById('roi-employees').value) || 0;
+  const rate = parseFloat(document.getElementById('roi-records').value) || 0.25;
+  const cost = parseInt(document.getElementById('roi-cost').value) || 75000;
+  document.getElementById('roi-number').textContent = '$' + Math.round(emp * rate * 0.02 * 0.15 * cost).toLocaleString();
+}
 calcROI();
 
 // Quick Check Engine
@@ -1450,7 +1413,8 @@ document.querySelectorAll('.qc-type-btn').forEach(btn => {
 document.getElementById('qcInput').addEventListener('input', qcUpdateSubmit);
 
 function qcUpdateSubmit() {
-  const hasText = document.getElementById('qcInput').value.trim().length > 10;
+  const val = document.getElementById('qcInput').value.trim();
+  const hasText = val.replace(/\s+/g,"").length > 15;
   document.getElementById('qcSubmit').disabled = !(hasText && qcSelectedType);
 }
 
@@ -1494,21 +1458,21 @@ const qcOutput = {
   },
   'discipline': {
     vague: { main:'This would not hold under review.', detail:'A reviewer will ask: what behavior was observed, and when? That answer must be in the record, not recalled from memory.', rewrite:'Replace interpretation with observation. What behavior was observed, and when?' },
-    bias_risk: { main:'This language carries pattern risk.', detail:'A reviewer will ask: what defined standard was this based on? Phrases like this appear disproportionately in disciplinary records for protected class employees.', rewrite:'Replace this phrase with a defined, observable standard.' },
+    bias_risk: { main:'This language carries pattern risk.', detail:'A reviewer will ask: what defined standard was this based on?', rewrite:'Replace this phrase with a defined, observable standard.' },
     timeline: { main:'This references prior events without dates or documentation.', detail:'Prior counseling sessions must be dated and documented.', rewrite:'Add dates and prior documentation references.' },
     accommodation: { main:'This references performance or attendance without noting accommodation status.', detail:'If a disability or accommodation request exists, this record must note its current status before a formal warning is issued.', rewrite:'Note the current accommodation status.' },
     default: { main:'This would not hold under review.', detail:'What behavior was observed, and when? Point to specific documented events.', rewrite:'Make this defensible without explanation.' }
   },
   'termination': {
     vague: { main:'This would not hold under review.', detail:'A reviewer will ask: what specifically happened, and when was it documented? That answer must be in the record.', rewrite:'Replace interpretation with observation. What behavior was observed, and when?' },
-    bias_risk: { main:'This language carries significant pattern risk.', detail:'A reviewer will ask: what defined standard was this based on, and was it applied consistently? Phrases like this appear disproportionately in termination records for protected class employees.', rewrite:'Replace this phrase with a defined, observable standard.' },
+    bias_risk: { main:'This language carries significant pattern risk.', detail:'A reviewer will ask: what defined standard was this based on, and was it applied consistently?', rewrite:'Replace this phrase with a defined, observable standard.' },
     criteria: { main:'This references expectations but does not define them.', detail:'A reviewer will ask: what was the stated standard, and where was it documented?', rewrite:'State the standard before the conclusion. What was this measured against?' },
     timeline: { main:'This references prior conversations without dates or documentation.', detail:'A reviewer will ask: when did these conversations occur, and what was documented from them?', rewrite:'Add dates and prior documentation references.' },
     accommodation: { main:'This references performance or attendance without noting accommodation status.', detail:'If a disability or accommodation request exists and is not noted here, this termination record is incomplete and creates significant exposure.', rewrite:'Note the current accommodation status before finalizing this record.' },
     default: { main:'This would not hold under review.', detail:'What would a third party point to as the reason? Use only what is written.', rewrite:'Make this defensible without explanation.' }
   },
   'investigation': {
-    process: { main:'This record implies a process occurred. That process is not documented here.', detail:'A reviewer will ask: who was interviewed, what was reviewed, what standard was applied? If it cannot be reconstructed, this record creates liability, not protection.', rewrite:'Document the process, not just the outcome. Who was interviewed? What was reviewed? What standard was applied?' },
+    process: { main:'This record implies a process occurred. That process is not documented here.', detail:'A reviewer will ask: who was interviewed, what was reviewed, what standard was applied?', rewrite:'Document the process, not just the outcome. Who was interviewed? What was reviewed? What standard was applied?' },
     vague: { main:'This record states a conclusion without showing the reasoning.', detail:'A reviewer will ask: based on what? A finding without documented reasoning cannot be defended.', rewrite:'Document what was reviewed and what standard was applied to reach this conclusion.' },
     default: { main:'This record implies a conclusion without showing the reasoning.', detail:'If the process cannot be reconstructed from this record, it creates liability, not protection.', rewrite:'Document the process, not just the outcome.' }
   },
@@ -1551,20 +1515,16 @@ function qcRunCheck() {
   btn.textContent = 'Reviewing...';
   btn.classList.add('checking');
   btn.disabled = true;
-
   setTimeout(() => {
     const detected = qcDetect(text);
     document.getElementById('qcDivider').style.display = 'block';
     const output = document.getElementById('qcOutput');
     output.classList.add('visible');
-
     if (detected.length > 0) { qcShowFailure(detected, type); }
     else { qcShowSuccess(); }
-
     btn.textContent = 'Check it';
     btn.classList.remove('checking');
     qcUpdateSubmit();
-
     setTimeout(() => {
       document.getElementById('qcDivider').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
@@ -1574,10 +1534,8 @@ function qcRunCheck() {
 function qcShowFailure(detected, type) {
   document.getElementById('qcFailure').style.display = 'block';
   document.getElementById('qcSuccess').style.display = 'none';
-
   const primary = detected[0];
   const out = qcGetOutput(type, primary.key);
-
   const oldPresave = document.getElementById('qcPresaveTrigger');
   if (oldPresave) oldPresave.remove();
   const presaveEl = document.createElement('div');
@@ -1585,12 +1543,10 @@ function qcShowFailure(detected, type) {
   presaveEl.style.cssText = 'font-style:italic;font-size:14px;color:rgba(245,245,240,0.65);padding:0 0 12px;border-bottom:1px solid rgba(139,32,32,0.25);margin-bottom:14px;line-height:1.5;';
   presaveEl.textContent = 'This will be read later without you. Does it hold?';
   document.getElementById('qcFailure').querySelector('.qc-fail').prepend(presaveEl);
-
   document.getElementById('qcFailMain').textContent = out.main;
   document.getElementById('qcFailDetail').textContent = out.detail;
   document.getElementById('qcRewritePrompt').textContent = out.rewrite;
   document.getElementById('qcRewriteArea').value = document.getElementById('qcInput').value;
-
   const flagsEl = document.getElementById('qcFlags');
   if (detected.length > 1) {
     flagsEl.innerHTML = detected.map(d => {
@@ -1602,6 +1558,12 @@ function qcShowFailure(detected, type) {
 }
 
 function qcShowSuccess() {
+  // FIX C: Stamp the date/time JRS was applied
+  const ts = document.getElementById('qcTimestamp');
+  if (ts) {
+    const now = new Date();
+    ts.textContent = 'JRS™ applied: ' + now.toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'}) + ' at ' + now.toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
+  }
   document.getElementById('qcFailure').style.display = 'none';
   document.getElementById('qcSuccess').style.display = 'block';
   qcUseCount++;
@@ -1646,15 +1608,15 @@ function qcReset() {
   document.getElementById('quick-check').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Simulator
+// Language Simulator
 const riskPhrases = [
-  {pattern:/cultural fit/i,risk:'PATTERN RISK: RACE / BACKGROUND',explanation:'"Cultural fit" has no observable definition. It cannot be evaluated independently and is one of the most cited phrases in EEOC discrimination complaints. Replace with defined collaboration criteria grounded in documented feedback.'},
-  {pattern:/executive presence/i,risk:'PATTERN RISK: GENDER / RACE',explanation:'"Executive presence" has no standard definition and is frequently cited in gender and race discrimination claims. Replace with defined communication standards and specific observed behaviors.'},
-  {pattern:/lacks energy|lack of energy/i,risk:'PATTERN RISK: AGE / DISABILITY',explanation:'"Lacks energy" is widely recognized as a proxy for age or disability discrimination. Replace with observable behavioral criteria that were not demonstrated.'},
-  {pattern:/\battitude\b/i,risk:'PATTERN RISK: RACE / GENDER',explanation:'"Attitude" is not observable. Replace with a documented conduct standard that was violated, with specific dates and incidents.'},
-  {pattern:/not adaptable|struggles with change/i,risk:'PATTERN RISK: AGE',explanation:'"Not adaptable" and "struggles with change" are common age-coded phrases. Adaptability must be defined by specific behavioral criteria before it can be evaluated.'},
-  {pattern:/team player/i,risk:'PATTERN RISK: RACE / BACKGROUND',explanation:'"Team player" is one of the most commonly challenged phrases in employment discrimination cases. Replace with documented collaboration criteria and specific peer or manager feedback.'},
-  {pattern:/inconsistent/i,risk:'PATTERN RISK: DISABILITY',explanation:'"Inconsistent performance" must be defined by measurable output against stated expectations, with specific documented instances.'},
+  {pattern:/cultural fit/i,risk:'PATTERN RISK: RACE / BACKGROUND',explanation:'"Cultural fit" has no observable definition. It cannot be evaluated independently and is one of the most cited phrases in EEOC discrimination complaints.'},
+  {pattern:/executive presence/i,risk:'PATTERN RISK: GENDER / RACE',explanation:'"Executive presence" has no standard definition and is frequently cited in gender and race discrimination claims.'},
+  {pattern:/lacks energy|lack of energy/i,risk:'PATTERN RISK: AGE / DISABILITY',explanation:'"Lacks energy" is widely recognized as a proxy for age or disability discrimination.'},
+  {pattern:/\battitude\b/i,risk:'PATTERN RISK: RACE / GENDER',explanation:'"Attitude" is not observable. Replace with a documented conduct standard that was violated.'},
+  {pattern:/not adaptable|struggles with change/i,risk:'PATTERN RISK: AGE',explanation:'"Not adaptable" and "struggles with change" are common age-coded phrases.'},
+  {pattern:/team player/i,risk:'PATTERN RISK: RACE / BACKGROUND',explanation:'"Team player" is one of the most commonly challenged phrases in employment discrimination cases.'},
+  {pattern:/inconsistent/i,risk:'PATTERN RISK: DISABILITY',explanation:'"Inconsistent performance" must be defined by measurable output against stated expectations.'},
   {pattern:/too much support|needs support/i,risk:'PATTERN RISK: DISABILITY',explanation:'"Needs too much support" is a common precursor to disability discrimination claims.'},
   {pattern:/communication style|communication skills/i,risk:'PATTERN RISK: NATIONAL ORIGIN / GENDER',explanation:'"Communication style" without a defined standard implicates national origin and gender.'},
   {pattern:/not a fit|doesn't fit|not the right fit/i,risk:'PATTERN RISK: RACE / BACKGROUND / RELIGION',explanation:'"Not a fit" language without defined criteria cannot be evaluated independently.'},
@@ -1663,60 +1625,126 @@ const riskPhrases = [
 ];
 
 function runSimulator() {
-  const input = document.getElementById('simInput').value.trim(); if (!input) return;
+  const input = document.getElementById('simInput').value.trim();
+  if (!input) return;
   const found = riskPhrases.filter(r => r.pattern.test(input));
   let flagHtml = '';
   let tier = 'LOWER RISK'; let tierClass = 'low';
-
   found.forEach(f => { flagHtml += '<div class="sim-flag">'+f.risk+': '+f.explanation+'</div>'; });
-
-  const vagueTests = [{test:/seem|appears|feels/i,msg:'VAGUE LANGUAGE: Impression-based language is not observable. Replace with specific documented behavior.'},{test:/always|never|constantly/i,msg:'ABSOLUTE LANGUAGE: Claims require documented evidence across multiple instances.'},{test:/everyone|the team|people|others/i,msg:'UNATTRIBUTED SOURCE: Replace with named sources or documented feedback records.'},{test:/\b(good|great|poor|bad|weak|strong)\b/i,msg:'SUBJECTIVE LANGUAGE: Evaluative adjectives without grounded criteria are not defensible.'}];
+  const vagueTests = [
+    {test:/seem|appears|feels/i,msg:'VAGUE LANGUAGE: Impression-based language is not observable.'},
+    {test:/always|never|constantly/i,msg:'ABSOLUTE LANGUAGE: Claims require documented evidence across multiple instances.'},
+    {test:/everyone|the team|people|others/i,msg:'UNATTRIBUTED SOURCE: Replace with named sources or documented feedback records.'},
+    {test:/\b(good|great|poor|bad|weak|strong)\b/i,msg:'SUBJECTIVE LANGUAGE: Evaluative adjectives without grounded criteria are not defensible.'}
+  ];
   vagueTests.forEach(v => { if (v.test.test(input)) flagHtml += '<div class="sim-flag">'+v.msg+'</div>'; });
-
   const obsCount = [/document/i,/feedback/i,/criteria/i,/metric/i,/date/i,/record/i,/defined/i,/specific/i,/observed/i].filter(p => p.test(input)).length;
-
   if (found.length > 0 || flagHtml.length > 100) { tier = found.length >= 2 ? 'HIGH RISK' : 'REVIEW NEEDED'; tierClass = found.length >= 2 ? 'high' : 'mid'; }
   if (obsCount >= 3 && found.length === 0) { tier = 'LOWER RISK'; tierClass = 'low'; }
-
   const verdictEl = document.getElementById('simResult');
-  verdictEl.innerHTML = '<div class="sim-verdict '+tierClass+'">'+tier+'</div><div class="sim-flags">'+( flagHtml || '<div style="font-family:var(--mono);font-size:11px;color:#70CC90;padding:8px 0;">No specific risk phrases detected. Continue to step 2: check for vague or ungrounded language.</div>')+'</div><div class="sim-suggestion"><div class="sim-sug-label">JRS\u2122 REPLACEMENT APPROACH</div><div class="sim-sug-text">'+( tier==='HIGH RISK' ? 'This language is unlikely to hold up under independent review. Remove impression-based language and replace with: (1) the specific standard not met, (2) the documented evidence, and (3) the dates and sources.' : tier==='REVIEW NEEDED' ? 'This language carries meaningful risk. Review for phrases linked to protected categories. Confirm every claim can be traced to a documented behavior, metric, or feedback record.' : 'This language shows stronger defensibility. Before finalizing, confirm it stands on its own without your context and every claim is traceable to something observable in the file.')+'</div></div>';
+  verdictEl.innerHTML = '<div class="sim-verdict '+tierClass+'">'+tier+'</div><div class="sim-flags">'+(flagHtml||'<div style="font-family:var(--mono);font-size:11px;color:#70CC90;padding:8px 0;">No specific risk phrases detected. Continue to step 2: check for vague or ungrounded language.</div>')+'</div><div class="sim-suggestion"><div class="sim-sug-label">JRS\u2122 REPLACEMENT APPROACH</div><div class="sim-sug-text">'+(tier==='HIGH RISK'?'This language is unlikely to hold up under independent review. Remove impression-based language and replace with: (1) the specific standard not met, (2) the documented evidence, and (3) the dates and sources.':tier==='REVIEW NEEDED'?'This language carries meaningful risk. Review for phrases linked to protected categories. Confirm every claim can be traced to a documented behavior, metric, or feedback record.':'This language shows stronger defensibility. Before finalizing, confirm it stands on its own without your context and every claim is traceable to something observable in the file.')+'</div></div>';
   verdictEl.classList.add('visible');
   verdictEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// Forensic challenge
+// Forensic Challenge
 const challenges = [
-  {statement:'"The candidate seemed unmotivated during the interview process."',options:['Uses impression-based language that is not observable','Lacks a named protected category','Is too short to be a complete record','Uses passive voice'],correct:0,explanation:'Correct. "Seemed unmotivated" is based on impression, not observation. Replace with specific observed behaviors during the interview.'},
-  {statement:'"Does not align well with team norms and our communication style."',options:['Uses too many adjectives','Pattern risk: implicates national origin, race, and background without defined criteria','Is missing a date','Should be in the first person'],correct:1,explanation:'Correct. "Team norms" and "communication style" without definition cannot be evaluated independently. Both are linked to national origin, race, and background bias in employment records.'},
-  {statement:'"Performance has been inconsistent throughout the review period."',options:['Is grammatically incorrect','Needs a more specific time reference','Has no evidentiary weight without documented instances and defined expectations','Should reference the employee by name'],correct:2,explanation:'Correct. "Inconsistent performance" without specific documented instances and defined expectations has no evidentiary weight. It implicates disability when used without observable grounding.'},
+  {statement:'"The candidate seemed unmotivated during the interview process."',options:['Uses impression-based language that is not observable','Lacks a named protected category','Is too short to be a complete record','Uses passive voice'],correct:0,explanation:'Correct. "Seemed unmotivated" is based on impression, not observation. Replace with specific observed behaviors.'},
+  {statement:'"Does not align well with team norms and our communication style."',options:['Uses too many adjectives','Pattern risk: implicates national origin, race, and background without defined criteria','Is missing a date','Should be in the first person'],correct:1,explanation:'Correct. "Team norms" and "communication style" without definition cannot be evaluated independently.'},
+  {statement:'"Performance has been inconsistent throughout the review period."',options:['Is grammatically incorrect','Needs a more specific time reference','Has no evidentiary weight without documented instances and defined expectations','Should reference the employee by name'],correct:2,explanation:'Correct. "Inconsistent performance" without specific documented instances and defined expectations has no evidentiary weight.'},
   {statement:'"Strong executive presence and communicates well with leadership."',options:['Is positive, so it cannot create pattern risk','Executive presence has no standard definition and creates inconsistency risk across demographic groups','Is too vague to be useful as positive feedback','Should include a specific project reference'],correct:1,explanation:'Correct. Positive records create the same pattern risk as negative ones when the criteria are undefined.'},
   {statement:'"The employee did not meet the defined collaboration criteria as documented in peer feedback from the Q3 review cycle."',options:['Is too specific and could expose the organization','Should not reference peer feedback','This language is grounded: it is observable, specific, and explainable','Needs a date range'],correct:2,explanation:'Correct. This is what a JRS\u2122-compliant record looks like. It identifies the standard, the evidence source, and the time period.'}
 ];
 let currentChallenge=0; let challengeScore=0; let timerStart=null;
-function initMicroCert() { const prog=document.getElementById('mcProgress'); prog.innerHTML=challenges.map((_,i)=>'<div class="mc-dot'+(i===0?' current':'')+'" id="mcdot'+i+'"></div>').join(''); loadChallenge(0); }
-function loadChallenge(idx) { const c=challenges[idx]; timerStart=Date.now(); document.getElementById('mcStatement').textContent=c.statement; document.getElementById('mcTimer').textContent='Time: 0s'; document.getElementById('mcFeedback').classList.remove('visible'); document.getElementById('mcNextBtn').style.display='inline-block'; document.getElementById('mcCertPreview').classList.remove('visible'); document.getElementById('mcOpts').innerHTML=c.options.map((o,i)=>'<button class="mc-opt" onclick="answerChallenge('+i+')">'+o+'</button>').join(''); document.querySelectorAll('.mc-dot').forEach((d,i)=>{d.className='mc-dot'+(i<idx?' done':i===idx?' current':'');}); const timer=setInterval(()=>{if(document.getElementById('mcFeedback').classList.contains('visible')){clearInterval(timer);return;} document.getElementById('mcTimer').textContent='Time: '+Math.floor((Date.now()-timerStart)/1000)+'s';},1000); }
-function answerChallenge(idx) { const c=challenges[currentChallenge]; const opts=document.querySelectorAll('.mc-opt'); opts.forEach((o,i)=>{o.onclick=null;if(i===c.correct)o.classList.add('correct');else if(i===idx&&idx!==c.correct)o.classList.add('wrong');}); const correct=idx===c.correct; if(correct)challengeScore++; document.getElementById('mcFeedbackText').textContent=correct?'Correct':'Not quite'; document.getElementById('mcFeedbackText').style.color=correct?'#70CC90':'#CC7070'; document.getElementById('mcExplain').textContent=c.explanation; document.getElementById('mcFeedback').classList.add('visible'); if(currentChallenge===challenges.length-1){document.getElementById('mcNextBtn').textContent='See Result';} }
-function nextChallenge() { if(currentChallenge===challenges.length-1){document.getElementById('mcFeedbackText').textContent=challengeScore+'/'+challenges.length+' Correct'; document.getElementById('mcExplain').textContent=challengeScore>=4?'Good result. Apply this in practice.':'Review the redlines in the Implementation Kit to strengthen your pattern recognition.'; document.getElementById('mcNextBtn').style.display='none'; document.getElementById('mcCertPreview').classList.add('visible'); document.querySelectorAll('.mc-dot').forEach(d=>d.className='mc-dot done'); return;} currentChallenge++; loadChallenge(currentChallenge); }
+function initMicroCert() {
+  const prog=document.getElementById('mcProgress');
+  prog.innerHTML=challenges.map((_,i)=>'<div class="mc-dot'+(i===0?' current':'')+'" id="mcdot'+i+'"></div>').join('');
+  loadChallenge(0);
+}
+function loadChallenge(idx) {
+  const c=challenges[idx]; timerStart=Date.now();
+  document.getElementById('mcStatement').textContent=c.statement;
+  document.getElementById('mcTimer').textContent='Time: 0s';
+  document.getElementById('mcFeedback').classList.remove('visible');
+  document.getElementById('mcNextBtn').style.display='inline-block';
+  document.getElementById('mcCertPreview').classList.remove('visible');
+  document.getElementById('mcOpts').innerHTML=c.options.map((o,i)=>'<button class="mc-opt" onclick="answerChallenge('+i+')">'+o+'</button>').join('');
+  document.querySelectorAll('.mc-dot').forEach((d,i)=>{d.className='mc-dot'+(i<idx?' done':i===idx?' current':'');});
+  const timer=setInterval(()=>{
+    if(document.getElementById('mcFeedback').classList.contains('visible')){clearInterval(timer);return;}
+    document.getElementById('mcTimer').textContent='Time: '+Math.floor((Date.now()-timerStart)/1000)+'s';
+  },1000);
+}
+function answerChallenge(idx) {
+  const c=challenges[currentChallenge];
+  const opts=document.querySelectorAll('.mc-opt');
+  opts.forEach((o,i)=>{o.onclick=null;if(i===c.correct)o.classList.add('correct');else if(i===idx&&idx!==c.correct)o.classList.add('wrong');});
+  const correct=idx===c.correct;
+  if(correct)challengeScore++;
+  document.getElementById('mcFeedbackText').textContent=correct?'Correct':'Not quite';
+  document.getElementById('mcFeedbackText').style.color=correct?'#70CC90':'#CC7070';
+  document.getElementById('mcExplain').textContent=c.explanation;
+  document.getElementById('mcFeedback').classList.add('visible');
+  if(currentChallenge===challenges.length-1){document.getElementById('mcNextBtn').textContent='See Result';}
+}
+function nextChallenge() {
+  if(currentChallenge===challenges.length-1){
+    document.getElementById('mcFeedbackText').textContent=challengeScore+'/'+challenges.length+' Correct';
+    document.getElementById('mcExplain').textContent=challengeScore>=4?'Good result. Apply this in practice.':'Review the redlines in the Implementation Kit to strengthen your pattern recognition.';
+    document.getElementById('mcNextBtn').style.display='none';
+    document.getElementById('mcCertPreview').classList.add('visible');
+    document.querySelectorAll('.mc-dot').forEach(d=>d.className='mc-dot done');
+    return;
+  }
+  currentChallenge++;
+  loadChallenge(currentChallenge);
+}
 initMicroCert();
 
-// Gate
-function toggleGate(label) { const check=label.querySelector('.gate-check'); const tick=check.querySelector('span'); const active=tick.style.display!=='none'; if(active){tick.style.display='none';check.style.background='transparent';check.style.borderColor='var(--amber-d)';}else{tick.style.display='flex';check.style.background='rgba(196,150,30,0.15)';check.style.borderColor='var(--amber)';} const all=document.querySelectorAll('#justGate .gate-check span'); const allDone=Array.from(all).every(s=>s.style.display!=='none'); document.getElementById('gateBtn').style.background=allDone?'var(--amber)':''; document.getElementById('gateBtn').style.color=allDone?'#0A0A09':''; }
-function checkGate() { const all=document.querySelectorAll('#justGate .gate-check span'); const allDone=Array.from(all).every(s=>s.style.display!=='none'); if(!allDone){document.getElementById('gateBtn').textContent='Confirm all three checkpoints before proceeding';return;} document.getElementById('gateResult').style.display='block'; document.getElementById('gateBtn').style.display='none'; document.getElementById('gateResult').scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-// Quiz
-const answers={};
-function selectOpt(el,q,score){el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');answers[q]=score;}
-function submitQuiz(){const total=['q1','q2','q3','q4','q5'].reduce((s,k)=>s+(answers[k]||0),0);let level,label,rec;if(total<=3){level='LOW EXPOSURE';label='Your documentation practices show foundational controls. Apply JRS\u2122 to formalize what you are already doing.';rec='The standard will reinforce your current approach and create a defensible record going forward.';}else if(total<=6){level='MODERATE EXPOSURE';label='Your organization has meaningful AI Documentation Risk. Some records may not survive independent review.';rec='The Implementation Kit gives you 30 redlines, a phrase risk reference, and a pre-submission checklist to address the gaps now.';}else{level='HIGH EXPOSURE';label='Your organization carries significant AI Documentation Risk. A pattern may already exist in your records.';rec='The Implementation Kit includes a pattern audit tool specifically designed to surface what your teams cannot see yet. Start here.';}document.getElementById('quiz-score-display').textContent=level;document.getElementById('quiz-score-label').textContent=label;document.getElementById('quiz-rec').textContent=rec;document.getElementById('quiz-result').classList.add('visible');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth',block:'nearest'});}
+// Quiz — FIX 7: No email field, just score answers
+const answers = {};
+function selectOpt(el,q,score){
+  el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[q]=score;
+}
+function submitQuiz(){
+  const total=['q1','q2','q3','q4','q5'].reduce((s,k)=>s+(answers[k]||0),0);
+  let level,label,rec;
+  if(total<=3){level='LOW EXPOSURE';label='Your documentation practices show foundational controls. Apply JRS\u2122 to formalize what you are already doing.';rec='The standard will reinforce your current approach and create a defensible record going forward.';}
+  else if(total<=6){level='MODERATE EXPOSURE';label='Your organization has meaningful AI Documentation Risk. Some records may not survive independent review.';rec='The Implementation Kit gives you 30 redlines, a phrase risk reference, and a pre-submission checklist to address the gaps now.';}
+  else{level='HIGH EXPOSURE';label='Your organization carries significant AI Documentation Risk. A pattern may already exist in your records.';rec='The Implementation Kit includes a pattern audit tool specifically designed to surface what your teams cannot see yet. Start here.';}
+  document.getElementById('quiz-score-display').textContent=level;
+  document.getElementById('quiz-score-label').textContent=label;
+  document.getElementById('quiz-rec').textContent=rec;
+  document.getElementById('quiz-result').classList.add('visible');
+  document.getElementById('quiz-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 
 // FAQ
-function showFaqTab(e,id){document.querySelectorAll('.faq-group').forEach(g=>g.classList.remove('active'));document.querySelectorAll('.faq-tab-btn').forEach(b=>b.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');e.target.classList.add('active');}
-function toggleFaq(el){const answer=el.nextElementSibling;const icon=el.querySelector('.faq-icon');if(!answer||!icon)return;const isOpen=answer.classList.contains('open');const grp=el.closest('.faq-group');if(grp){grp.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));grp.querySelectorAll('.faq-icon').forEach(i=>i.classList.remove('open'));}if(!isOpen){answer.classList.add('open');icon.classList.add('open');}}
+function showFaqTab(e,id){
+  document.querySelectorAll('.faq-group').forEach(g=>g.classList.remove('active'));
+  document.querySelectorAll('.faq-tab-btn').forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active');
+  e.target.classList.add('active');
+}
+function toggleFaq(el){
+  const answer=el.nextElementSibling;
+  const icon=el.querySelector('.faq-icon');
+  if(!answer||!icon)return;
+  const isOpen=answer.classList.contains('open');
+  const grp=el.closest('.faq-group');
+  if(grp){
+    grp.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
+    grp.querySelectorAll('.faq-icon').forEach(i=>i.classList.remove('open'));
+  }
+  if(!isOpen){answer.classList.add('open');icon.classList.add('open');}
+}
 
 // Mobile menu
-function toggleMobileMenu(){const nav=document.getElementById('mobileNav');nav.classList.toggle('open');}
+function toggleMobileMenu(){document.getElementById('mobileNav').classList.toggle('open');}
 function closeMobileMenu(){document.getElementById('mobileNav').classList.remove('open');}
-
 </script>
-
 </body>
 </html>
