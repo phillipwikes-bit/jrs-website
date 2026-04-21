@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JRS™ Justification Review Standard | AI Documentation Risk</title>
-<meta name="description" content="The operational standard for AI Documentation Risk. Applied before any record is finalized. Trusted by HR directors, employment attorneys, EPLI carriers, and compliance teams.">
+<meta name="description" content="The operational standard for AI Documentation Risk. Applied before any record is finalized.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -122,7 +121,7 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .qc-type-btn.selected{border-color:var(--amber);background:var(--amber);color:#0A0A09;}
 .qc-input-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;display:block;}
 .qc-micro-instruction{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.04em;margin-bottom:12px;display:block;font-style:italic;}
-.qc-textarea{width:100%;min-height:180px;padding:18px;font-family:var(--serif);font-size:15px;line-height:1.7;color:#F5F5F0;background:#111110;border:1.5px solid #2A2A28;border-radius:1px;resize:vertical;transition:border-color 0.2s;outline:none;margin-bottom:16px;}
+.qc-textarea{width:100%;min-height:180px;padding:18px;font-family:var(--serif);font-size:16px;line-height:1.7;color:#F5F5F0;background:#111110;border:1.5px solid #2A2A28;border-radius:1px;resize:vertical;transition:border-color 0.2s;outline:none;margin-bottom:16px;}
 .qc-textarea:focus{border-color:var(--amber-d);background:#0A0A09;}
 .qc-textarea::placeholder{color:#555550;font-style:italic;}
 .qc-submit{width:100%;padding:16px 32px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--amber);color:#0A0A09;border:none;cursor:pointer;transition:all 0.2s ease;}
@@ -165,7 +164,7 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .simulator{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
 .sim-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
 .sim-sub{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;}
-.sim-input{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--sans);font-size:14px;padding:14px 16px;outline:none;transition:border-color 0.2s;resize:vertical;min-height:80px;margin-bottom:12px;}
+.sim-input{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--sans);font-size:16px;padding:14px 16px;outline:none;transition:border-color 0.2s;resize:vertical;min-height:80px;margin-bottom:12px;}
 .sim-input:focus{border-color:var(--amber);}
 .sim-result{display:none;margin-top:16px;}
 .sim-result.visible{display:block;}
@@ -285,7 +284,7 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .tier-col h4{font-family:var(--serif);font-size:18px;color:#F5F5F0;margin-bottom:8px;}
 .tier-col p{font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;font-weight:300;margin:0;}
 .compare-wrap{overflow-x:auto;margin:32px 0;}
-.compare-table{width:100%;border-collapse:collapse;}
+.compare-table{width:100%;min-width:560px;border-collapse:collapse;}
 .compare-table th{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;padding:14px 18px;text-align:left;background:#1A1A18;color:#888880;border-bottom:2px solid #2A2A28;}
 .compare-table th.hi{background:#2C2C28;color:var(--amber);border-bottom-color:var(--amber);}
 .compare-table td{font-family:var(--sans);font-size:13px;padding:11px 18px;border-bottom:1px solid #2A2A28;color:var(--offwht);vertical-align:top;line-height:1.5;}
@@ -328,7 +327,7 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .roi-title{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.1em;margin-bottom:20px;}
 .roi-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px;}
 .roi-field label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.06em;display:block;margin-bottom:8px;}
-.roi-field input,.roi-field select{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:14px;padding:10px 12px;outline:none;transition:border-color 0.2s;}
+.roi-field input,.roi-field select{width:100%;background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:16px;padding:10px 12px;outline:none;transition:border-color 0.2s;}
 .roi-field select option{background:#2C2C28;}
 .roi-field input:focus,.roi-field select:focus{border-color:var(--amber);}
 .roi-result{background:#2C2C28;border-top:2px solid var(--amber);padding:20px 24px;}
@@ -345,7 +344,7 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .quiz-opt{font-family:var(--mono);font-size:11px;padding:7px 14px;background:#1A1A18;color:#888880;border:1px solid #2A2A28;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;}
 .quiz-opt:hover,.quiz-opt.selected{background:#2C2C28;color:var(--amber);border-color:var(--amber-d);}
 .quiz-email-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:8px;}
-.quiz-email-row input{background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:13px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;}
+.quiz-email-row input{background:#2C2C28;border:1px solid #2A2A28;color:#F5F5F0;font-family:var(--mono);font-size:16px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;}
 .quiz-email-row input:focus{border-color:var(--amber);}
 .quiz-result{display:none;background:#2C2C28;border-top:2px solid var(--amber);padding:20px 24px;margin-top:16px;}
 .quiz-result.visible{display:block;}
@@ -464,7 +463,7 @@ section{padding:40px 0;}
 .qc-subhead{font-size:11px;}
 .qc-types{gap:6px;}
 .qc-type-btn{font-size:10px;padding:7px 10px;}
-.qc-textarea{font-size:14px;min-height:140px;padding:14px;}
+.qc-textarea{font-size:16px;min-height:140px;padding:14px;}
 .qc-submit{font-size:11px;padding:14px 20px;}
 .qc-fail-main{font-size:20px;}
 .qc-fail-detail{font-size:13px;}
@@ -510,7 +509,7 @@ section{padding:40px 0;}
 /* ---- SIMULATOR ---- */
 .simulator{padding:20px 16px;}
 .sim-title{font-size:18px;}
-.sim-input{font-size:13px;}
+.sim-input{font-size:16px;}
 .sim-verdict{font-size:11px;}
 .sim-flag{font-size:10px;}
 
@@ -575,7 +574,7 @@ section{padding:40px 0;}
 .quiz-title{font-size:18px;}
 .quiz-q-text{font-size:13px;}
 .quiz-opt{font-size:10px;padding:7px 10px;}
-.quiz-email-row input{font-size:14px;padding:12px;}
+.quiz-email-row input{font-size:16px;padding:12px;}
 
 /* ---- FAQ ---- */
 .faq-tab-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
@@ -633,8 +632,7 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
 }
 </style>
 </head>
-<body>
-<div class="line-numbers" id="lineNumbers"></div>
+<body><div class="line-numbers" id="lineNumbers"></div>
 <header class="doc-header">
   <div class="doc-header-inner">
     <span class="doc-meta">JRS&#x2122; &nbsp;|&nbsp; AI Documentation Risk &nbsp;|&nbsp; v1.0</span>
@@ -680,6 +678,109 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
       <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.06em;padding:10px 20px;background:transparent;color:#888880;border:1px solid #3a3a38;text-decoration:none;transition:color 0.2s,border-color 0.2s;">View the Full Standard &nbsp;&#8594;</a>
     </div>
   </div>
+</div>
+
+<div class="container">
+<section class="hero">
+  <span class="category-tag fade-up fade-up-1">JUSTIFICATION REVIEW STANDARD &nbsp;|&nbsp; OPERATIONAL STANDARD FOR AI DOCUMENTATION RISK</span>
+  <!-- MOD 1: Updated hero headline -->
+  <h1 class="hero-title fade-up fade-up-2">AI Didn't<br>Create the Risk.<br><span>The Record Did.</span></h1>
+  <div class="amber-rule fade-up fade-up-3"></div>
+  <!-- MOD 1b: Updated hero subtext -->
+  <p class="hero-sub fade-up fade-up-3">Most records sound complete until someone asks one question: <em>What is this based on?</em><br><br>If that answer is not in the record, it does not hold.</p>
+  <div class="stat-bar fade-up fade-up-3">
+    <div class="stat-item"><div class="stat-number">$700M+</div><div class="stat-label">Recovered by EEOC for discrimination claimants in FY2024 alone</div></div>
+    <div class="stat-item"><div class="stat-number">5 min</div><div class="stat-label">Time required to apply JRS&#x2122; before any record is finalized</div></div>
+    <div class="stat-item"><div class="stat-number">Aug 2026</div><div class="stat-label">EU AI Act employment documentation obligations take effect globally</div></div>
+  </div>
+  <div class="phrases-early fade-up fade-up-4">
+    <span class="pe-label">DOCUMENTATION RISK DETECTOR &nbsp;|&nbsp; THE 8 PHRASES THAT FAIL UNDER REVIEW</span>
+    <p class="pe-title">Is this language in your records right now?</p>
+    <p class="pe-body">These phrases appear most often in employment records that do not survive independent review. Each is linked to a protected category. Click any phrase to see why it creates risk.</p>
+    <div class="phrase-grid-8">
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Race / Background','Cultural fit has no observable definition. It cannot be evaluated independently and is one of the most cited phrases in EEOC discrimination complaints.')"><div class="pg-cat">RACE / BACKGROUND</div><div class="pg-phrase">"Not a strong cultural fit"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Gender / Race','Executive presence has no standard definition and is cited in discrimination claims across gender and racial lines. Replace with defined communication criteria.')"><div class="pg-cat">GENDER / RACE</div><div class="pg-phrase">"Lacks executive presence"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Age / Disability','Lacks energy is widely recognized as a proxy for age or disability discrimination. Energy is not a defined criterion and cannot be measured or applied consistently.')"><div class="pg-cat">AGE / DISABILITY</div><div class="pg-phrase">"Lacks energy"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Race / Gender','Attitude is not observable. It cannot be defined, measured, or compared across employees. Replace with a documented conduct standard that was violated.')"><div class="pg-cat">RACE / GENDER</div><div class="pg-phrase">"Attitude issues"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Age','Not adaptable is one of the most common age-coded phrases in employment records. Adaptability must be defined by specific behavioral criteria before it can be evaluated.')"><div class="pg-cat">AGE</div><div class="pg-phrase">"Not adaptable"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Disability','Needs too much support is one of the most common precursors to disability discrimination claims. Document what support was needed and whether an accommodation assessment was completed.')"><div class="pg-cat">DISABILITY</div><div class="pg-phrase">"Needs too much support"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Race / Background','Team player is one of the most commonly challenged phrases in employment discrimination cases. Replace with documented collaboration criteria and specific observed behavior.')"><div class="pg-cat">RACE / BACKGROUND</div><div class="pg-phrase">"Not a team player"</div></div>
+      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Disability','Inconsistent performance must be defined by measurable output against stated expectations. Without specific documented instances, this phrase has no evidentiary weight.')"><div class="pg-cat">DISABILITY</div><div class="pg-phrase">"Inconsistent performance"</div></div>
+    </div>
+    <div id="phraseRiskBox" style="display:none;background:rgba(139,32,32,0.15);border-left:3px solid #8B2020;padding:14px 18px;margin-top:8px;">
+      <span id="phraseRiskCat" style="font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.1em;display:block;margin-bottom:6px;"></span>
+      <p id="phraseRiskText" style="font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;margin:0;"></p>
+    </div>
+  </div>
+  <div class="strike-demo fade-up fade-up-4">
+    <p class="strike-label">FORENSIC REDLINE &nbsp;|&nbsp; THE DIFFERENCE FIVE MINUTES MAKES</p>
+    <div class="before-after">
+      <div class="before-box"><p class="box-label">BEFORE &nbsp;|&nbsp; DOES NOT HOLD UP</p><p class="before-text">Not a strong cultural fit.</p></div>
+      <div class="after-box"><p class="box-label">AFTER &nbsp;|&nbsp; GROUNDED AND EXPLAINABLE</p><p class="after-text">Did not meet defined collaboration criteria based on documented peer and manager feedback.</p></div>
+    </div>
+  </div>
+  <div class="hero-cta fade-up fade-up-4">
+    <a href="#quick-check" class="btn btn-primary">Test a real record in 10 seconds &nbsp;&#8594;</a>
+    <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
+    <a href="#assess" class="btn btn-secondary">Assess Your Risk &nbsp;&#8594;</a>
+  </div>
+  <p class="hero-statement" style="margin-top:28px;">Built for HR directors, compliance heads, and employment attorneys who are responsible for what enters the record.<br>The record is what gets reviewed. Not your intent. Not your memory. Not your explanation after the fact.<br>Once it is in the record, you do not control how it is interpreted.</p>
+</section>
+</div>
+
+<div class="proof-bar">
+  <div class="proof-track">
+    <span class="proof-item">$700M+ <span>recovered by EEOC for discrimination claimants in FY2024</span></span>
+    <span class="proof-item">88,531 <span>discrimination charges filed in FY2024, up 9% year over year</span></span>
+    <span class="proof-item">Aug 2, 2026 <span>EU AI Act employment obligations take effect</span></span>
+    <span class="proof-item">Jun 30, 2026 <span>Colorado SB 24-205 affirmative defense provisions activate</span></span>
+    <span class="proof-item">97% <span>EEOC litigation success rate in FY2024</span></span>
+    <span class="proof-item">NYC LL 144 <span>bias audit mandates, fines up to $1,500/day</span></span>
+    <span class="proof-item">&#x20AC;35M or 7% <span>maximum EU AI Act penalty for non-compliance</span></span>
+    <span class="proof-item">10 years <span>EU AI Act minimum documentation retention requirement</span></span>
+    <span class="proof-item">$700M+ <span>recovered by EEOC for discrimination claimants in FY2024</span></span>
+    <span class="proof-item">88,531 <span>discrimination charges filed in FY2024, up 9% year over year</span></span>
+    <span class="proof-item">Aug 2, 2026 <span>EU AI Act employment obligations take effect</span></span>
+    <span class="proof-item">Jun 30, 2026 <span>Colorado SB 24-205 affirmative defense provisions activate</span></span>
+    <span class="proof-item">97% <span>EEOC litigation success rate in FY2024</span></span>
+    <span class="proof-item">NYC LL 144 <span>bias audit mandates, fines up to $1,500/day</span></span>
+    <span class="proof-item">&#x20AC;35M or 7% <span>maximum EU AI Act penalty for non-compliance</span></span>
+    <span class="proof-item">10 years <span>EU AI Act minimum documentation retention requirement</span></span>
+  </div>
+</div>
+
+<div class="clarity-bar">
+  <div class="clarity-bar-inner">
+    <span class="clarity-tag">IF YOU USE AI TO WRITE RECORDS</span>
+    <p class="clarity-text"><strong>For HR directors, compliance heads, and employment attorneys.</strong> Every performance review, termination letter, PIP, or hiring decision drafted with AI becomes a permanent record. It will be read by people who were not in the room. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
+  </div>
+</div>
+
+<div class="countdown-banner">
+  <div class="countdown-inner">
+    <span class="countdown-label">EU AI ACT DEADLINE</span>
+    <div class="countdown-clocks">
+      <div class="clock-unit"><div class="clock-num" id="cd-days">--</div><div class="clock-label">DAYS</div></div>
+      <div class="clock-sep">:</div>
+      <div class="clock-unit"><div class="clock-num" id="cd-hours">--</div><div class="clock-label">HRS</div></div>
+      <div class="clock-sep">:</div>
+      <div class="clock-unit"><div class="clock-num" id="cd-mins">--</div><div class="clock-label">MIN</div></div>
+    </div>
+    <div class="countdown-text"><strong>August 2, 2026.</strong> EU AI Act employment obligations take effect. Organizations that have documentation controls in place before that date will be in a meaningfully stronger position. Colorado SB 24-205 follows June 30, 2026.</div>
+  </div>
+</div>
+
+<div class="container">
+<!-- MOD 7: About section — issue before origin -->
+<div class="authority-block">
+  <div class="authority-icon">&#9632;</div>
+  <div>
+    <span class="authority-label">WHY THIS STANDARD EXISTS &nbsp;|&nbsp; THE ORIGIN</span>
+    <p class="authority-text"><strong>The issue is rarely the decision. It is how it was documented.</strong></p>
+    <p class="authority-text">As a former Lead Civil Rights Officer, I reviewed hundreds of discrimination complaints. The pattern was consistent across organizations, industries, and decision types. AI has made that problem worse at a scale no organization has fully reckoned with. JRS&#x2122; was built to close that gap at the only point where it can be closed: before the record is saved.</p>
+    <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:8px 0 0;letter-spacing:0.04em;">Phillip Wikes &nbsp;|&nbsp; AI Governance and Cognitive Risk Advisor &nbsp;|&nbsp; Creator of JRS&#x2122;</p>
+  </div>
+</div>
 </div>
 
 <div class="container" id="quick-check">
@@ -764,150 +865,6 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
 </section>
 </div>
 
-<div class="countdown-banner">
-  <div class="countdown-inner">
-    <span class="countdown-label">EU AI ACT DEADLINE</span>
-    <div class="countdown-clocks">
-      <div class="clock-unit"><div class="clock-num" id="cd-days">--</div><div class="clock-label">DAYS</div></div>
-      <div class="clock-sep">:</div>
-      <div class="clock-unit"><div class="clock-num" id="cd-hours">--</div><div class="clock-label">HRS</div></div>
-      <div class="clock-sep">:</div>
-      <div class="clock-unit"><div class="clock-num" id="cd-mins">--</div><div class="clock-label">MIN</div></div>
-    </div>
-    <div class="countdown-text"><strong>August 2, 2026.</strong> EU AI Act employment obligations take effect. Organizations that have documentation controls in place before that date will be in a meaningfully stronger position. Colorado SB 24-205 follows June 30, 2026.</div>
-  </div>
-</div>
-
-<div class="clarity-bar">
-  <div class="clarity-bar-inner">
-    <span class="clarity-tag">IF YOU USE AI TO WRITE RECORDS</span>
-    <p class="clarity-text"><strong>For HR directors, compliance heads, and employment attorneys.</strong> Every performance review, termination letter, PIP, or hiring decision drafted with AI becomes a permanent record. It will be read by people who were not in the room. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
-  </div>
-</div>
-
-<div class="proof-bar">
-  <div class="proof-track">
-    <span class="proof-item">$700M+ <span>recovered by EEOC for discrimination claimants in FY2024</span></span>
-    <span class="proof-item">88,531 <span>discrimination charges filed in FY2024, up 9% year over year</span></span>
-    <span class="proof-item">Aug 2, 2026 <span>EU AI Act employment obligations take effect</span></span>
-    <span class="proof-item">Jun 30, 2026 <span>Colorado SB 24-205 affirmative defense provisions activate</span></span>
-    <span class="proof-item">97% <span>EEOC litigation success rate in FY2024</span></span>
-    <span class="proof-item">NYC LL 144 <span>bias audit mandates, fines up to $1,500/day</span></span>
-    <span class="proof-item">&#x20AC;35M or 7% <span>maximum EU AI Act penalty for non-compliance</span></span>
-    <span class="proof-item">10 years <span>EU AI Act minimum documentation retention requirement</span></span>
-    <span class="proof-item">$700M+ <span>recovered by EEOC for discrimination claimants in FY2024</span></span>
-    <span class="proof-item">88,531 <span>discrimination charges filed in FY2024, up 9% year over year</span></span>
-    <span class="proof-item">Aug 2, 2026 <span>EU AI Act employment obligations take effect</span></span>
-    <span class="proof-item">Jun 30, 2026 <span>Colorado SB 24-205 affirmative defense provisions activate</span></span>
-    <span class="proof-item">97% <span>EEOC litigation success rate in FY2024</span></span>
-    <span class="proof-item">NYC LL 144 <span>bias audit mandates, fines up to $1,500/day</span></span>
-    <span class="proof-item">&#x20AC;35M or 7% <span>maximum EU AI Act penalty for non-compliance</span></span>
-    <span class="proof-item">10 years <span>EU AI Act minimum documentation retention requirement</span></span>
-  </div>
-</div>
-
-<div class="container">
-<section class="hero">
-  <span class="category-tag fade-up fade-up-1">JUSTIFICATION REVIEW STANDARD &nbsp;|&nbsp; OPERATIONAL STANDARD FOR AI DOCUMENTATION RISK</span>
-  <!-- MOD 1: Updated hero headline -->
-  <h1 class="hero-title fade-up fade-up-2">AI Didn't<br>Create the Risk.<br><span>The Record Did.</span></h1>
-  <div class="amber-rule fade-up fade-up-3"></div>
-  <!-- MOD 1b: Updated hero subtext -->
-  <p class="hero-sub fade-up fade-up-3">Most records sound complete until someone asks one question: <em>What is this based on?</em><br><br>If that answer is not in the record, it does not hold.</p>
-  <div class="stat-bar fade-up fade-up-3">
-    <div class="stat-item"><div class="stat-number">$700M+</div><div class="stat-label">Recovered by EEOC for discrimination claimants in FY2024 alone</div></div>
-    <div class="stat-item"><div class="stat-number">5 min</div><div class="stat-label">Time required to apply JRS&#x2122; before any record is finalized</div></div>
-    <div class="stat-item"><div class="stat-number">Aug 2026</div><div class="stat-label">EU AI Act employment documentation obligations take effect globally</div></div>
-  </div>
-  <div class="phrases-early fade-up fade-up-4">
-    <span class="pe-label">DOCUMENTATION RISK DETECTOR &nbsp;|&nbsp; THE 8 PHRASES THAT FAIL UNDER REVIEW</span>
-    <p class="pe-title">Is this language in your records right now?</p>
-    <p class="pe-body">These phrases appear most often in employment records that do not survive independent review. Each is linked to a protected category. Click any phrase to see why it creates risk.</p>
-    <div class="phrase-grid-8">
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Race / Background','Cultural fit has no observable definition. It cannot be evaluated independently and is one of the most cited phrases in EEOC discrimination complaints.')"><div class="pg-cat">RACE / BACKGROUND</div><div class="pg-phrase">"Not a strong cultural fit"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Gender / Race','Executive presence has no standard definition and is cited in discrimination claims across gender and racial lines. Replace with defined communication criteria.')"><div class="pg-cat">GENDER / RACE</div><div class="pg-phrase">"Lacks executive presence"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Age / Disability','Lacks energy is widely recognized as a proxy for age or disability discrimination. Energy is not a defined criterion and cannot be measured or applied consistently.')"><div class="pg-cat">AGE / DISABILITY</div><div class="pg-phrase">"Lacks energy"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Race / Gender','Attitude is not observable. It cannot be defined, measured, or compared across employees. Replace with a documented conduct standard that was violated.')"><div class="pg-cat">RACE / GENDER</div><div class="pg-phrase">"Attitude issues"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Age','Not adaptable is one of the most common age-coded phrases in employment records. Adaptability must be defined by specific behavioral criteria before it can be evaluated.')"><div class="pg-cat">AGE</div><div class="pg-phrase">"Not adaptable"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Disability','Needs too much support is one of the most common precursors to disability discrimination claims. Document what support was needed and whether an accommodation assessment was completed.')"><div class="pg-cat">DISABILITY</div><div class="pg-phrase">"Needs too much support"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Race / Background','Team player is one of the most commonly challenged phrases in employment discrimination cases. Replace with documented collaboration criteria and specific observed behavior.')"><div class="pg-cat">RACE / BACKGROUND</div><div class="pg-phrase">"Not a team player"</div></div>
-      <div class="phrase-grid-item" onclick="showPhraseRisk(this,'Disability','Inconsistent performance must be defined by measurable output against stated expectations. Without specific documented instances, this phrase has no evidentiary weight.')"><div class="pg-cat">DISABILITY</div><div class="pg-phrase">"Inconsistent performance"</div></div>
-    </div>
-    <div id="phraseRiskBox" style="display:none;background:rgba(139,32,32,0.15);border-left:3px solid #8B2020;padding:14px 18px;margin-top:8px;">
-      <span id="phraseRiskCat" style="font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.1em;display:block;margin-bottom:6px;"></span>
-      <p id="phraseRiskText" style="font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;margin:0;"></p>
-    </div>
-  </div>
-  <div class="strike-demo fade-up fade-up-4">
-    <p class="strike-label">FORENSIC REDLINE &nbsp;|&nbsp; THE DIFFERENCE FIVE MINUTES MAKES</p>
-    <div class="before-after">
-      <div class="before-box"><p class="box-label">BEFORE &nbsp;|&nbsp; DOES NOT HOLD UP</p><p class="before-text">Not a strong cultural fit.</p></div>
-      <div class="after-box"><p class="box-label">AFTER &nbsp;|&nbsp; GROUNDED AND EXPLAINABLE</p><p class="after-text">Did not meet defined collaboration criteria based on documented peer and manager feedback.</p></div>
-    </div>
-  </div>
-  <div class="hero-cta fade-up fade-up-4">
-    <a href="#quick-check" class="btn btn-primary">Test a real record in 10 seconds &nbsp;&#8594;</a>
-    <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank">Download the Standard &nbsp;&#8594;</a>
-    <a href="#assess" class="btn btn-secondary">Assess Your Risk &nbsp;&#8594;</a>
-  </div>
-  <p class="hero-statement" style="margin-top:28px;">Built for HR directors, compliance heads, and employment attorneys who are responsible for what enters the record.<br>The record is what gets reviewed. Not your intent. Not your memory. Not your explanation after the fact.<br>Once it is in the record, you do not control how it is interpreted.</p>
-</section>
-</div>
-
-<div class="container">
-<!-- MOD 7: About section — issue before origin -->
-<div class="authority-block">
-  <div class="authority-icon">&#9632;</div>
-  <div>
-    <span class="authority-label">WHY THIS STANDARD EXISTS &nbsp;|&nbsp; THE ORIGIN</span>
-    <p class="authority-text"><strong>The issue is rarely the decision. It is how it was documented.</strong></p>
-    <p class="authority-text">As a former Lead Civil Rights Officer, I reviewed hundreds of discrimination complaints. The pattern was consistent across organizations, industries, and decision types. AI has made that problem worse at a scale no organization has fully reckoned with. JRS&#x2122; was built to close that gap at the only point where it can be closed: before the record is saved.</p>
-    <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:8px 0 0;letter-spacing:0.04em;">Phillip Wikes &nbsp;|&nbsp; AI Governance and Cognitive Risk Advisor &nbsp;|&nbsp; Creator of JRS&#x2122;</p>
-  </div>
-</div>
-</div>
-
-<div class="container">
-<div style="background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(--amber-d);padding:24px 32px;margin:0 0 8px;">
-  <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:10px;">EARLY ADOPTER PROGRAM</div>
-  <p style="font-family:var(--serif);font-size:18px;color:#F5F5F0;margin-bottom:10px;line-height:1.4;">JRS&#x2122; is new. There are no case studies yet. That is genuinely an opportunity, not a limitation.</p>
-  <p style="font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;font-weight:300;margin-bottom:16px;">If you apply JRS&#x2122; and it changes how your team documents decisions, your experience matters. Early adopters who share outcomes help build the evidence base that makes this standard credible to the organizations that come next.</p>
-  <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" style="font-size:11px;">Share Your Experience &nbsp;&#8594;</a>
-</div>
-</div>
-
-<div class="container" id="free-resource">
-<div class="free-resource">
-  <span class="fr-label">FREE REFERENCE &nbsp;|&nbsp; NO PURCHASE REQUIRED &nbsp;|&nbsp; SHARE FREELY</span>
-  <p class="fr-title">The JRS&#x2122; Phrase Risk Reference</p>
-  <p class="fr-body">These are the fifteen phrases that show up most often in records that fall apart under review. Each one is linked to a protected category and paired with language that actually holds up.</p>
-  <div style="overflow-x:auto;">
-    <table class="phrase-table">
-      <thead><tr><th style="width:26%;">PHRASE TO REMOVE</th><th style="width:24%;">PROTECTED CATEGORY RISK</th><th>REPLACE WITH</th></tr></thead>
-      <tbody>
-        <tr><td class="phrase-col">"Not a strong cultural fit"</td><td class="risk-col">Race, national origin, background</td><td class="replace-col">Did not meet defined collaboration criteria based on documented feedback</td></tr>
-        <tr><td class="phrase-col">"Lacks executive presence"</td><td class="risk-col">Gender, race</td><td class="replace-col">Did not meet defined communication standards as assessed in documented reviews</td></tr>
-        <tr><td class="phrase-col">"Lacks energy"</td><td class="risk-col">Age, disability</td><td class="replace-col">Did not demonstrate defined behavioral criteria for this role</td></tr>
-        <tr><td class="phrase-col">"Attitude issues"</td><td class="risk-col">Race, gender</td><td class="replace-col">Did not meet defined conduct expectations as documented in [specific record]</td></tr>
-        <tr><td class="phrase-col">"Not adaptable"</td><td class="risk-col">Age</td><td class="replace-col">Did not demonstrate adaptability criteria as defined in [specific assessment]</td></tr>
-        <tr><td class="phrase-col">"Needs too much support"</td><td class="risk-col">Disability</td><td class="replace-col">Required additional check-ins beyond standard cadence; accommodation assessment not completed as of this record</td></tr>
-        <tr><td class="phrase-col">"Not a team player"</td><td class="risk-col">Race, background</td><td class="replace-col">Did not meet defined collaboration standards based on documented peer feedback</td></tr>
-        <tr><td class="phrase-col">"Inconsistent performance"</td><td class="risk-col">Disability</td><td class="replace-col">Did not meet defined output expectations in [X] of [Y] review periods per documented records</td></tr>
-        <tr><td class="phrase-col">"Unprofessional behavior"</td><td class="risk-col">Race, gender</td><td class="replace-col">Engaged in conduct not meeting the standards defined in [specific policy]</td></tr>
-        <tr><td class="phrase-col">"Communication style concerns"</td><td class="risk-col">National origin, gender</td><td class="replace-col">Did not meet defined communication standards as assessed against documented criteria</td></tr>
-        <tr><td class="phrase-col">"Not polished"</td><td class="risk-col">Background, race</td><td class="replace-col">Did not meet defined presentation standards as outlined in [specific role criteria]</td></tr>
-        <tr><td class="phrase-col">"Struggles with change"</td><td class="risk-col">Age</td><td class="replace-col">Did not demonstrate defined change management criteria during [specific documented period]</td></tr>
-        <tr><td class="phrase-col">"Not assertive enough"</td><td class="risk-col">Gender</td><td class="replace-col">Did not demonstrate defined leadership initiative criteria as assessed in [specific review]</td></tr>
-        <tr><td class="phrase-col">"History of issues"</td><td class="risk-col">Race, gender</td><td class="replace-col">Received [number] documented actions between [date] and [date] as recorded in [specific documents]</td></tr>
-        <tr><td class="phrase-col">"Overqualified"</td><td class="risk-col">Age</td><td class="replace-col">Stated compensation expectations did not align with the defined salary band for this role</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:12px 0 8px;">The full Implementation Kit includes 30 forensic redlines with complete before-and-after examples across six decision categories.</p>
-  <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
-</div>
-</div>
-
 <div class="container" id="standard">
 <section>
   <span class="section-label">SECTION 01 &nbsp;|&nbsp; THE STANDARD</span>
@@ -962,6 +919,38 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
 </section>
 </div>
 
+<div class="container" id="free-resource">
+<div class="free-resource">
+  <span class="fr-label">FREE REFERENCE &nbsp;|&nbsp; NO PURCHASE REQUIRED &nbsp;|&nbsp; SHARE FREELY</span>
+  <p class="fr-title">The JRS&#x2122; Phrase Risk Reference</p>
+  <p class="fr-body">These are the fifteen phrases that show up most often in records that fall apart under review. Each one is linked to a protected category and paired with language that actually holds up.</p>
+  <div style="overflow-x:auto;">
+    <table class="phrase-table">
+      <thead><tr><th style="width:26%;">PHRASE TO REMOVE</th><th style="width:24%;">PROTECTED CATEGORY RISK</th><th>REPLACE WITH</th></tr></thead>
+      <tbody>
+        <tr><td class="phrase-col">"Not a strong cultural fit"</td><td class="risk-col">Race, national origin, background</td><td class="replace-col">Did not meet defined collaboration criteria based on documented feedback</td></tr>
+        <tr><td class="phrase-col">"Lacks executive presence"</td><td class="risk-col">Gender, race</td><td class="replace-col">Did not meet defined communication standards as assessed in documented reviews</td></tr>
+        <tr><td class="phrase-col">"Lacks energy"</td><td class="risk-col">Age, disability</td><td class="replace-col">Did not demonstrate defined behavioral criteria for this role</td></tr>
+        <tr><td class="phrase-col">"Attitude issues"</td><td class="risk-col">Race, gender</td><td class="replace-col">Did not meet defined conduct expectations as documented in [specific record]</td></tr>
+        <tr><td class="phrase-col">"Not adaptable"</td><td class="risk-col">Age</td><td class="replace-col">Did not demonstrate adaptability criteria as defined in [specific assessment]</td></tr>
+        <tr><td class="phrase-col">"Needs too much support"</td><td class="risk-col">Disability</td><td class="replace-col">Required additional check-ins beyond standard cadence; accommodation assessment not completed as of this record</td></tr>
+        <tr><td class="phrase-col">"Not a team player"</td><td class="risk-col">Race, background</td><td class="replace-col">Did not meet defined collaboration standards based on documented peer feedback</td></tr>
+        <tr><td class="phrase-col">"Inconsistent performance"</td><td class="risk-col">Disability</td><td class="replace-col">Did not meet defined output expectations in [X] of [Y] review periods per documented records</td></tr>
+        <tr><td class="phrase-col">"Unprofessional behavior"</td><td class="risk-col">Race, gender</td><td class="replace-col">Engaged in conduct not meeting the standards defined in [specific policy]</td></tr>
+        <tr><td class="phrase-col">"Communication style concerns"</td><td class="risk-col">National origin, gender</td><td class="replace-col">Did not meet defined communication standards as assessed against documented criteria</td></tr>
+        <tr><td class="phrase-col">"Not polished"</td><td class="risk-col">Background, race</td><td class="replace-col">Did not meet defined presentation standards as outlined in [specific role criteria]</td></tr>
+        <tr><td class="phrase-col">"Struggles with change"</td><td class="risk-col">Age</td><td class="replace-col">Did not demonstrate defined change management criteria during [specific documented period]</td></tr>
+        <tr><td class="phrase-col">"Not assertive enough"</td><td class="risk-col">Gender</td><td class="replace-col">Did not demonstrate defined leadership initiative criteria as assessed in [specific review]</td></tr>
+        <tr><td class="phrase-col">"History of issues"</td><td class="risk-col">Race, gender</td><td class="replace-col">Received [number] documented actions between [date] and [date] as recorded in [specific documents]</td></tr>
+        <tr><td class="phrase-col">"Overqualified"</td><td class="risk-col">Age</td><td class="replace-col">Stated compensation expectations did not align with the defined salary band for this role</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:12px 0 8px;">The full Implementation Kit includes 30 forensic redlines with complete before-and-after examples across six decision categories.</p>
+  <a href="https://phillipwikes-bit.github.io/jrs-website" class="btn btn-secondary" target="_blank" style="font-size:11px;">Get the Full Implementation Kit &nbsp;&#8594;</a>
+</div>
+</div>
+
 <div class="container" id="simulator">
 <section>
   <span class="section-label">SECTION 02 &nbsp;|&nbsp; LANGUAGE SIMULATOR</span>
@@ -980,41 +969,6 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
         <div class="sim-sug-text" id="simSugText"></div>
       </div>
     </div>
-  </div>
-</section>
-</div>
-
-<div class="container" id="gate">
-<section>
-  <span class="section-label">SECTION 02B &nbsp;|&nbsp; JUSTIFICATION GATE</span>
-  <h2>The Gate Before the Record</h2>
-  <div class="amber-underline"></div>
-  <p>Before saving any record, work through three checkpoints. Each one takes about ten seconds. Together they confirm that what you are about to save is grounded in real human judgment, not just what the AI produced.</p>
-  <div style="background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:32px 0;" id="justGate">
-    <div style="font-family:var(--serif);font-size:20px;color:#F5F5F0;margin-bottom:8px;">JRS&#x2122; Justification Gate</div>
-    <div style="font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;">Before saving this record, confirm all three statements.</div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
-      <label style="display:flex;align-items:flex-start;gap:14px;background:#2C2C28;padding:16px 20px;cursor:pointer;" onclick="toggleGate(this)">
-        <div style="width:20px;height:20px;border:2px solid var(--amber-d);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" class="gate-check"><span style="display:none;color:var(--amber);font-family:var(--mono);font-size:14px;font-weight:600;">&#10003;</span></div>
-        <div><div style="font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.06em;margin-bottom:4px;">CHECKPOINT 01</div><div style="font-family:var(--sans);font-size:14px;color:#F5F5F0;margin-bottom:4px;">The evidence this record references actually exists in the file.</div><div style="font-family:var(--sans);font-size:12px;color:#888880;font-weight:300;">Not implied. Not remembered. Documented and retrievable if someone asks for it.</div></div>
-      </label>
-      <label style="display:flex;align-items:flex-start;gap:14px;background:#2C2C28;padding:16px 20px;cursor:pointer;" onclick="toggleGate(this)">
-        <div style="width:20px;height:20px;border:2px solid var(--amber-d);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" class="gate-check"><span style="display:none;color:var(--amber);font-family:var(--mono);font-size:14px;font-weight:600;">&#10003;</span></div>
-        <div><div style="font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.06em;margin-bottom:4px;">CHECKPOINT 02</div><div style="font-family:var(--sans);font-size:14px;color:#F5F5F0;margin-bottom:4px;">This record stands on its own without my verbal context.</div><div style="font-family:var(--sans);font-size:12px;color:#888880;font-weight:300;">Someone reading it without me present would reach the same conclusion I intend.</div></div>
-      </label>
-      <label style="display:flex;align-items:flex-start;gap:14px;background:#2C2C28;padding:16px 20px;cursor:pointer;" onclick="toggleGate(this)">
-        <div style="width:20px;height:20px;border:2px solid var(--amber-d);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" class="gate-check"><span style="display:none;color:var(--amber);font-family:var(--mono);font-size:14px;font-weight:600;">&#10003;</span></div>
-        <div><div style="font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.06em;margin-bottom:4px;">CHECKPOINT 03</div><div style="font-family:var(--sans);font-size:14px;color:#F5F5F0;margin-bottom:4px;">The reasoning behind this record existed before I asked AI to write it.</div><div style="font-family:var(--sans);font-size:12px;color:#888880;font-weight:300;">If the justification only exists because the AI produced it, this record has not passed the standard.</div></div>
-      </label>
-    </div>
-    <div id="gateResult" style="display:none;">
-      <div style="background:rgba(26,96,48,0.15);border-top:2px solid #1A6030;padding:20px 24px;margin-bottom:16px;">
-        <div style="font-family:var(--mono);font-size:11px;color:#70CC90;letter-spacing:0.08em;margin-bottom:8px;">JRS&#x2122; GATE PASSED</div>
-        <div style="font-family:var(--serif);font-size:16px;color:#F5F5F0;margin-bottom:8px;">This record is ready to save.</div>
-        <div style="font-family:var(--sans);font-size:13px;color:var(--offwht);line-height:1.6;">All three checkpoints confirmed. The record is grounded, stands on its own, and reflects independent human judgment.</div>
-      </div>
-    </div>
-    <button class="btn btn-secondary" onclick="checkGate()" style="width:100%;margin-top:8px;" id="gateBtn">Confirm All Three Checkpoints &nbsp;&#8594;</button>
   </div>
 </section>
 </div>
@@ -1346,6 +1300,15 @@ div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !importa
 </section>
 </div>
 
+<div class="container">
+<div style="background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(--amber-d);padding:24px 32px;margin:0 0 8px;">
+  <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.1em;margin-bottom:10px;">EARLY ADOPTER PROGRAM</div>
+  <p style="font-family:var(--serif);font-size:18px;color:#F5F5F0;margin-bottom:10px;line-height:1.4;">JRS&#x2122; is new. There are no case studies yet. That is genuinely an opportunity, not a limitation.</p>
+  <p style="font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;font-weight:300;margin-bottom:16px;">If you apply JRS&#x2122; and it changes how your team documents decisions, your experience matters. Early adopters who share outcomes help build the evidence base that makes this standard credible to the organizations that come next.</p>
+  <a href="https://www.linkedin.com/in/phillip-w-66192836b" class="btn btn-secondary" target="_blank" style="font-size:11px;">Share Your Experience &nbsp;&#8594;</a>
+</div>
+</div>
+
 <div class="container" id="assess">
 <section>
   <span class="section-label">SECTION 10 &nbsp;|&nbsp; DOCUMENTATION DEFENSIBILITY ASSESSMENT</span>
@@ -1456,7 +1419,7 @@ function rotateQuestion() {
     el.style.opacity = '1';
   }, 400);
 }
-setInterval(rotateQuestion, 5000);
+setInterval(rotateQuestion, 8000);
 
 // Scroll animations
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.06 });
@@ -1745,9 +1708,14 @@ const answers={};
 function selectOpt(el,q,score){el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');answers[q]=score;}
 function submitQuiz(){const total=['q1','q2','q3','q4','q5'].reduce((s,k)=>s+(answers[k]||0),0);let level,label,rec;if(total<=3){level='LOW EXPOSURE';label='Your documentation practices show foundational controls. Apply JRS\u2122 to formalize what you are already doing.';rec='The standard will reinforce your current approach and create a defensible record going forward.';}else if(total<=6){level='MODERATE EXPOSURE';label='Your organization has meaningful AI Documentation Risk. Some records may not survive independent review.';rec='The Implementation Kit gives you 30 redlines, a phrase risk reference, and a pre-submission checklist to address the gaps now.';}else{level='HIGH EXPOSURE';label='Your organization carries significant AI Documentation Risk. A pattern may already exist in your records.';rec='The Implementation Kit includes a pattern audit tool specifically designed to surface what your teams cannot see yet. Start here.';}document.getElementById('quiz-score-display').textContent=level;document.getElementById('quiz-score-label').textContent=label;document.getElementById('quiz-rec').textContent=rec;document.getElementById('quiz-result').classList.add('visible');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth',block:'nearest'});}
 
+// FAQ
+function showFaqTab(e,id){document.querySelectorAll('.faq-group').forEach(g=>g.classList.remove('active'));document.querySelectorAll('.faq-tab-btn').forEach(b=>b.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');e.target.classList.add('active');}
+function toggleFaq(el){const answer=el.nextElementSibling;const icon=el.querySelector('.faq-icon');if(!answer||!icon)return;const isOpen=answer.classList.contains('open');const grp=el.closest('.faq-group');if(grp){grp.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));grp.querySelectorAll('.faq-icon').forEach(i=>i.classList.remove('open'));}if(!isOpen){answer.classList.add('open');icon.classList.add('open');}}
+
 // Mobile menu
 function toggleMobileMenu(){const nav=document.getElementById('mobileNav');nav.classList.toggle('open');}
 function closeMobileMenu(){document.getElementById('mobileNav').classList.remove('open');}
+
 </script>
 
 </body>
