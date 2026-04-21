@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>JRS™ Justification Review Standard | AI Documentation Risk</title>
 <meta name="description" content="The operational standard for AI Documentation Risk. Applied before any record is finalized. Trusted by HR directors, employment attorneys, EPLI carriers, and compliance teams.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,6 +73,9 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .btn-primary:hover{background:var(--amber-f);transform:translateY(-1px);box-shadow:0 4px 16px rgba(196,150,30,0.3);}
 .btn-secondary{background:transparent;color:var(--amber);border:1px solid var(--amber-d);}
 .btn-secondary:hover{background:rgba(196,150,30,0.1);}
+/* MOD 2: de-emphasized secondary button variant */
+.btn-secondary-dim{background:transparent;color:#888880;border:1px solid #3a3a38;}
+.btn-secondary-dim:hover{background:rgba(196,150,30,0.06);color:var(--amber);border-color:var(--amber-d);}
 .btn-full{display:block;width:100%;text-align:center;}
 .hero{padding:72px 0 56px;border-bottom:1px solid #2A2A28;}
 .category-tag{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.12em;margin-bottom:24px;display:block;}
@@ -108,20 +111,17 @@ section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .phrase-grid-item:hover{background:rgba(139,32,32,0.25);border-left-color:#8B2020;}
 .pg-cat{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.08em;margin-bottom:4px;}
 .pg-phrase{font-family:var(--mono);font-size:12px;color:#CC7070;text-decoration:line-through;text-decoration-color:rgba(139,32,32,0.6);}
-/* ============================================
-QUICK CHECK — INTEGRATED SECTION
-PATCH 1: All CSS vars use -- (double hyphen), not en-dash
-============================================ */
 .qc-section{padding:64px 0;border-bottom:1px solid #2A2A28;}
 .qc-wrap{background:#1A1A18;border:1px solid #2A2A28;border-top:4px solid var(--amber);padding:40px;margin-top:32px;}
 .qc-header-line{font-family:var(--serif);font-size:28px;font-weight:700;color:#F5F5F0;margin-bottom:6px;line-height:1.2;}
-.qc-subhead{font-family:var(--mono);font-size:12px;color:var(--offwht);margin-bottom:32px;font-style:italic;letter-spacing:0.02em;}
+.qc-subhead{font-family:var(--mono);font-size:12px;color:var(--offwht);margin-bottom:8px;font-style:italic;letter-spacing:0.02em;}
 .qc-type-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;display:block;}
 .qc-types{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
 .qc-type-btn{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.04em;padding:8px 14px;border:1.5px solid #2A2A28;background:transparent;color:#888880;cursor:pointer;transition:all 0.15s ease;border-radius:1px;}
 .qc-type-btn:hover{border-color:var(--amber-d);color:#F5F5F0;background:#2C2C28;}
 .qc-type-btn.selected{border-color:var(--amber);background:var(--amber);color:#0A0A09;}
-.qc-input-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.qc-input-label{font-family:var(--mono);font-size:10px;color:#888880;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;display:block;}
+.qc-micro-instruction{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.04em;margin-bottom:12px;display:block;font-style:italic;}
 .qc-textarea{width:100%;min-height:180px;padding:18px;font-family:var(--serif);font-size:15px;line-height:1.7;color:#F5F5F0;background:#111110;border:1.5px solid #2A2A28;border-radius:1px;resize:vertical;transition:border-color 0.2s;outline:none;margin-bottom:16px;}
 .qc-textarea:focus{border-color:var(--amber-d);background:#0A0A09;}
 .qc-textarea::placeholder{color:#555550;font-style:italic;}
@@ -160,6 +160,8 @@ PATCH 1: All CSS vars use -- (double hyphen), not en-dash
 .qc-copy-confirm.visible{display:block;}
 .qc-reset-btn{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#555550;background:none;border:none;cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px;margin-top:8px;}
 .qc-reset-btn:hover{color:var(--offwht);}
+/* MOD 10: rotating question */
+.rotating-question{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:0.06em;min-height:24px;transition:opacity 0.4s ease;}
 .simulator{background:#1A1A18;border:1px solid #2A2A28;border-top:3px solid var(--amber);padding:32px;margin:40px 0;}
 .sim-title{font-family:var(--serif);font-size:22px;color:#F5F5F0;margin-bottom:8px;}
 .sim-sub{font-family:var(--sans);font-size:14px;color:var(--offwht);margin-bottom:24px;font-weight:300;}
@@ -397,25 +399,237 @@ footer{background:#111110;border-top:1px solid #2A2A28;padding:32px 0;}
 .fade-up-1{animation-delay:0.1s;}.fade-up-2{animation-delay:0.25s;}
 .fade-up-3{animation-delay:0.4s;}.fade-up-4{animation-delay:0.55s;}
 @media(max-width:768px){
+/* ---- STRUCTURE ---- */
 body::after{display:none;}
-.container{padding:0 24px;}.doc-header-inner{padding:0 24px;}
-.footer-inner{padding:0 24px;}.clarity-bar-inner{padding:0 24px;}
-.countdown-inner{padding:0 24px;}
+body::before{display:none;}
+.line-numbers{display:none;}
+
+/* All containers: remove left-heavy padding, use safe 16px sides */
+.container{padding:0 16px;}
+.doc-header-inner{padding:0 16px;}
+.footer-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:20px;}
+.clarity-bar-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:8px;}
+.countdown-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:10px;}
+
+/* ---- HEADER ---- */
 nav{display:none;}
+.doc-header-inner{height:44px;}
+.doc-meta{font-size:10px;}
+
+/* ---- TYPOGRAPHY ---- */
+h2{font-size:24px;line-height:1.2;}
+p{font-size:15px;line-height:1.7;}
+.hero-title{font-size:36px;line-height:1.05;letter-spacing:-0.01em;}
+.hero-sub{font-size:17px;line-height:1.5;}
+.hero-statement{font-size:12px;line-height:1.7;}
+.pull-quote p{font-size:17px;}
+.closing-line1,.closing-line2{font-size:22px;}
+.section-label{font-size:9px;letter-spacing:0.08em;}
+
+/* ---- TOP CTA BANNER ---- */
+.mobile-cta-banner-inner{padding:0 16px !important;flex-direction:column !important;align-items:stretch !important;gap:12px !important;}
+.mobile-cta-banner-inner > div:first-child span:last-child{font-size:13px !important;}
+.mobile-cta-banner-inner > div:last-child{flex-direction:column !important;gap:8px !important;}
+.mobile-cta-banner-inner a{text-align:center !important;padding:12px 16px !important;font-size:11px !important;}
+
+/* ---- SECTIONS ---- */
+section{padding:40px 0;}
+.hero{padding:40px 0 32px;}
+
+/* ---- GRIDS: all collapse to single column ---- */
 .standard-grid,.reg-grid,.product-grid,.before-after,
 .stat-bar,.roi-inputs,.steps-visual,
 .trigger-grid,.enterprise-process,.tier-clarifier,
-.phrase-grid-8,.enforcement-grid,.sc-grid{grid-template-columns:1fr;}
+.phrase-grid-8,.enforcement-grid,.sc-grid,
+.tab-cta-row{grid-template-columns:1fr;}
 .step-arrow{display:none;}
 .phrase-item{grid-template-columns:1fr;}
 .phrase-cat{border-right:none;border-bottom:1px solid #2A2A28;}
 .enterprise-card,.team-spotlight{grid-template-columns:1fr;}
 .authority-block{grid-template-columns:1fr;}
-.hero-title{font-size:40px;}h2{font-size:26px;}
+.authority-icon{display:none;}
 .quiz-email-row{grid-template-columns:1fr;}
-.qc-types{gap:6px;}
 .qc-flags .qc-flag-item{flex-direction:column;gap:4px;}
 .qc-flag-type{min-width:auto;}
+
+/* ---- STAT BAR ---- */
+.stat-bar{display:flex;flex-direction:column;border:none;gap:2px;}
+.stat-item{padding:14px 16px;}
+.stat-number{font-size:22px;}
+.stat-label{font-size:11px;}
+
+/* ---- QC SECTION ---- */
+.qc-wrap{padding:24px 16px;}
+.qc-header-line{font-size:22px;}
+.qc-subhead{font-size:11px;}
+.qc-types{gap:6px;}
+.qc-type-btn{font-size:10px;padding:7px 10px;}
+.qc-textarea{font-size:14px;min-height:140px;padding:14px;}
+.qc-submit{font-size:11px;padding:14px 20px;}
+.qc-fail-main{font-size:20px;}
+.qc-fail-detail{font-size:13px;}
+.qc-success-main{font-size:18px;}
+.qc-success-sub{font-size:13px;}
+.qc-rewrite-prompt{font-size:12px;}
+.qc-again-btn{font-size:10px;padding:12px 16px;}
+
+/* ---- PROOF LAYER ---- */
+.proof-layer-phrases > div{font-size:13px;padding:8px 12px;}
+
+/* ---- HERO CTA BUTTONS ---- */
+.hero-cta{flex-direction:column;align-items:stretch;}
+.hero-cta a{text-align:center;padding:13px 16px;font-size:11px;}
+
+/* ---- AUTHORITY BLOCK ---- */
+.authority-block{padding:20px 16px;}
+.authority-text{font-size:14px;}
+
+/* ---- PHRASES EARLY ---- */
+.phrases-early{padding:20px 16px;}
+.pe-title{font-size:17px;}
+.pg-phrase{font-size:11px;}
+
+/* ---- STRIKE DEMO ---- */
+.before-box,.after-box{padding:12px 12px;}
+.before-text,.after-text{font-size:12px;}
+
+/* ---- COUNTDOWN ---- */
+.clock-num{font-size:18px;}
+.countdown-text{font-size:11px;}
+
+/* ---- TABS ---- */
+.tab-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+.tab-btn{font-size:10px;padding:8px 12px;white-space:nowrap;flex-shrink:0;}
+.tab-pane{padding:20px 16px;}
+.tab-pane h3{font-size:18px;}
+.tab-pane p{font-size:13px;}
+.tab-pain,.tab-solution{font-size:11px;padding:8px 12px;}
+.tab-cta-row{display:flex;flex-direction:column;gap:8px;}
+.tab-cta-row a{text-align:center;font-size:11px;}
+
+/* ---- SIMULATOR ---- */
+.simulator{padding:20px 16px;}
+.sim-title{font-size:18px;}
+.sim-input{font-size:13px;}
+.sim-verdict{font-size:11px;}
+.sim-flag{font-size:10px;}
+
+/* ---- SCORECARD ---- */
+.scorecard{padding:20px 16px;}
+.sc-val{font-size:20px;}
+.sc-desc{font-size:10px;}
+
+/* ---- STANDARD GRID ---- */
+.standard-item{padding:16px;}
+.standard-num{font-size:22px;}
+.standard-text{font-size:13px;}
+
+/* ---- TRUST BAR ---- */
+.trust-bar{flex-direction:column;}
+.trust-item{min-width:100%;}
+
+/* ---- ENFORCEMENT ---- */
+.enforcement-section{padding:20px 16px;}
+.ef-name{font-size:13px;}
+.ef-power{font-size:11px;}
+.ef-penalty{font-size:10px;}
+
+/* ---- BLINDSPOT ---- */
+.blindspot-item{padding:18px 16px;}
+.blindspot-head{font-size:14px;}
+.blindspot-body{font-size:13px;}
+.blindspot-fix{font-size:11px;}
+
+/* ---- CASE LAW ---- */
+.case-name{font-size:10px;}
+.case-desc{font-size:12px;}
+.case-implication{font-size:10px;}
+
+/* ---- PRODUCTS ---- */
+.product-card{padding:20px 16px;}
+.product-name{font-size:18px;}
+.product-price{font-size:24px;}
+.product-desc{font-size:12px;}
+.product-features li{font-size:10px;}
+.enterprise-card{padding:20px 16px;}
+.enterprise-name{font-size:18px;}
+.enterprise-desc{font-size:12px;}
+
+/* ---- TEAM SPOTLIGHT ---- */
+.team-spotlight{padding:20px 16px;}
+.ts-name{font-size:18px;}
+.ts-price{font-size:20px;}
+.ts-desc{font-size:12px;}
+
+/* ---- COMPARE TABLE ---- */
+.compare-table th,.compare-table td{font-size:11px;padding:8px 10px;}
+
+/* ---- ROI CALC ---- */
+.roi-calc{padding:20px 16px;}
+.roi-inputs{display:flex;flex-direction:column;gap:12px;}
+.roi-result-number{font-size:26px;}
+.roi-result-note{font-size:11px;}
+
+/* ---- QUIZ ---- */
+.quiz-block{padding:20px 16px;}
+.quiz-title{font-size:18px;}
+.quiz-q-text{font-size:13px;}
+.quiz-opt{font-size:10px;padding:7px 10px;}
+.quiz-email-row input{font-size:14px;padding:12px;}
+
+/* ---- FAQ ---- */
+.faq-tab-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+.faq-tab-btn{font-size:9px;padding:7px 10px;white-space:nowrap;flex-shrink:0;}
+.faq-q{font-size:13px;padding:14px 0;}
+.faq-a{font-size:13px;}
+
+/* ---- TRIGGER GRID ---- */
+.trigger-item{padding:14px 12px;}
+.trigger-moment{font-size:9px;}
+.trigger-desc{font-size:12px;}
+
+/* ---- MICRO-CERT ---- */
+.micro-cert{padding:20px 16px;}
+.mc-statement{font-size:15px;}
+.mc-opt{font-size:11px;padding:9px 12px;}
+
+/* ---- PHRASE TABLE ---- */
+.phrase-table th{font-size:7px;padding:6px 8px;}
+.phrase-table td{font-size:10px;padding:6px 8px;}
+.free-resource{padding:20px 16px;}
+.fr-title{font-size:18px;}
+
+/* ---- SIMPLE VERSION ---- */
+.simple-text{font-size:15px;}
+
+/* ---- JUSTIFICATION GATE ---- */
+.justGate-inner{padding:20px 16px !important;}
+
+/* ---- CLOSING ---- */
+.closing{padding:48px 0 40px;}
+
+/* ---- FOOTER ---- */
+.footer-links{flex-wrap:wrap;gap:16px;}
+.footer-links a{font-size:10px;}
+.footer-brand{font-size:10px;}
+}
+/* CTA banner mobile override (separate block to override inline styles) */
+@media(max-width:768px){
+.cta-banner-inner{padding:12px 16px !important;flex-direction:column !important;align-items:stretch !important;gap:12px !important;}
+.cta-banner-btns{flex-direction:column !important;width:100% !important;flex-shrink:unset !important;}
+.btn-cta-primary,.cta-banner-btns a{text-align:center !important;display:block !important;}
+/* force all hardcoded 120px-left containers */
+div[style*="padding:0 40px 0 120px"]{padding:0 16px !important;}
+div[style*="padding:0 40px 0 120px"][style*="max-width"]{padding:0 16px !important;}
+}
+/* ---- MOBILE MENU ---- */
+.mobile-menu-btn{display:none;background:none;border:none;color:var(--amber);font-size:20px;cursor:pointer;padding:4px 8px;line-height:1;}
+.mobile-nav{display:none;background:#0A0A09;border-bottom:1px solid #2A2A28;padding:8px 0;}
+.mobile-nav a{display:block;font-family:var(--mono);font-size:12px;color:#888880;text-decoration:none;padding:12px 16px;letter-spacing:0.06em;border-bottom:1px solid #1A1A18;}
+.mobile-nav a:hover,.mobile-nav a:first-child{color:var(--amber);}
+.mobile-nav.open{display:block;}
+@media(max-width:768px){
+.mobile-menu-btn{display:block;}
 }
 </style>
 </head>
@@ -436,18 +650,34 @@ nav{display:none;}
       <a href="#licensing">Enterprise</a>
     </nav>
     <span class="doc-version">v1.0</span>
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Menu">&#9776;</button>
+  </div>
+  <!-- Mobile nav drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#quick-check" onclick="closeMobileMenu()">Quick Check</a>
+    <a href="#standard" onclick="closeMobileMenu()">Standard</a>
+    <a href="#audience" onclick="closeMobileMenu()">Who It Serves</a>
+    <a href="#enforcers" onclick="closeMobileMenu()">Enforcers</a>
+    <a href="#risk" onclick="closeMobileMenu()">The Risk</a>
+    <a href="#simulator" onclick="closeMobileMenu()">Simulator</a>
+    <a href="#products" onclick="closeMobileMenu()">Apply It</a>
+    <a href="#assess" onclick="closeMobileMenu()">Assess</a>
+    <a href="#licensing" onclick="closeMobileMenu()">Enterprise</a>
   </div>
 </header>
 
+<!-- MOD 2: Primary CTA dominant, secondary de-emphasized -->
 <div style="background:var(--near);border-bottom:2px solid var(--amber);padding:16px 0;">
-  <div style="max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <div class="cta-banner-inner" style="max-width:960px;margin:0 auto;padding:0 40px 0 120px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
     <div>
       <span style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;display:block;margin-bottom:4px;">Free Standard + Quick Check</span>
       <span style="font-family:var(--sans);font-size:14px;color:#F5F5F0;font-weight:300;">No login. No cost. Apply it before the next record you save.</span>
     </div>
-    <div style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;">
-      <a href="#quick-check" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;padding:10px 20px;background:var(--amber);color:#0A0A09;text-decoration:none;">Run the Quick Check &nbsp;&#8594;</a>
-      <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;padding:10px 20px;background:transparent;color:var(--amber);border:1px solid var(--amber-d);text-decoration:none;">Download the Standard &nbsp;&#8594;</a>
+    <div class="cta-banner-btns" style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;align-items:center;">
+      <a href="#quick-check" class="btn-cta-primary" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;padding:10px 20px;background:var(--amber);color:#0A0A09;text-decoration:none;">Run the Quick Check &nbsp;&#8594;</a>
+      <!-- MOD 2: Lighter border, reduced contrast on secondary -->
+      <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0.06em;padding:10px 20px;background:transparent;color:#888880;border:1px solid #3a3a38;text-decoration:none;transition:color 0.2s,border-color 0.2s;">View the Full Standard &nbsp;&#8594;</a>
     </div>
   </div>
 </div>
@@ -460,63 +690,76 @@ nav{display:none;}
   <p>Paste any record you are about to finalize. The check runs instantly. If anything needs attention, you will know before it becomes permanent.</p>
   <p style="font-family:var(--mono);font-size:11px;color:#888880;margin-bottom:0;">No login. No scoring. No onboarding. &nbsp;|&nbsp; Paste &#8594; Check &#8594; Fix &#8594; Save</p>
 
+  <!-- MOD 4: Proof layer before the tool -->
+  <div style="background:#1A1A18;border:1px solid #2A2A28;border-left:4px solid var(--red);padding:24px 28px;margin:32px 0 0;">
+    <span style="font-family:var(--mono);font-size:10px;color:#CC7070;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:14px;">WHAT BREAKS UNDER REVIEW</span>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+      <div style="font-family:var(--mono);font-size:14px;color:#CC7070;padding:8px 14px;background:rgba(139,32,32,0.1);border-left:2px solid #8B2020;">"Lacks professionalism"</div>
+      <div style="font-family:var(--mono);font-size:14px;color:#CC7070;padding:8px 14px;background:rgba(139,32,32,0.1);border-left:2px solid #8B2020;">"Not a strong cultural fit"</div>
+      <div style="font-family:var(--mono);font-size:14px;color:#CC7070;padding:8px 14px;background:rgba(139,32,32,0.1);border-left:2px solid #8B2020;">"Attendance issues"</div>
+    </div>
+    <p style="font-family:var(--sans);font-size:14px;color:var(--offwht);line-height:1.7;margin:0;">These sound complete. Under review, they fail one question:<br><strong style="color:#F5F5F0;">What is this based on?</strong></p>
+  </div>
+
   <div class="qc-wrap">
     <div class="qc-header-line">Check your record.</div>
-    <div class="qc-subhead">If someone asked "Based on what?" — could the record answer on its own?</div>
+    <!-- MOD 10: Rotating question -->
+    <div class="qc-subhead" id="rotatingQuestion">If someone asked "Based on what?" — could the record answer on its own?</div>
+    <!-- MOD 3: Friction removal line -->
+    <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:0 0 28px;letter-spacing:0.02em;">This takes less than 10 seconds. No data is saved.</p>
 
-```
-<span class="qc-type-label">What type of record is this?</span>
-<div class="qc-types" id="qcTypes">
-  <button class="qc-type-btn" data-type="manager-note">Manager note</button>
-  <button class="qc-type-btn" data-type="performance-review">Performance review</button>
-  <button class="qc-type-btn" data-type="discipline">Disciplinary record</button>
-  <button class="qc-type-btn" data-type="termination">Termination</button>
-  <button class="qc-type-btn" data-type="investigation">Investigation / complaint</button>
-  <button class="qc-type-btn" data-type="other">Other</button>
-</div>
-
-<span class="qc-input-label">Paste your documentation</span>
-<textarea class="qc-textarea" id="qcInput" placeholder="Paste your documentation here — review, note, decision, or record."></textarea>
-<button class="qc-submit" id="qcSubmit" disabled onclick="qcRunCheck()">Check it</button>
-
-<hr class="qc-divider" id="qcDivider" style="display:none;">
-
-<div class="qc-output" id="qcOutput">
-
-  <div id="qcFailure" style="display:none;">
-    <div class="qc-fail">
-      <div class="qc-fail-label">Review finding</div>
-      <div class="qc-fail-main" id="qcFailMain"></div>
-      <div class="qc-fail-detail" id="qcFailDetail"></div>
-      <div class="qc-flags" id="qcFlags" style="display:none;"></div>
+    <span class="qc-type-label">What type of record is this?</span>
+    <div class="qc-types" id="qcTypes">
+      <button class="qc-type-btn" data-type="manager-note">Manager note</button>
+      <button class="qc-type-btn" data-type="performance-review">Performance review</button>
+      <button class="qc-type-btn" data-type="discipline">Disciplinary record</button>
+      <button class="qc-type-btn" data-type="termination">Termination</button>
+      <button class="qc-type-btn" data-type="investigation">Investigation / complaint</button>
+      <button class="qc-type-btn" data-type="other">Other</button>
     </div>
-    <div class="qc-rewrite">
-      <span class="qc-rewrite-label">Revision prompt</span>
-      <div class="qc-rewrite-prompt" id="qcRewritePrompt"></div>
-      <textarea class="qc-textarea" id="qcRewriteArea" placeholder="Revise your documentation here..." style="min-height:140px;margin-top:12px;"></textarea>
-      <button class="qc-again-btn" onclick="qcCheckAgain()">Check again &#8594;</button>
+
+    <span class="qc-input-label">Paste your documentation</span>
+    <!-- MOD 8: Micro-instruction above textarea -->
+    <span class="qc-micro-instruction">Paste a real record. Not a draft. What you are about to save.</span>
+    <textarea class="qc-textarea" id="qcInput" placeholder="Paste your documentation here — review, note, decision, or record."></textarea>
+    <button class="qc-submit" id="qcSubmit" disabled onclick="qcRunCheck()">Check it</button>
+
+    <hr class="qc-divider" id="qcDivider" style="display:none;">
+
+    <div class="qc-output" id="qcOutput">
+
+      <div id="qcFailure" style="display:none;">
+        <div class="qc-fail">
+          <div class="qc-fail-label">Review finding</div>
+          <div class="qc-fail-main" id="qcFailMain"></div>
+          <div class="qc-fail-detail" id="qcFailDetail"></div>
+          <div class="qc-flags" id="qcFlags" style="display:none;"></div>
+        </div>
+        <div class="qc-rewrite">
+          <span class="qc-rewrite-label">Revision prompt</span>
+          <div class="qc-rewrite-prompt" id="qcRewritePrompt"></div>
+          <textarea class="qc-textarea" id="qcRewriteArea" placeholder="Revise your documentation here..." style="min-height:140px;margin-top:12px;"></textarea>
+          <button class="qc-again-btn" onclick="qcCheckAgain()">Check again &#8594;</button>
+        </div>
+      </div>
+
+      <div id="qcSuccess" style="display:none;">
+        <div class="qc-success">
+          <div class="qc-success-label">Review finding</div>
+          <!-- MOD 5: Updated success verdict -->
+          <div class="qc-success-main">This stands on its own and would hold under independent review.</div>
+          <div class="qc-success-sub">A third party could understand this without you.</div>
+          <div class="qc-proof-line">Records that stand on their own are the ones that hold up later. This is one of them.</div>
+          <div class="qc-proof-line" style="font-style:normal;font-weight:500;color:#70CC90;margin-top:6px;">No additional explanation required.</div>
+          <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">View the Standard</a></div>
+        </div>
+        <div class="qc-retention" id="qcRetention"></div>
+        <button class="qc-share-btn" onclick="qcCopyLink()">If someone on your team is about to save a record, send them here first.</button>
+        <div class="qc-copy-confirm" id="qcCopyConfirm">&#8593; Link copied to clipboard</div>
+        <button class="qc-reset-btn" onclick="qcReset()">Check another record</button>
+      </div>
+
     </div>
-  </div>
-
-  <div id="qcSuccess" style="display:none;">
-    <div class="qc-success">
-      <div class="qc-success-label">Review finding</div>
-      <div class="qc-success-main">This stands on its own under review.</div>
-      <div class="qc-success-sub">A third party could understand this without you.</div>
-      <!-- PATCH 4: Confidence close -->
-      <div class="qc-proof-line">Records that stand on their own are the ones that hold up later. This is one of them.</div>
-      <div class="qc-proof-line" style="font-style:normal;font-weight:500;color:#70CC90;margin-top:6px;">No additional explanation required.</div>
-      <div class="qc-standard-link">Based on the JRS&#x2122; Standard &nbsp;&#8594;&nbsp; <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">View the Standard</a></div>
-    </div>
-    <div class="qc-retention" id="qcRetention"></div>
-    <button class="qc-share-btn" onclick="qcCopyLink()">If someone on your team is about to save a record, send them here first.</button>
-    <div class="qc-copy-confirm" id="qcCopyConfirm">&#8593; Link copied to clipboard</div>
-    <button class="qc-reset-btn" onclick="qcReset()">Check another record</button>
-  </div>
-
-</div>
-```
-
   </div>
 </section>
 </div>
@@ -566,10 +809,11 @@ nav{display:none;}
 <div class="container">
 <section class="hero">
   <span class="category-tag fade-up fade-up-1">JUSTIFICATION REVIEW STANDARD &nbsp;|&nbsp; OPERATIONAL STANDARD FOR AI DOCUMENTATION RISK</span>
-  <h1 class="hero-title fade-up fade-up-2">AI Is Not<br>Your Risk.<br><span>Your Records Are.</span></h1>
+  <!-- MOD 1: Updated hero headline -->
+  <h1 class="hero-title fade-up fade-up-2">AI Didn't<br>Create the Risk.<br><span>The Record Did.</span></h1>
   <div class="amber-rule fade-up fade-up-3"></div>
-  <!-- PATCH 5: Updated hero subhead -->
-  <p class="hero-sub fade-up fade-up-3">Every day, people lose jobs and opportunities based on AI-generated language that nobody checked before it became the record. JRS&#x2122; is the five-minute control applied before any record is finalized.</p>
+  <!-- MOD 1b: Updated hero subtext -->
+  <p class="hero-sub fade-up fade-up-3">Most records sound complete until someone asks one question: <em>What is this based on?</em><br><br>If that answer is not in the record, it does not hold.</p>
   <div class="stat-bar fade-up fade-up-3">
     <div class="stat-item"><div class="stat-number">$700M+</div><div class="stat-label">Recovered by EEOC for discrimination claimants in FY2024 alone</div></div>
     <div class="stat-item"><div class="stat-number">5 min</div><div class="stat-label">Time required to apply JRS&#x2122; before any record is finalized</div></div>
@@ -611,11 +855,13 @@ nav{display:none;}
 </div>
 
 <div class="container">
+<!-- MOD 7: About section — issue before origin -->
 <div class="authority-block">
   <div class="authority-icon">&#9632;</div>
   <div>
     <span class="authority-label">WHY THIS STANDARD EXISTS &nbsp;|&nbsp; THE ORIGIN</span>
-    <p class="authority-text"><strong>As a former Lead Civil Rights Officer, I reviewed hundreds of discrimination complaints.</strong> The pattern was consistent across organizations, industries, and decision types. The issue was rarely the decision. It was almost always how the decision was explained. AI has made that problem worse at a scale no organization has fully reckoned with. JRS&#x2122; was built to close that gap at the only point where it can be closed: before the record is saved.</p>
+    <p class="authority-text"><strong>The issue is rarely the decision. It is how it was documented.</strong></p>
+    <p class="authority-text">As a former Lead Civil Rights Officer, I reviewed hundreds of discrimination complaints. The pattern was consistent across organizations, industries, and decision types. AI has made that problem worse at a scale no organization has fully reckoned with. JRS&#x2122; was built to close that gap at the only point where it can be closed: before the record is saved.</p>
     <p style="font-family:var(--mono);font-size:11px;color:#888880;margin:8px 0 0;letter-spacing:0.04em;">Phillip Wikes &nbsp;|&nbsp; AI Governance and Cognitive Risk Advisor &nbsp;|&nbsp; Creator of JRS&#x2122;</p>
   </div>
 </div>
@@ -877,7 +1123,8 @@ nav{display:none;}
   <h2>AI Documentation Risk</h2>
   <div class="amber-underline"></div>
   <p>There is a concept worth naming here: Documentation Debt. It builds up whenever AI writes the reasoning for an employment record and no one stops to check whether that reasoning actually holds. Every record saved without that check adds to the debt. When it is reviewed later, the debt comes due.</p>
-  <p>This is moving from best practice to expected documentation standard. The EU AI Act, state bias audit mandates, and ongoing litigation are not creating new obligations so much as making existing ones visible. Organizations that have documentation controls in place will be in a meaningfully different position from those that do not. That window is open now.</p>
+  <!-- MOD 6: Removed redundant sentence — kept the cleaner, scaled version -->
+  <p>AI is now scaling that problem at a rate no organization has fully reckoned with. The EU AI Act, state bias audit mandates, and ongoing litigation are not creating new obligations so much as making existing ones visible. Organizations that have documentation controls in place will be in a meaningfully different position from those that do not. That window is open now.</p>
   <p>The people most affected are often the most vulnerable. People of color, women, older workers, people with disabilities, and anyone whose background sits outside what the organization silently treats as the default.</p>
   <div class="pull-quote"><p>"The issue was rarely the decision. It was almost always how the decision was explained."</p></div>
   <div class="phrase-list">
@@ -1159,9 +1406,13 @@ nav{display:none;}
 </div>
 </div>
 
+<!-- MOD 9: Footer with reinforcement line -->
 <footer>
   <div class="footer-inner">
-    <span class="footer-brand">JRS&#x2122; &nbsp;|&nbsp; AI Documentation Risk &nbsp;|&nbsp; v1.0 &nbsp;|&nbsp; &copy; 2026 Phillip Wikes. All rights reserved.</span>
+    <div>
+      <span class="footer-brand">JRS&#x2122; &nbsp;|&nbsp; AI Documentation Risk &nbsp;|&nbsp; v1.0 &nbsp;|&nbsp; &copy; 2026 Phillip Wikes. All rights reserved.</span>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.06em;margin-top:6px;">Apply before saving. Every record.</div>
+    </div>
     <div class="footer-links">
       <a href="#quick-check">Quick Check</a>
       <a href="https://phillipwikes-bit.github.io/jrs-website" target="_blank">Standard</a>
@@ -1187,6 +1438,26 @@ function updateCountdown() {
 }
 updateCountdown(); setInterval(updateCountdown, 30000);
 
+// MOD 10: Rotating question
+const rotatingQuestions = [
+  'If someone asked "Based on what?" — could the record answer on its own?',
+  'Does this stand on its own?',
+  'What is this based on?',
+  'Would this hold up without you?'
+];
+let rqIndex = 0;
+function rotateQuestion() {
+  const el = document.getElementById('rotatingQuestion');
+  if (!el) return;
+  el.style.opacity = '0';
+  setTimeout(() => {
+    rqIndex = (rqIndex + 1) % rotatingQuestions.length;
+    el.textContent = rotatingQuestions[rqIndex];
+    el.style.opacity = '1';
+  }, 400);
+}
+setInterval(rotateQuestion, 5000);
+
 // Scroll animations
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.06 });
 document.querySelectorAll('section,.closing,.authority-block').forEach(el => { if (!el.classList.contains('hero') && !el.classList.contains('qc-section')) { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.6s ease,transform 0.6s ease'; obs.observe(el); } });
@@ -1201,14 +1472,7 @@ function showTab(e, id) { document.querySelectorAll('.tab-pane').forEach(p => p.
 function calcROI() { const emp=parseInt(document.getElementById('roi-employees').value)||0; const rate=parseFloat(document.getElementById('roi-records').value)||0.25; const cost=parseInt(document.getElementById('roi-cost').value)||75000; document.getElementById('roi-number').textContent='$'+Math.round(emp*rate*0.02*0.15*cost).toLocaleString(); }
 calcROI();
 
-// ============================================
-// QUICK CHECK ENGINE
-// PATCH 1: CSS vars fixed throughout
-// PATCH 2: "A reviewer will ask" replacing bureaucratic role language
-// PATCH 3: Pre-save trigger injected in qcShowFailure
-// PATCH 4: Confidence close in success HTML above
-// PATCH 8: Upgraded bias_risk detection patterns
-// ============================================
+// Quick Check Engine
 let qcSelectedType = null;
 let qcUseCount = 0;
 
@@ -1227,7 +1491,6 @@ function qcUpdateSubmit() {
   document.getElementById('qcSubmit').disabled = !(hasText && qcSelectedType);
 }
 
-// PATCH 8: Upgraded bias_risk patterns — catches more phrasing variants
 const qcFlags = {
   vague: { patterns: [/\battitude\b/i,/difficult to work with/i,/not meeting expectations/i,/needs improvement/i,/unprofessional/i,/negative (attitude|behavior)/i,/poor performance/i,/not a (good |strong )?fit/i,/cultural fit/i,/lacks professionalism/i], type: 'Vague language' },
   bias_risk: { patterns: [
@@ -1249,7 +1512,6 @@ const qcFlags = {
   accommodation: { patterns: [/attendance (issues|problems|concerns)/i,/inconsistent (performance|attendance)/i,/needs too much support/i,/unreliable/i,/frequently absent/i,/misses (work|shifts|days)/i,/attendance affecting/i,/excessive (absences|tardiness)/i], type: 'Accommodation status' }
 };
 
-// PATCH 2: All "approver/supervisor/HR partner/manager who approved" → "A reviewer"
 const qcOutput = {
   'manager-note': {
     vague: { main:'This relies on interpretation.', detail:'What specifically happened? A reviewer cannot evaluate an impression. Only what was observed is on record.', rewrite:'Replace interpretation with observation. What was seen or heard?' },
@@ -1353,7 +1615,6 @@ function qcShowFailure(detected, type) {
   const primary = detected[0];
   const out = qcGetOutput(type, primary.key);
 
-  // PATCH 3: Pre-save trigger — always shown at top of fail panel
   const oldPresave = document.getElementById('qcPresaveTrigger');
   if (oldPresave) oldPresave.remove();
   const presaveEl = document.createElement('div');
@@ -1422,9 +1683,7 @@ function qcReset() {
   document.getElementById('quick-check').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ============================================
-// SIMULATOR
-// ============================================
+// Simulator
 const riskPhrases = [
   {pattern:/cultural fit/i,risk:'PATTERN RISK: RACE / BACKGROUND',explanation:'"Cultural fit" has no observable definition. It cannot be evaluated independently and is one of the most cited phrases in EEOC discrimination complaints. Replace with defined collaboration criteria grounded in documented feedback.'},
   {pattern:/executive presence/i,risk:'PATTERN RISK: GENDER / RACE',explanation:'"Executive presence" has no standard definition and is frequently cited in gender and race discrimination claims. Replace with defined communication standards and specific observed behaviors.'},
@@ -1457,7 +1716,7 @@ function runSimulator() {
   if (obsCount >= 3 && found.length === 0) { tier = 'LOWER RISK'; tierClass = 'low'; }
 
   const verdictEl = document.getElementById('simResult');
-  verdictEl.innerHTML = '<div class="sim-verdict '+tierClass+'">'+tier+'</div><div class="sim-flags">'+( flagHtml || '<div style="font-family:var(--mono);font-size:11px;color:#70CC90;padding:8px 0;">No specific risk phrases detected. Continue to step 2: check for vague or ungrounded language.</div>')+'</div><div class="sim-suggestion"><div class="sim-sug-label">JRS&#x2122; REPLACEMENT APPROACH</div><div class="sim-sug-text">'+( tier==='HIGH RISK' ? 'This language is unlikely to hold up under independent review. Remove impression-based language and replace with: (1) the specific standard not met, (2) the documented evidence, and (3) the dates and sources.' : tier==='REVIEW NEEDED' ? 'This language carries meaningful risk. Review for phrases linked to protected categories. Confirm every claim can be traced to a documented behavior, metric, or feedback record.' : 'This language shows stronger defensibility. Before finalizing, confirm it stands on its own without your context and every claim is traceable to something observable in the file.')+'</div></div>';
+  verdictEl.innerHTML = '<div class="sim-verdict '+tierClass+'">'+tier+'</div><div class="sim-flags">'+( flagHtml || '<div style="font-family:var(--mono);font-size:11px;color:#70CC90;padding:8px 0;">No specific risk phrases detected. Continue to step 2: check for vague or ungrounded language.</div>')+'</div><div class="sim-suggestion"><div class="sim-sug-label">JRS\u2122 REPLACEMENT APPROACH</div><div class="sim-sug-text">'+( tier==='HIGH RISK' ? 'This language is unlikely to hold up under independent review. Remove impression-based language and replace with: (1) the specific standard not met, (2) the documented evidence, and (3) the dates and sources.' : tier==='REVIEW NEEDED' ? 'This language carries meaningful risk. Review for phrases linked to protected categories. Confirm every claim can be traced to a documented behavior, metric, or feedback record.' : 'This language shows stronger defensibility. Before finalizing, confirm it stands on its own without your context and every claim is traceable to something observable in the file.')+'</div></div>';
   verdictEl.classList.add('visible');
   verdictEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
@@ -1486,9 +1745,9 @@ const answers={};
 function selectOpt(el,q,score){el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');answers[q]=score;}
 function submitQuiz(){const total=['q1','q2','q3','q4','q5'].reduce((s,k)=>s+(answers[k]||0),0);let level,label,rec;if(total<=3){level='LOW EXPOSURE';label='Your documentation practices show foundational controls. Apply JRS\u2122 to formalize what you are already doing.';rec='The standard will reinforce your current approach and create a defensible record going forward.';}else if(total<=6){level='MODERATE EXPOSURE';label='Your organization has meaningful AI Documentation Risk. Some records may not survive independent review.';rec='The Implementation Kit gives you 30 redlines, a phrase risk reference, and a pre-submission checklist to address the gaps now.';}else{level='HIGH EXPOSURE';label='Your organization carries significant AI Documentation Risk. A pattern may already exist in your records.';rec='The Implementation Kit includes a pattern audit tool specifically designed to surface what your teams cannot see yet. Start here.';}document.getElementById('quiz-score-display').textContent=level;document.getElementById('quiz-score-label').textContent=label;document.getElementById('quiz-rec').textContent=rec;document.getElementById('quiz-result').classList.add('visible');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth',block:'nearest'});}
 
-// FAQ
-function showFaqTab(e,id){document.querySelectorAll('.faq-group').forEach(g=>g.classList.remove('active'));document.querySelectorAll('.faq-tab-btn').forEach(b=>b.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');e.target.classList.add('active');}
-function toggleFaq(el){const answer=el.nextElementSibling;const icon=el.querySelector('.faq-icon');if(!answer||!icon)return;const isOpen=answer.classList.contains('open');const grp=el.closest('.faq-group');if(grp){grp.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));grp.querySelectorAll('.faq-icon').forEach(i=>i.classList.remove('open'));}if(!isOpen){answer.classList.add('open');icon.classList.add('open');}}
+// Mobile menu
+function toggleMobileMenu(){const nav=document.getElementById('mobileNav');nav.classList.toggle('open');}
+function closeMobileMenu(){document.getElementById('mobileNav').classList.remove('open');}
 </script>
 
 </body>
