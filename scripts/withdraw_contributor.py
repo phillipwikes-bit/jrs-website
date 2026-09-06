@@ -74,6 +74,23 @@ WITHDRAWALS = [
         #                                     basis may be described as a
         #                                     withdrawal, and only this basis
         #                                     requires an ANON_CODES entry.
+        # RETIRED 2026-09-06. THE CONDITION THIS ENTRY SET FOR ITSELF IS NO
+        # LONGER MET. It reads, a few lines above: "The suppression stays,
+        # because the credit removal was instructed and has not been reversed
+        # by a further instruction." It has been. On 2026-09-06 the owner wrote,
+        # unprompted and emphatically, that this contributor "should be listed
+        # as a contributor. She just never completed link. She was never removed
+        # from this study", and in the same session directed a change to the
+        # wording of her description on the title page. That is a reversal of
+        # the 2026-08-16 instruction by the person who gave it.
+        #
+        # The entry is retired rather than deleted, and the whole history above
+        # is kept, because the record of a suppression and of its reversal is
+        # what stops either being reopened by accident. "active": False takes
+        # her out of the scan; nothing else about the entry is altered.
+        "active": False,
+        "retired_on": "2026-09-06",
+        "retired_because": "owner instruction of 2026-09-06 reversed the 2026-08-16 credit removal",
         "basis": "owner_instructed_credit_removal",
         # THE BARE FIRST NAME IS DELIBERATELY NOT LISTED. It was added on
         # 2026-08-27 and reverted the same hour: the repository contains 62
@@ -159,6 +176,18 @@ def read(path):
             return fh.read()
     except (UnicodeDecodeError, OSError):
         return None
+
+
+# A RETIRED ENTRY IS NOT AN ERASED ENTRY. An entry carrying "active": False was
+# withdrawn and later reinstated by the person who instructed the withdrawal.
+# The entry, its basis and its whole comment history stay in this file, because
+# the record of a suppression AND of its reversal is what stops either being
+# reopened by accident. What changes is that the name is no longer hunted: the
+# scan, and the guard that consumes it, must not report a reinstated name as a
+# leak. Entries with no "active" key are active, so every existing entry keeps
+# its current behaviour and only a deliberate retirement opts out.
+def active_withdrawals():
+    return [w for w in WITHDRAWALS if w.get("active", True)]
 
 
 # --- Per-file rewrite rules --------------------------------------------------
@@ -423,7 +452,7 @@ def scan_traces():
     # reported clean. A name is exposed by a directory listing just as surely
     # as by a paragraph.
     for rel, full in walk_text_files():
-        for w in WITHDRAWALS:
+        for w in active_withdrawals():
             if rel in w.get("name_allowed_in", []):
                 continue
             flat = rel.replace("_", " ").replace("-", " ").replace("/", " ")
@@ -436,7 +465,7 @@ def scan_traces():
         body = read(full)
         if body is None:
             continue
-        for w in WITHDRAWALS:
+        for w in active_withdrawals():
             if rel in w.get("name_allowed_in", []):
                 continue
             for name in w["names"]:
@@ -469,6 +498,15 @@ def main():
     args = ap.parse_args()
 
     if args.apply:
+        # RULES IS NOT KEYED TO AN ENTRY, so retiring a withdrawal cannot
+        # disarm the rules that carried it out. With every entry retired,
+        # --apply would strip a name the owner reinstated and report success.
+        # Refuse instead. --check still runs and still reports.
+        if not active_withdrawals():
+            print("REFUSED: every entry in WITHDRAWALS is retired "
+                  "(active: False). Applying RULES would re-remove a "
+                  "reinstated name. Re-activate an entry to apply it.")
+            return 1
         applied, failed = apply_rules(dry_run=False)
         b_applied, b_failed = apply_bulk(dry_run=False)
         applied += b_applied

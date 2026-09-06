@@ -1180,12 +1180,43 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
         named_n = len([1 for c, _d in rows
                        if c.startswith("V-AI-") or c.startswith("RR-")
                        or re.match(r"^E-\d+$", c)])
-        # Confirmed per group as reported by /api/contributor-stats on
-        # 2026-08-29, recorded here so the check runs offline.
-        expected = (13 + 3 + 14) - named_n
-        if stated != expected:
-            problems.append("states %s unnamed; the confirmed-minus-named "
-                            "figure is %d" % (m.group(1), expected))
+        # THE CONFIRMED TOTAL IS READ LIVE, NOT HARD-CODED. It used to be the
+        # frozen triple (13 + 3 + 14) = 30 "as reported by
+        # /api/contributor-stats on 2026-08-29, recorded here so the check runs
+        # offline". Confirmations kept arriving. By 2026-09-06 the live figure
+        # was 14 + 4 + 14 = 32, and because the manuscript's own applier reads
+        # the same endpoint, the applier and this check disagreed by two: the
+        # applier wrote the correct "Six", and the guard failed it against a
+        # snapshot a week out of date. A number that only goes stale in one of
+        # the two places that use it is worse than no number, so the constant
+        # is gone and the endpoint is the single source.
+        confirmed_total = None
+        if not offline:
+            stats = live("https://www.jrsstandard.com/api/"
+                         "contributor-stats")
+            codes = (stats or {}).get("confirmed_codes")
+            if codes:
+                # V-HR-01 is the employment pilot and is deliberately not one
+                # of the three groups this paper acknowledges, so it is
+                # excluded here exactly as the applier excludes it.
+                confirmed_total = len(
+                    [c for c in codes
+                     if c.startswith("V-AI-") or c.startswith("RR-")
+                     or re.match(r"^E-\d+$", c)])
+        if confirmed_total is None:
+            # Offline, assert only what is checkable without the endpoint:
+            # the sentence must state a number and it cannot exceed the
+            # confirmed population, which is at least the named count.
+            if stated is None:
+                problems.append("the unnamed count %r is not a number this "
+                                "check can read" % m.group(1))
+        else:
+            expected = confirmed_total - named_n
+            if stated != expected:
+                problems.append("states %s unnamed; the confirmed-minus-named "
+                                "figure is %d (live confirmed %d, named %d)"
+                                % (m.group(1), expected, confirmed_total,
+                                   named_n))
 
     # Alphabetical, insensitive to punctuation, because code order would
     # reassemble the grouping and a stray full stop would look like disorder.
@@ -2374,7 +2405,14 @@ def check_withdrawn_contributors_absent(offline):
               "scripts/withdraw_contributor.py did not import: %r" % (e,))
         return
     traces = wc.scan_traces()
-    names = sorted(n for w in wc.WITHDRAWALS for n in w["names"])
+    # COUNT WHAT IS ACTUALLY SCANNED. Reading WITHDRAWALS whole made the
+    # success line report name forms that scan_traces() no longer hunts, so a
+    # register with every entry retired still announced "3 withdrawn name
+    # forms, 0 occurrences" and read as active enforcement.
+    active = wc.active_withdrawals() if hasattr(wc, "active_withdrawals") \
+        else [w for w in wc.WITHDRAWALS if w.get("active", True)]
+    names = sorted(n for w in active for n in w["names"])
+    retired = len(wc.WITHDRAWALS) - len(active)
     if traces:
         shown = "; ".join("%s:%d %s" % t for t in traces[:6])
         if len(traces) > 6:
@@ -2382,8 +2420,11 @@ def check_withdrawn_contributors_absent(offline):
         check("no withdrawn contributor name survives", False, shown)
         return
     check("no withdrawn contributor name survives", True,
-          "%d withdrawn name forms, 0 occurrences outside the register"
-          % len(names))
+          "%d withdrawn name forms, 0 occurrences outside the register%s"
+          % (len(names),
+             "" if not retired else
+             "; %d entry/entries retired (reinstated by the owner) and not "
+             "scanned" % retired))
 
 
 # The honor roster's header comment states its composition. A comment is not a

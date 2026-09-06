@@ -588,7 +588,7 @@ Those three groups comprise 61 participations held by **58 distinct people**: th
 
 Reviewers are recognised as named contributors with their consent; none is a co-author of this paper. Contributors may withdraw their name at any time, and no contributor has done so. Reviewers who have not recorded an election are counted in every figure and are not named.
 
-**Named contributors, as at 29 August 2026.** Recognition is by each contributor's own election, recorded through the confirmation mechanism described in the data availability statement, and each name and description below stands as that person entered it. Thirty contributors to this programme have confirmed and twenty-six elected to be named:
+**Named contributors, as at 29 August 2026.** Recognition is by each contributor's own election, recorded through the confirmation mechanism described in the data availability statement, and each name and description below stands as that person entered it. Thirty-two contributors to this programme have confirmed and twenty-six elected to be named:
 
 - Adesh Sharma, Data and AI Governance Leader | IAPP AIGP CIPT, Digital Frontier Partners
 - Andres Lage Freire, Operational AI Governance Lead & Responsible AI Architect, Independent Consultant
@@ -598,8 +598,8 @@ Reviewers are recognised as named contributors with their consent; none is a co-
 - Candid Opris, Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust, Opris & Associates Inc.
 - Donavine Smith, Board & Executive Advisor | Frontier AI Strategy & Governance, Independent
 - Dr. Gabriela Bar, attorney at law, AI ethics advisor, Gabriela Bar Law & AI
-- Dr Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
-- Dr Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
+- Dr. Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
+- Dr. Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
 - Franciscus C Schouten, AI Governance and Assurance, The AI Non-Delegation Doctrine
 - Greg Searle, AI Governance and Model Behaviour Researcher, Anypoint Pty Ltd
 - Hekim Colpan, AI Governance and Compliance Manager | Data Protection Manager | ISO/IEC 42001 Auditor
@@ -617,7 +617,7 @@ Reviewers are recognised as named contributors with their consent; none is a co-
 - SungSoo In, Independent Researcher; Founder, Athena Governance Architecture
 - Wendy Ann Martel, Founder and Strategic Advisor, Data, Privacy & AI Governance, Evata Consulting
 
-Four further contributors confirmed and elected not to be named. Their judgments are counted in every figure reported here and they appear nowhere by name. Confirmations remain open, so this is a record of the elections received to date rather than of who took part.
+Six further contributors confirmed and elected not to be named. Their judgments are counted in every figure reported here and they appear nowhere by name. Confirmations remain open, so this is a record of the elections received to date rather than of who took part.
 
 The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 6.5, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions, and it is why Section 6.5 can report a criterion as failed.
 
