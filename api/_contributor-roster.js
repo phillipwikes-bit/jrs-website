@@ -20,7 +20,7 @@
 export const ROSTER = {
   'upbtroc754': { code:'V-AI-01', kind:'panel',  first:'Jake',      name:'Jake McDonough',      title:'AI governance',                                         org:'SAEONYX Global Holdings', named_on_file:true },
   '08c17ihb60': { code:'V-AI-03', kind:'panel',  first:'Frank',     name:'Frank Schouten',      title:'AI Governance and Assurance',                           org:'AEGF',                    named_on_file:true },
-  'im06wa5vd4': { code:'V-AI-06', kind:'panel',  first:'Nitin',     name:'Dr. Nitin Deshpande',  title:'Chief Human Resources Officer',                         org:'',                        named_on_file:true },
+  'im06wa5vd4': { code:'V-AI-06', kind:'panel',  first:'Nitin',     name:'Dr. Nitin Deshpande', title:'Chief Human Resources Officer',                         org:'',                        named_on_file:true },
   'u63k28aizs': { code:'V-AI-07', kind:'panel',  first:'Saurabh',   name:'Saurabh Nanda',       title:'General Manager, APAC',                                 org:'',                        named_on_file:true },
   // V-AI-08's LINK REINSTATED 2026-08-19 at the owner's instruction: "She did
   // not withdraw from study ... should get a link ... just like all the rest of
@@ -63,7 +63,7 @@ export const ROSTER = {
   // the regular study link. The co-author fact is kept in the note; it is
   // additional to his panel role, not a replacement for it.
   'xoam4zq6yh': { code:'V-AI-12', kind:'panel',  first:'Kyle',      name:'Kyle McMullan',       title:'Chief Audit Executive',                                 org:'',                        named_on_file:true, note:'detection panel completer; also co-author, Business Ethics paper' },
-  'hpyvpad2sk': { code:'V-AI-16', kind:'panel',  first:'Gabriela',  name:'Dr. Gabriela Bar',     title:'Attorney, PhD; AI ethics advisor',                      org:'',                        named_on_file:true },
+  'hpyvpad2sk': { code:'V-AI-16', kind:'panel',  first:'Gabriela',  name:'Dr. Gabriela Bar',    title:'Attorney, PhD; AI ethics advisor',                      org:'',                        named_on_file:true },
   '2s7eencte4': { code:'V-AI-20', kind:'panel',  first:'Hekim',     name:'Hekim Colpan',        title:'AI Governance and Compliance Manager; ISO/IEC 42001 auditor', org:'',                  named_on_file:true },
   'h7a376209q': { code:'V-AI-23', kind:'panel',  first:'Niloofar',  name:'Niloofar Kandi',      title:'',                                                      org:'',                        named_on_file:null },
   'vxieh79z7v': { code:'V-AI-24', kind:'panel',  first:'SungSoo',   name:'SungSoo In',          title:'AI Governance and Responsible AI',                      org:'',                        named_on_file:true },
