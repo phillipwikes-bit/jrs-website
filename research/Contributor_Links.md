@@ -28,7 +28,7 @@ Each link opens a page that captures how the person wants their name and title p
 | MacKenzie McCowan | `RR-114` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=fkszsr4mii |
 | Dr. Eric J. W. Orlowski | `RR-116` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=550gzz59he |
 | Alexandria Davis | `RR-117` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=2hz6uvwxvn |
-| Dr Sharon Licqurish, PhD | `RR-121` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=zu8iotht1u |
+| Dr. Sharon Licqurish, PhD | `RR-121` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=zu8iotht1u |
 | Greg Searle | `RR-123` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=u34j0adlsm |
 | Adesh Sharma | `RR-124` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=q8n5h174fk |
 | Muhammad Dauda | `RR-125` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=mlskg9y1s8 |
@@ -40,13 +40,13 @@ Each link opens a page that captures how the person wants their name and title p
 |  | `RR-132` | comparison study completer, anonymous by choice | https://www.jrsstandard.com/contributor.html?k=d0cofc93jc |
 | Jake McDonough | `V-AI-01` |  | https://www.jrsstandard.com/contributor.html?k=upbtroc754 |
 | Frank Schouten | `V-AI-03` |  | https://www.jrsstandard.com/contributor.html?k=08c17ihb60 |
-| Dr Nitin Deshpande | `V-AI-06` |  | https://www.jrsstandard.com/contributor.html?k=im06wa5vd4 |
+| Dr. Nitin Deshpande | `V-AI-06` |  | https://www.jrsstandard.com/contributor.html?k=im06wa5vd4 |
 | Saurabh Nanda | `V-AI-07` |  | https://www.jrsstandard.com/contributor.html?k=u63k28aizs |
 | Gabriela Cortez | `V-AI-08` |  | https://www.jrsstandard.com/contributor.html?k=agbhlh6n4d |
 | Lawal Olabanji | `V-AI-10` |  | https://www.jrsstandard.com/contributor.html?k=s3ln3ud13s |
 | Andrey Ekhmenin | `V-AI-11` |  | https://www.jrsstandard.com/contributor.html?k=h5dypgmtdu |
 | Kyle McMullan | `V-AI-12` | detection panel completer; also co-author, Business Ethics paper | https://www.jrsstandard.com/contributor.html?k=xoam4zq6yh |
-| Dr Gabriela Bar | `V-AI-16` |  | https://www.jrsstandard.com/contributor.html?k=hpyvpad2sk |
+| Dr. Gabriela Bar | `V-AI-16` |  | https://www.jrsstandard.com/contributor.html?k=hpyvpad2sk |
 | Hekim Colpan | `V-AI-20` |  | https://www.jrsstandard.com/contributor.html?k=2s7eencte4 |
 | Niloofar Kandi | `V-AI-23` |  | https://www.jrsstandard.com/contributor.html?k=h7a376209q |
 | SungSoo In | `V-AI-24` |  | https://www.jrsstandard.com/contributor.html?k=vxieh79z7v |

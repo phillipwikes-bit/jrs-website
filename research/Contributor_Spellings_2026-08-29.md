@@ -4,11 +4,13 @@
 
 Twenty-six entries, one per credited contributor. Applied by `scripts/apply_contributor_credits.py`, which fails closed if any entry does not match exactly one credited contributor or if any credited contributor is unmatched.
 
+**Honorific punctuation normalised 2026-09-06.** Phillip's instruction of that date was that "a period should always be after Dr." Two entries were supplied without it (Nitin Deshpande, Sharon Licqurish) and now read `Dr.` like the third. Nothing else in any entry was altered: the words, order, credentials and organisations remain exactly as supplied.
+
 **Order in this file is not the publication order.** The list was supplied in code order, which groups the studies. The credits print alphabetically, because Phillip's direction of the same day was to remove the language about which part of the study each contributor took part in, and code order reassembles that grouping without naming it.
 
 - Jake McDonough, AI Governance, SAEONYX Global Holdings, LLC
 - Franciscus C Schouten, AI Governance and Assurance, The AI Non-Delegation Doctrine
-- Dr Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
+- Dr. Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
 - Saurabh Nanda, General Manager, APAC, Healthcare
 - Olabanji Lawal, Operations and Records management, ALTV
 - Andrey Ekhmenin, Founder, ANDEKS™; Independent Governance Assessment and Diagnostics
@@ -24,7 +26,7 @@ Twenty-six entries, one per credited contributor. Applied by `scripts/apply_cont
 - Donavine Smith, Board & Executive Advisor | Frontier AI Strategy & Governance, Independent
 - Priyam Dhamankar, Ethics and Compliance Leader, Cummins India; 17+ years legal, compliance and investigations, Cummins India Limited
 - MacKenzie McCowan, AI Governance Specialist, PhD candidate, Lecturer, Atomi; The University of Sydney; Avondale University
-- Dr Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
+- Dr. Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
 - Greg Searle, AI Governance and Model Behaviour Researcher, Anypoint Pty Ltd
 - Adesh Sharma, Data and AI Governance Leader | IAPP AIGP CIPT, Digital Frontier Partners
 - Muhammad Dauda, Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP, UN SDSN NIGERIA
