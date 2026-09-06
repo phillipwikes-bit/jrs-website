@@ -1823,5 +1823,91 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 })();
 </script>
 <!-- /JRS PANEL BINDER v2 -->
+<!-- JRS SECTION COLLAPSE v1. Added 2026-09-06 at the owner's request to cut
+     clutter WITHOUT removing anything. Purely additive: it runs after render
+     and wraps each h2 plus the nodes up to the next h2 in a details element,
+     so every byte stays in the DOM and one click restores the old view.
+     IF THIS SCRIPT FAILS THE PAGE IS EXACTLY AS BEFORE, which is the property
+     that matters on the page carrying the commercial inbox.
+
+     Three behaviours, all undone by deleting this block:
+       1. The dossier section starts closed. Static strategy text, the largest
+          rendered block on the page, and not live data.
+       2. The closed studies start closed. Their figures are final.
+       3. Any section whose visible numbers are all zero closes itself and
+          REOPENS AUTOMATICALLY when a real number arrives, which is why it
+          re-evaluates after every 60-second refresh rather than once: a lead
+          landing in an empty inbox must not stay hidden. -->
+<style>
+  details.jrs-sec { border-top:1px solid var(--rule); margin-top:18px; }
+  details.jrs-sec > summary { list-style:none; cursor:pointer; padding:14px 0 4px;
+    display:flex; align-items:baseline; gap:10px; }
+  details.jrs-sec > summary::-webkit-details-marker { display:none; }
+  details.jrs-sec > summary h2 { margin:0 !important; border-top:0 !important;
+    padding-top:0 !important; flex:1; }
+  details.jrs-sec > summary::before { content:'\25B8'; color:var(--accent-dim);
+    font-size:12px; transition:transform .15s; }
+  details.jrs-sec[open] > summary::before { transform:rotate(90deg); }
+  .jrs-tag { font-family:'JetBrains Mono',monospace; font-size:9px;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--muted-soft); }
+</style>
+<script>
+(function(){
+  var CLOSED_ALWAYS = ['sale dossier'];
+  var CLOSED_STUDY  = ['ai-assisted records pilot', 'real-case pilots',
+                       'comparison study', 'the reviewer panel'];
+  function norm(t){ return (t||'').replace(/\s+/g,' ').trim().toLowerCase(); }
+  function wrap(){
+    var main = document.querySelector('main') || document.body;
+    var hs = [].slice.call(main.querySelectorAll('h2'));
+    hs.forEach(function(h){
+      if (h.closest('details.jrs-sec')) return;
+      var d = document.createElement('details'); d.className = 'jrs-sec';
+      var sm = document.createElement('summary');
+      var tag = document.createElement('span'); tag.className = 'jrs-tag';
+      h.parentNode.insertBefore(d, h);
+      sm.appendChild(h); sm.appendChild(tag); d.appendChild(sm);
+      var body = document.createElement('div');
+      while (d.nextSibling) {
+        var n = d.nextSibling;
+        if (n.nodeType === 1 && (n.tagName === 'H2' || n.tagName === 'DETAILS')) break;
+        body.appendChild(n);
+      }
+      d.appendChild(body);
+      var t = norm(h.textContent);
+      var closed = CLOSED_ALWAYS.some(function(k){ return t.indexOf(k) === 0; }) ||
+                   CLOSED_STUDY.some(function(k){ return t.indexOf(k) === 0; });
+      d.open = !closed;
+      d.dataset.jrsAuto = closed ? '' : '1';
+    });
+  }
+  function isEmpty(d){
+    var txt = (d.lastChild && d.lastChild.textContent) || '';
+    var nums = txt.match(/\d[\d,.]*/g);
+    if (!nums || !nums.length) return false;
+    for (var i=0;i<nums.length;i++){
+      if (parseFloat(nums[i].replace(/,/g,'')) > 0) return false;
+    }
+    return true;
+  }
+  function evaluate(){
+    [].slice.call(document.querySelectorAll('details.jrs-sec')).forEach(function(d){
+      var tag = d.querySelector('.jrs-tag');
+      if (d.dataset.jrsAuto !== '1') {
+        if (tag && !tag.textContent) tag.textContent = 'click to open';
+        return;
+      }
+      if (isEmpty(d)) { d.open = false; if (tag) tag.textContent = 'nothing yet'; }
+      else { d.open = true; if (tag) tag.textContent = ''; }
+    });
+  }
+  function boot(){ try { wrap(); evaluate(); } catch(e){} }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+  setInterval(function(){ try { evaluate(); } catch(e){} }, 61000);
+})();
+</script>
+<!-- /JRS SECTION COLLAPSE v1 -->
 </body>
 </html>

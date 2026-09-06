@@ -23,6 +23,7 @@ Exit code: 0 if every check passes, 1 if any fails. Safe to wire into a hook.
 """
 import glob
 import json
+import io
 import os
 import re
 import subprocess
@@ -4972,6 +4973,62 @@ def check_no_founder_service_funnel_survives_anywhere(offline):
           "engagement metadata archival; hierarchy on 4 pages; terms historical")
 
 
+def check_reliability_raters_are_not_demoted(offline):
+    """No packet artefact calls a study participant a "regular reviewer".
+
+    THIS DEFECT WAS CORRECTED FOUR TIMES AND CAME BACK FOUR TIMES, and the
+    reason is the whole point of this guard. The corrections were applied to
+    the .docx that had been downloaded and handed back in chat. The SOURCE is
+    research/aie_submission_2026-09-01/01_Blinded_Manuscript.md, from which the
+    .docx and .pdf are generated. The source was never touched, so every
+    regeneration restored the wording, and the owner reasonably concluded the
+    fix was not being made at all.
+
+    WHY A NUMBERS AUDIT COULD NOT CATCH IT. R- and RR- are different code sets.
+    The 17 R- raters are the open-enrolment bench raters in the reliability
+    study; the 20 RR- are the Arm B comparison completers, every one a
+    credentialed expert. The phrase described the R- group, so 8 + 17 = 25
+    reconciled on every arithmetic check, while any reader who knows RR- means
+    Arm B read it as those experts being demoted.
+
+    The split is a recruitment route, which the manuscript already said in
+    terms: "the split records the recruitment channel and is not a measure of
+    professional expertise". The labels now say so too: Invited, Open
+    enrolment.
+
+    This scans EVERY artefact in the packet, source and generated alike, so a
+    fix to one and not the other fails here rather than in the owner's inbox.
+    """
+    import glob, zipfile
+    d = os.path.join(ROOT, "research", "aie_submission_2026-09-01")
+    if not os.path.isdir(d):
+        return check("reliability raters are not demoted", SKIPPED,
+                     "research/ is not on this branch by design")
+    bad, seen = [], 0
+    for path in sorted(glob.glob(os.path.join(d, "*"))):
+        name = os.path.basename(path)
+        if name.endswith((".md", ".html")):
+            text = io.open(path, encoding="utf-8", errors="replace").read()
+        elif name.endswith(".docx"):
+            try:
+                text = zipfile.ZipFile(path).read("word/document.xml").decode("utf-8")
+            except Exception:
+                continue
+        elif name.endswith(".pdf"):
+            continue          # covered by the .md it is generated from
+        else:
+            continue
+        seen += 1
+        for term in ("regular reviewer", "Regular reviewer", "regular-reviewer",
+                     "invited experts whose credentials",
+                     "without identity verification"):
+            if term in text:
+                bad.append("%s: %r" % (name, term))
+    check("reliability raters are not demoted", not bad,
+          "; ".join(bad[:5]) if bad else
+          "%d packet artefacts scanned, 0 demoting terms" % seen)
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -4999,6 +5056,7 @@ def main():
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
+               check_reliability_raters_are_not_demoted,
                check_honor_roster_composition,
                check_certificate_claims_supported,
                check_printed_certificate_matches_endpoint,
