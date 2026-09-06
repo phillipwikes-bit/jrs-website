@@ -1,8 +1,18 @@
 # Cover letter
 
-To the Editors, *AI and Ethics*
+6 September 2026
+
+The Editors
+
+*AI and Ethics*
+
+Springer Nature
+
+Dear Editors,
 
 We submit **"Detectability of Decision Reconstruction Risk in AI-Generated Decision Records: An International Expert Study"** for consideration as an original research article.
+
+**Submission details.** Article type: original research. Length approximately 10,900 words, excluding tables and references. Nine tables, no figures, three appendices and 35 references. Two authors, Phillip Wikes and Ubayet Hossain, FRM. Corresponding author Phillip Wikes, info@jrsstandard.com. Neither author holds an institutional affiliation and both contributed in a personal professional capacity.
 
 **What the paper examines.** AI governance has concentrated on models, systems and processes. This paper takes as its object the consequential documentary artefact that AI-assisted decision-making leaves behind, and asks whether independent domain experts can detect when that record does or does not carry a reconstructable evidentiary basis. We name the property Decision Reconstruction Risk and define it relative to a stated reviewer standpoint.
 
@@ -17,3 +27,15 @@ We submit **"Detectability of Decision Reconstruction Risk in AI-Generated Decis
 **Anonymisation.** The manuscript has been anonymised for double-blind review. Author names, affiliations, the named contributor roster and the acknowledgements are on the separate title page.
 
 We would be glad to supply the corpus, the reference classification, the reviewer instructions and the analysis scripts to reviewers on request.
+
+Thank you for considering the manuscript.
+
+Yours sincerely,
+
+**Phillip Wikes**
+
+Corresponding author, on behalf of both authors
+
+Creator of the Justification Review Standard
+
+info@jrsstandard.com
