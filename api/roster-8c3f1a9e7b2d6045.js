@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Private training roster viewer. Secured by this opaque, unlinked, noindex URL
@@ -39,10 +40,10 @@ export default async function handler(req){
   const AH = { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE };
   let enroll, done;
   try {
-    const er = await fetch(SB + "/rest/v1/pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc&limit=10000", { headers:AH });
-    enroll = await er.json();
-    const cr = await fetch(SB + "/rest/v1/pilot_contacts?select=email,message,created_at&source=eq.training-complete&limit=10000", { headers:AH });
-    done = cr.ok ? await cr.json() : [];
+    const enrollRows = await fetchAllUrl(SB + "/rest/v1/pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc", AH);
+    enroll = enrollRows;
+    const doneRows = await fetchAllUrl(SB + "/rest/v1/pilot_contacts?select=email,message,created_at&source=eq.training-complete", AH);
+    done = doneRows;
   } catch(e){ return new Response('<p>database unreachable</p>', { status:502, headers:H }); }
   if (!Array.isArray(enroll)) enroll = [];
   if (!Array.isArray(done)) done = [];

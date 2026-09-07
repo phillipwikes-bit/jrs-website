@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate stats for the organization mini-pilot tiles on the status page.
@@ -35,9 +36,8 @@ export default async function handler(req){
   const q = SB + '/rest/v1/pilot_contacts?select=created_at,organization,message&source=eq.org-pilot&limit=10000';
   let rows;
   try {
-    const res = await fetch(q, { headers: AH });
-    if (!res.ok){ const t = await res.text(); return json({ error:'db_read_failed', status:res.status, detail:String(t).slice(0,300) }, 502); }
-    rows = await res.json();
+    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
+    rows = await fetchAllUrl(q, AH);
   } catch(e){ return json({ error:'db_unreachable' }, 502); }
   if (!Array.isArray(rows)) rows = [];
 

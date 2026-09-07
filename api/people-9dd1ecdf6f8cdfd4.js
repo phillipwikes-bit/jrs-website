@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Country resolution is shared with api/enroll-stats.js so the two endpoints can
@@ -97,9 +98,8 @@ export default async function handler(req){
 
   let rows;
   try {
-    const res = await fetch(q, { headers: { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE } });
-    if (!res.ok){ const t = await res.text(); return json({ error:'db_read_failed', status:res.status, detail:String(t).slice(0,300) }, 502); }
-    rows = await res.json();
+    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
+    rows = await fetchAllUrl(q, { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE });
   } catch(e){ return json({ error:'db_unreachable' }, 502); }
   if (!Array.isArray(rows)) rows = [];
 

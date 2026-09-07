@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 import { resolvePanelGeo } from './_panel-countries.js';
@@ -132,10 +133,9 @@ export default async function handler(req){
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const H = { 'apikey': ANON, 'Authorization': 'Bearer ' + ANON };
+  // Paged: limits above Supabase's 1,000-row cap were silently truncated.
   async function get(path){
-    const r = await fetch(SB + '/rest/v1/' + path, { headers: H });
-    if (!r.ok) throw new Error('read_failed');
-    return r.json();
+    return await fetchAllUrl(SB + '/rest/v1/' + path, H);
   }
 
   let armA, armB, labels;

@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate initiative-support endorsements (counts only, no PII) for the
@@ -24,10 +25,9 @@ export default async function handler(){
   if (!SERVICE) return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
 
   try {
-    const r = await fetch(SB + '/rest/v1/interaction_events?source=eq.support&select=payload,created_at&order=created_at.asc&limit=20000',
-      { headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
-    if (!r.ok) return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
-    const rows = await r.json();
+    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
+    const rows = await fetchAllUrl(SB + '/rest/v1/interaction_events?source=eq.support&select=payload,created_at&order=created_at.asc',
+      { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE });
 
     const byC = {}, byK = {}, perK = {}, byS = {}, byDay = {};
     let counted = 0;
@@ -106,13 +106,12 @@ export default async function handler(){
     let lostClicks = 0;
     const lostDevices = {};
     try {
-      const gr = await fetch(SB + '/rest/v1/interaction_events'
+      const grows = await fetchAllUrl(SB + '/rest/v1/interaction_events'
         + '?source=eq.gate-view&select=payload,created_at'
         + '&created_at=gte.' + encodeURIComponent(OUTAGE_FROM)
-        + '&created_at=lt.' + encodeURIComponent(OUTAGE_TO) + '&limit=5000',
-        { headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
-      if (gr.ok) {
-        const grows = await gr.json();
+        + '&created_at=lt.' + encodeURIComponent(OUTAGE_TO),
+        { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE });
+      {
         for (const g of grows) {
           const gp = g.payload || {};
           if (!gp.campaign) continue;

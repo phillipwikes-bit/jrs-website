@@ -1808,6 +1808,55 @@ def check_withdrawn_contributor_is_not_defaulted_into_being_named(offline):
           % (", ".join(missing), "is" if len(missing) == 1 else "are"))
 
 
+def check_no_endpoint_relies_on_an_uncapped_limit(offline):
+    """No api/ read may ask for more rows than Supabase will ever return.
+
+    Supabase caps every PostgREST response at 1,000 rows. The cap is applied
+    AFTER the query's own `limit`, it is not an error, and nothing in the
+    response says it happened: `limit=20000` against a 1,031-row table returns
+    1,000 rows and HTTP 200. Rows come back in physical order when no `order`
+    is given, so what is lost is always the most recently inserted, which is
+    the data a dashboard is being read for.
+
+    This is how the Investigator Guide download chart came to stop at 31 August
+    while the table held rows through 7 September, reporting 137 against 145.
+    Nothing looked broken. It looked quiet, which is worse, and no arithmetic
+    check could catch it because every number was internally consistent.
+
+    A limit above the cap is the signature of the bug: it proves the author
+    expected more than 1,000 rows, which is exactly the case the cap silently
+    truncates. Paging through api/_sb-fetch.js is the only correct fix, so a
+    file that imports it is exempt for the reads it pages.
+    """
+    import glob
+    bad = []
+    for path in sorted(glob.glob(os.path.join(ROOT, "api", "**", "*.js"),
+                                 recursive=True)):
+        rel = os.path.relpath(path, ROOT)
+        body = read(rel)
+        if body is None:
+            continue
+        # The pager itself documents the broken pattern in its own header
+        # comment, so it matches its own rule. Exempt by path, not by content.
+        if os.path.basename(rel) == "_sb-fetch.js":
+            continue
+        if "_sb-fetch" in body:
+            continue          # pages; the limit is no longer what bounds it
+        for m in re.finditer(r"limit=(\d+)", body):
+            n = int(m.group(1))
+            if n > 1000:
+                line = body.count("\n", 0, m.start()) + 1
+                bad.append("%s:%d limit=%d" % (rel, line, n))
+    check("no endpoint relies on a limit above the Supabase row cap",
+          not bad,
+          "%d api file(s) scanned, none asks for more than the 1,000-row cap "
+          "without paging" % len(glob.glob(os.path.join(ROOT, "api", "**",
+                                                        "*.js"), recursive=True))
+          if not bad else
+          "%d read(s) above the cap, each silently truncated: %s"
+          % (len(bad), "; ".join(bad[:4])))
+
+
 def check_inquiry_options_are_backed_by_the_allowlist(offline):
     """Every interest the forms offer must be one the endpoint accepts, the
     three forms must offer the same set, and the four pathways must be named.
@@ -5091,6 +5140,7 @@ def main():
                check_ubayet_is_described_as_he_asked,
                check_private_paths_stay_unreachable,
                check_inquiry_options_are_backed_by_the_allowlist,
+               check_no_endpoint_relies_on_an_uncapped_limit,
                check_blinded_manuscript_carries_no_identity,
                check_withdrawn_contributor_is_not_defaulted_into_being_named,
                check_markdown_pdfs_are_converted,

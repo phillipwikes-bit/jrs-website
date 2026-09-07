@@ -1,6 +1,6 @@
 # Cover letter
 
-6 September 2026
+September 6, 2026
 
 The Editors
 
@@ -12,7 +12,7 @@ Dear Editors,
 
 We submit **"Detectability of Decision Reconstruction Risk in AI-Generated Decision Records: An International Expert Study"** for consideration as an original research article.
 
-**Submission details.** Article type: original research. Length approximately 10,900 words, excluding tables and references. Nine tables, no figures, three appendices and 35 references. Two authors, Phillip Wikes and Ubayet Hossain, FRM. Corresponding author Phillip Wikes, info@jrsstandard.com. Neither author holds an institutional affiliation and both contributed in a personal professional capacity.
+**Submission details.** Article type: original research. Length approximately 10,900 words, excluding tables and references. Nine tables, no figures, three appendices and 35 references. Two authors, Phillip Wikes and Ubayet Hossain, FRM. Corresponding author Phillip Wikes, info@jrsstandard.com.
 
 **What the paper examines.** AI governance has concentrated on models, systems and processes. This paper takes as its object the consequential documentary artefact that AI-assisted decision-making leaves behind, and asks whether independent domain experts can detect when that record does or does not carry a reconstructable evidentiary basis. We name the property Decision Reconstruction Risk and define it relative to a stated reviewer standpoint.
 
@@ -24,7 +24,7 @@ We submit **"Detectability of Decision Reconstruction Risk in AI-Generated Decis
 
 **Declarations.** The manuscript is original, is not under consideration elsewhere, and has not been published in whole or in part. AI use in this research is methodological and is disclosed in the manuscript: the corpus was generated with large-language-model assistance and edited by an author, the reference classification was independently reproduced by three automated raters, and cross-vendor consistency is reported in an appendix. The limits of that use are stated with it. No AI system is an author. The first author created the construct and instrument under study; that competing interest, and what the design does and does not mitigate, is disclosed in full.
 
-**Anonymisation.** The manuscript has been anonymised for double-blind review. Author names, affiliations, the named contributor roster and the acknowledgements are on the separate title page.
+**Anonymisation.** The manuscript has been anonymised for double-anonymous review. Author-identifying information has been provided separately through the submission system.
 
 We would be glad to supply the corpus, the reference classification, the reviewer instructions and the analysis scripts to reviewers on request.
 
