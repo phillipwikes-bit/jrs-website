@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Admin read of training enrollments and completion. Returns PII (name, title,
@@ -25,11 +26,10 @@ export default async function handler(req){
   const H = { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE };
   let enroll, done;
   try {
-    const er = await fetch(SB + "/rest/v1/pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc&limit=10000", { headers:H });
-    if (!er.ok) return json({ error:'db_read_failed', status:er.status }, 502);
-    enroll = await er.json();
-    const cr = await fetch(SB + "/rest/v1/pilot_contacts?select=email,created_at&source=eq.training-complete&limit=10000", { headers:H });
-    done = cr.ok ? await cr.json() : [];
+    const enrollRows = await fetchAllUrl(SB + "/rest/v1/pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc", H);
+    enroll = enrollRows;
+    const doneRows = await fetchAllUrl(SB + "/rest/v1/pilot_contacts?select=email,created_at&source=eq.training-complete", H);
+    done = doneRows;
   } catch(e){ return json({ error:'db_unreachable' }, 502); }
   if (!Array.isArray(enroll)) enroll = [];
   if (!Array.isArray(done)) done = [];

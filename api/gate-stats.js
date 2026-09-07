@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Post-gate activity statistics for the private status dashboard.
@@ -76,10 +77,9 @@ export default async function handler(req){
 
   let rows = [], events = [];
   try {
-    const [r1, r2] = await Promise.all([fetch(contactsQ, { headers: AH }), fetch(eventsQ, { headers: AH })]);
-    if (!r1.ok){ const t = await r1.text(); return json({ error:'db_read_failed', status:r1.status, detail:String(t).slice(0,300) }, 502); }
-    rows = await r1.json();
-    if (r2.ok) events = await r2.json();
+    // Paged: limits above Supabase's 1,000-row cap were silently truncated.
+    const [g1, g2] = await Promise.all([fetchAllUrl(contactsQ, AH), fetchAllUrl(eventsQ, AH)]);
+    rows = g1; events = g2;
   } catch(e){ return json({ error:'db_unreachable' }, 502); }
   if (!Array.isArray(rows)) rows = [];
   if (!Array.isArray(events)) events = [];

@@ -1,3 +1,4 @@
+import { fetchAllRows } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Asset engagement statistics for acquisition diligence.
@@ -61,20 +62,21 @@ export default async function handler(req){
   if (!SERVICE) return json({ error: 'service_key_missing' }, 503);
   const H = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE };
 
+  // PAGED, NOT LIMITED. Supabase caps every REST response at 1,000 rows after
+  // the query's own limit, with HTTP 200 and no marker. interaction_events
+  // passed 2,000 rows, so the limit=20000 below was returning half the table
+  // and every figure built from it was silently short. See api/_sb-fetch.js.
   async function get(path){
-    try {
-      const r = await fetch(SB + '/rest/v1/' + path, { headers: H });
-      return r.ok ? await r.json() : [];
-    } catch (e) { return []; }
+    return await fetchAllRows(SB, path, H);
   }
 
   const [events, contacts, armA, armB, labels, outcomes] = await Promise.all([
-    get('interaction_events?select=source,type,payload,created_at&limit=20000'),
-    get('pilot_contacts?select=source,message,created_at&limit=5000'),
+    get('interaction_events?select=source,type,payload,created_at'),
+    get('pilot_contacts?select=source,message,created_at'),
     get('pilot_progress?select=code,total_reads,reads_today&limit=500'),
     get('armb_progress?select=code,reads,reads_today&limit=500'),
-    get('bench_labels?select=labeler_code,record_id&limit=5000'),
-    get('bench_outcomes?select=contributor,domain&limit=5000')
+    get('bench_labels?select=labeler_code,record_id'),
+    get('bench_outcomes?select=contributor,domain')
   ]);
 
   // Link programmes. "Opened" counts distinct people rather than distinct hits,

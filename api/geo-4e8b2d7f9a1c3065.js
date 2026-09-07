@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // JRS guide-download geography viewer (no token; secured only by this opaque,
@@ -16,9 +17,9 @@ export default async function handler(){
   const H = {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE};
   let rows = [];
   try {
-    const r = await fetch(SB+'/rest/v1/interaction_events?source=eq.guide-dl&select=payload,created_at&order=created_at.desc&limit=10000',{headers:H});
-    if (!r.ok) return new Response('Upstream error', { status: 502 });
-    rows = await r.json();
+    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
+    const pagedRows = await fetchAllUrl(SB+'/rest/v1/interaction_events?source=eq.guide-dl&select=payload,created_at&order=created_at.desc', H);
+    rows = pagedRows;
   } catch(e){ return new Response('Upstream error', { status: 502 }); }
 
   const total = rows.length;

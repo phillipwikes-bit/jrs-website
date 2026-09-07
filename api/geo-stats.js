@@ -1,3 +1,4 @@
+import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate ALL download geography (counts only, no PII), for the
@@ -42,10 +43,13 @@ export default async function handler(){
   if (!SERVICE) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
 
   try {
-    const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload,created_at&limit=20000',
-      { headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE} });
-    if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] }, assets_detail:[] });
-    const allRows = await r.json();
+    // PAGED, NOT LIMITED. The old call asked for limit=20000 and Supabase
+    // returned its 1,000-row cap with HTTP 200 and no marker, so this chart
+    // stopped at 31 August while the table held rows through 7 September.
+    const { rows: allRows, complete } = await fetchAll(
+      SB, 'interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload,created_at',
+      {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE});
+    if (!complete && !allRows.length) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] }, assets_detail:[] });
     // Drop internal test/deploy download rows so every total is real traffic.
     const clean = allRows.filter(row => !isTestSrc(row.payload && row.payload.src));
 

@@ -1,3 +1,4 @@
+import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate commercial-funnel stats for the private status dashboard, token-free.
@@ -36,7 +37,7 @@ const SOURCES = {
 function feed(src) {
   const s = SOURCES[src];
   return '/rest/v1/' + s.table + '?select=' + s.select
-       + '&source=eq.' + src + '&limit=5000';
+       + '&source=eq.' + src;
 }
 
 function json(o, s) {
@@ -70,13 +71,8 @@ export default async function handler(req) {
   // ---- arrivals at the pay screen -----------------------------------------
   let clicks = [];
   try {
-    const r = await fetch(SB + feed('checkout-click'), { headers: H });
-    if (!r.ok) {
-      const t = await r.text();
-      return json({ error: 'db_read_failed', status: r.status,
-                    detail: String(t).slice(0, 300) }, 502);
-    }
-    clicks = await r.json();
+    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
+    clicks = await fetchAllUrl(SB + feed('checkout-click'), H);
   } catch (e) {
     return json({ error: 'db_unreachable' }, 502);
   }
@@ -99,8 +95,7 @@ export default async function handler(req) {
   // ---- leads captured on the fallback form ---------------------------------
   let leads = [];
   try {
-    const r = await fetch(SB + feed('checkout-fallback'), { headers: H });
-    leads = r.ok ? await r.json() : [];
+    leads = await fetchAllUrl(SB + feed('checkout-fallback'), H);
   } catch (e) {
     leads = [];
   }
@@ -121,8 +116,7 @@ export default async function handler(req) {
   // ---- enterprise and licensing inquiries ---------------------------------
   let inq = [];
   try {
-    const r = await fetch(SB + feed('enterprise-inquiry'), { headers: H });
-    inq = r.ok ? await r.json() : [];
+    inq = await fetchAllUrl(SB + feed('enterprise-inquiry'), H);
   } catch (e) {
     inq = [];
   }
