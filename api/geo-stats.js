@@ -76,7 +76,38 @@ export default async function handler(){
     const by_country = Object.entries(gC).map(([country,downloads])=>({country,downloads})).sort((a,b)=>b.downloads-a.downloads);
     const by_asset = Object.entries(gA).map(([asset,downloads])=>({asset,downloads})).sort((a,b)=>b.downloads-a.downloads);
     const by_source = Object.entries(gS).map(([source,downloads])=>({source,downloads})).sort((a,b)=>b.downloads-a.downloads);
-    const by_day = Object.values(gD).filter(d => d.day !== 'unknown').sort((a,b)=> a.day < b.day ? -1 : a.day > b.day ? 1 : 0);
+    // ONE COLUMN PER CALENDAR DAY, UTC, RUNNING TO TODAY, NOT ONE PER DAY THAT
+    // HAPPENED TO HAVE A DOWNLOAD. Emitting only the days with events made a
+    // quiet stretch invisible: the axis jumped 31 Aug to 4 Sep with no gap
+    // drawn, so a reader could not tell a zero from a missing measurement, and
+    // the chart read as broken on the days it mattered most. A zero is a
+    // finding and it gets a column. This mirrors api/support-stats.js, which
+    // had the same defect and the same fix.
+    const seen = Object.values(gD).filter(d => d.day !== 'unknown')
+                       .sort((a,b)=> a.day < b.day ? -1 : a.day > b.day ? 1 : 0);
+    const by_day = [];
+    if (seen.length) {
+      const todayISO = new Date().toISOString().slice(0, 10);
+      const firstKey = seen[0].day, lastEvent = seen[seen.length - 1].day;
+      const endKey = (todayISO > lastEvent) ? todayISO : lastEvent;
+      const cur = new Date(firstKey + 'T00:00:00Z');
+      const end = new Date(endKey + 'T00:00:00Z');
+      while (cur <= end) {
+        const k = cur.toISOString().slice(0, 10);
+        by_day.push(gD[k] || { day: k, employment:0, fairhousing:0, international:0, total:0 });
+        cur.setUTCDate(cur.getUTCDate() + 1);
+      }
+    }
+    // The questions a bare total cannot answer: how many days this covers, how
+    // many were active, the busiest one, and whether it is still receiving
+    // downloads at all. Stated as figures rather than left to be read off bars.
+    const dl_peak = by_day.reduce((m,d)=> d.total > m ? d.total : m, 0);
+    const dl_active = by_day.filter(d => d.total > 0).length;
+    const dl_last = seen.length ? seen[seen.length - 1].day : null;
+    const dl_today_key = new Date().toISOString().slice(0, 10);
+    const dl_days_since = dl_last
+      ? Math.round((Date.parse(dl_today_key + 'T00:00:00Z') - Date.parse(dl_last + 'T00:00:00Z')) / 86400000)
+      : null;
     const countries = by_country.filter(x=>x.country!=='unknown').length;
 
     // ---- Enterprise asset group: JRS Standard PDF, Rapid Card, kit, reference ----
@@ -117,6 +148,9 @@ export default async function handler(){
     return json({
       total: guideRows.length, countries: countries,
       by_country: by_country, by_asset: by_asset, by_source: by_source, by_day: by_day,
+      days_span: by_day.length, days_with_activity: dl_active,
+      peak_day_downloads: dl_peak, last_download_at: dl_last,
+      days_since_last_download: dl_days_since,
       assets: { total: assetRows.length, countries: a_countries, by_country: a_by_country, by_asset: a_by_asset },
       assets_detail: assets_detail
     });
