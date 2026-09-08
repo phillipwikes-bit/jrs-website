@@ -33,8 +33,16 @@ def _link_id(url):
     _LINKS.append(url)
     return 'rIdL%d' % len(_LINKS)
 
+# Sentinel for a hard line break inside a paragraph. A control character is
+# used rather than a markup string so it cannot collide with document text.
+BREAK = '\x00'
+
+
 def runs(text):
     """Inline markdown to a list of <w:r> strings."""
+    if BREAK in text:
+        parts = text.split(BREAK)
+        return ('<w:r><w:br/></w:r>').join(runs(p) for p in parts)
     out, tokens = [], re.split(
         r'(\[[^\]]+\]\([^)]+\)|\*\*.+?\*\*|(?<!\*)\*(?!\*).+?(?<!\*)\*(?!\*)|`.+?`|<sup>.+?</sup>)',
         text)
@@ -69,10 +77,10 @@ def runs(text):
         out.append(f'<w:r>{rpr}<w:t xml:space="preserve">{escape(tok)}</w:t></w:r>')
     return ''.join(out) or '<w:r><w:t/></w:r>'
 
-def para(text, style=None, spacing=True):
+def para(text, style=None, spacing=True, after=140):
     ppr = '<w:pPr>'
     if style: ppr += f'<w:pStyle w:val="{style}"/>'
-    if spacing: ppr += '<w:spacing w:after="140"/>'
+    if spacing: ppr += f'<w:spacing w:after="{after}"/>'
     ppr += '</w:pPr>'
     return f'<w:p>{ppr}{runs(text)}</w:p>'
 
@@ -114,7 +122,39 @@ def table(rows):
     out.append('</w:tbl>' + para('', spacing=False))
     return ''.join(out)
 
+# PER-DOCUMENT LAYOUT, DECLARED IN THE DOCUMENT ITSELF.
+#
+# A cover letter and a 12,000-word manuscript do not want the same page. The
+# letter runs 491 words and still spilled onto a second page, which reads as
+# padding to an editor; the manuscript must keep the roomier default. Making
+# spacing or margins global would have fixed one by damaging the other, so the
+# setting lives in the file it applies to, as a comment the renderer reads:
+#
+#     <!-- docx: spacing=70 margin=1080 -->
+#
+# spacing is twips after each paragraph (default 140), margin is twips on all
+# four sides (default 1440 = one inch). Anything not named keeps its default,
+# so every existing document is untouched by this feature existing.
+OPT_RE = re.compile(r'^<!--\s*docx:\s*(.*?)\s*-->\s*$', re.M)
+
+
+def read_options(md):
+    opts = {'spacing': 140, 'margin': 1440}
+    m = OPT_RE.search(md)
+    if not m:
+        return opts
+    for pair in m.group(1).split():
+        if '=' not in pair:
+            continue
+        k, v = pair.split('=', 1)
+        if k in opts and v.isdigit():
+            opts[k] = int(v)
+    return opts
+
+
 def convert(md):
+    opts = read_options(md)
+    md = OPT_RE.sub('', md)
     body, i, lines = [], 0, md.split('\n')
     while i < len(lines):
         ln = lines[i]
@@ -127,7 +167,7 @@ def convert(md):
             body.append(table(rows)); continue
         m = re.match(r'^(#{1,4})\s+(.*)$', ln)
         if m:
-            body.append(para(m.group(2), style=f'Heading{len(m.group(1))}')); i += 1; continue
+            body.append(para(m.group(2), style=f'Heading{len(m.group(1))}', after=opts['spacing'])); i += 1; continue
         if re.match(r'^\s*[-*]\s+', ln):
             while i < len(lines) and re.match(r'^\s*[-*]\s+', lines[i]):
                 body.append(bullet(re.sub(r'^\s*[-*]\s+', '', lines[i]))); i += 1
@@ -144,6 +184,7 @@ def convert(md):
             # Join the wrapped continuation lines of this paragraph. A blank line, a
             # heading, a list item, a table row or a rule ends it.
             buf = [ln.strip()]
+            raw_had_break = [ln.endswith('  ')]
             i += 1
             while i < len(lines):
                 nxt = lines[i]
@@ -154,13 +195,27 @@ def convert(md):
                         or re.match(r'^\s*\d+\.\s+', nxt)
                         or re.match(r'^\s*(---|___|\*\*\*)\s*$', nxt)):
                     break
+                # TWO TRAILING SPACES IS MARKDOWN'S HARD LINE BREAK and it
+                # was being flattened to a single space, so an address block or
+                # a signature block could only be written as separate
+                # paragraphs. Each of those then carried a full paragraph's
+                # spacing, which is what pushed a 491-word cover letter onto a
+                # second page. A sentinel survives the join and becomes <w:br/>.
                 buf.append(nxt.strip())
+                raw_had_break.append(nxt.endswith('  '))
                 i += 1
-            body.append(para(' '.join(buf)))
+            joined = []
+            for k, part in enumerate(buf):
+                joined.append(part)
+                if k + 1 < len(buf):
+                    joined.append(BREAK if raw_had_break[k] else ' ')
+            body.append(para(''.join(joined), after=opts['spacing']))
             continue
         i += 1
+    mg = opts['margin']
     sect = ('<w:sectPr><w:pgSz w:w="12240" w:h="15840"/>'
-            '<w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr>')
+            '<w:pgMar w:top="%d" w:right="%d" w:bottom="%d" w:left="%d"/></w:sectPr>'
+            % (mg, mg, mg, mg))
     return (f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document {W}><w:body>'
             + ''.join(body) + sect + '</w:body></w:document>')
 

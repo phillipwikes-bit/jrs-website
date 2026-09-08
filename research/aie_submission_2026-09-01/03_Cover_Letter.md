@@ -1,11 +1,8 @@
-# Cover letter
-
+<!-- docx: spacing=70 margin=1080 -->
 September 6, 2026
 
-The Editors
-
-*AI and Ethics*
-
+The Editors  
+*AI and Ethics*  
 Springer Nature
 
 Dear Editors,
@@ -32,10 +29,7 @@ Thank you for considering the manuscript.
 
 Yours sincerely,
 
-**Phillip Wikes**
-
-Corresponding author, on behalf of both authors
-
-Creator of the Justification Review Standard
-
+**Phillip Wikes**  
+Corresponding author, on behalf of both authors  
+Creator of the Justification Review Standard  
 info@jrsstandard.com
