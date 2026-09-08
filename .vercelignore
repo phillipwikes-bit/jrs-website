@@ -20,6 +20,16 @@
 # ---- research corpus, never deployed by design ------------------------------
 research/
 
+# ---- enterprise diligence package, internal by nature ------------------------
+# Added 2026-09-08 with the package itself. The *.md rule above already covers
+# most of it, but the package carries a machine-readable preflight state as a
+# .txt, which *.md does NOT catch and which vercel.json's /*.md redirect does
+# not catch either. An internal working record at a guessable public path is the
+# same exposure class as the 2026-08-25 finding recorded at the top of this file,
+# so the directory is excluded whole rather than by file extension: a document
+# added to this package later is then internal by default instead of by luck.
+docs/enterprise-diligence/
+
 # ---- unpublished article preparation, never deployed ------------------------
 # Markdown only, so *.md above already covers it. Named explicitly as defence
 # in depth: an outline for an unsubmitted piece at a guessable public path is
