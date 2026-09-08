@@ -1,0 +1,20 @@
+# Preflight state, captured before any modification
+captured_utc: 2026-09-08T20:59:57Z
+repo_root: /home/user/jrsstandard.com
+branch: claude/html-pilot-L8rC3
+commit: 76c02eb8cf7260cb7d5cab458252f6a601924b9f
+main: b53ee5acd27f9dd9efe33f2864a001ef1f1d4f85
+working_tree_clean: false
+remotes:
+  origin	https://github.com/phillipwikes-bit/jrsstandard.com (fetch)
+  origin	https://github.com/phillipwikes-bit/jrsstandard.com (push)
+git_status_short:
+  ?? docs/
+  (empty means clean)
+counts:
+  public_html: 54
+  api_modules: 56
+  research_files: 598
+  scripts: 145
+  pdfs: 12
+  json: openapi-review-engine.json openapi.json results.json vercel.json 
