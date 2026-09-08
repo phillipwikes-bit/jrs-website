@@ -635,6 +635,21 @@ function renderProgress(comp,prog,ns,total){
     +'<span><i style="background:#8A8A8A"></i>Not started '+ns+'</span>'
     +'<span style="color:var(--muted-soft)">'+total+' registered</span>';
 }
+// WHEN THIS PANEL LAST SPOKE TO THE SERVER. A chart that renders correct data
+// and a chart showing a view from twenty minutes ago look identical, and that
+// ambiguity cost a full round trip: a phone restored from another app suspends
+// the 60-second refresh timer, so the page can sit there looking authoritative
+// and quietly stale. The stamp is the render time, not the data time, because
+// the question it answers is "is what I am looking at current".
+function asOfLine(){
+  var t=new Date();
+  function p(n){ return (n<10?'0':'')+n; }
+  return '<div style="font-size:10.5px;color:var(--muted-soft);margin-top:8px;'
+    +'font-family:\'JetBrains Mono\',monospace">Data as of '
+    +p(t.getHours())+':'+p(t.getMinutes())+':'+p(t.getSeconds())
+    +' local &middot; refreshes every 60s. If this time is old, the page was '
+    +'backgrounded: pull to refresh.</div>';
+}
 function fmtDay(d){ var p=(d||'').split('-'); if(p.length<3) return d; var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return M[parseInt(p[1],10)-1]+' '+parseInt(p[2],10); }
 function loadDownloads(){
   return fetch('/api/geo-stats')
@@ -721,6 +736,7 @@ function loadDownloads(){
        h+='<div style="font-size:11.5px;color:'+lcol+';margin-top:6px">Last download recorded <b>'+esc(d.last_download_at)+'</b>'
          +((ds!==null)?(', '+(ds===0?'today':(ds+' '+(ds===1?'day':'days')+' ago'))):'')+'.</div>';
      }
+     h+=asOfLine();
      el.innerHTML=h;
    })
    .catch(function(){ document.getElementById('dlchart').innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load downloads. Tap Refresh.</div>'; });
@@ -1336,36 +1352,46 @@ function renderEndorseDays(d){
   //
   // Today also gets a faint full-height track behind it so the slot is visible
   // before anything fills it, and its own tick label on the axis.
+  // THE DATE LIVES INSIDE ITS OWN COLUMN, for the same reason it does in the
+  // downloads chart below: the bars and the date axis used to be two sibling
+  // rows each with its own overflow-x:auto, which made them independent
+  // scrollers. They lined up at rest and drifted apart the moment the reader
+  // scrolled, and their scroll widths could not even match, because a cell
+  // holding '08/26' is wider than an empty one. That has not bitten this chart
+  // yet only because its series still fits the viewport; it would the day it
+  // stopped. Nesting the label in the same element as its bar makes
+  // misalignment impossible by construction rather than by arithmetic.
+  //
+  // EVERY COLUMN IS LABELLED. Thinning to twelve dates leaves most slots blank,
+  // and blank slots read as unexplained gaps rather than as unlabelled days.
+  // The day number is enough at this width; the month is printed only where it
+  // changes, which is where a reader actually needs it.
+  var MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
   var H=118;
-  var h='<div style="display:flex;align-items:flex-end;gap:3px;height:'+(H+18)+'px;overflow-x:auto;padding-bottom:2px">';
+  var h='<div style="overflow-x:auto;padding-bottom:2px">'
+       +'<div style="display:flex;align-items:flex-end;gap:3px;min-width:max-content">';
+  var prevMonth=null;
   days.forEach(function(x){
     var isToday = (x.day === todayKey);
     var n = x.endorsements || 0;
+    var mo=x.day.slice(5,7), dd=String(parseInt(x.day.slice(8,10),10));
+    var showMonth=(mo!==prevMonth); prevMonth=mo;
     // Zero days keep a 2px floor line so the slot is unmistakably a slot.
     var px = n ? Math.max(3, Math.round((n/max)*H)) : 2;
     var col = n ? 'var(--ready-text,#5DBF82)' : 'var(--rule)';
     if (isToday) col = n ? 'var(--ready-text,#5DBF82)' : 'var(--accent-dim)';
     var numCol = n ? 'var(--muted)' : 'var(--muted-soft)';
-    if (isToday) numCol = n ? 'var(--ready-text,#5DBF82)' : 'var(--accent)';
+    if (isToday) numCol = 'var(--accent)';
     var track = isToday ? 'background:linear-gradient(var(--surface2),var(--surface2));' : '';
-    h+='<div title="'+esc(x.day)+': '+n+(isToday?' (today)':'')+'" style="flex:1 1 14px;min-width:16px;max-width:46px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:'+(H+14)+'px;'+track+'">'
+    h+='<div title="'+esc(x.day)+': '+n+(isToday?' (today)':'')+'" style="flex:0 0 17px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;'+track+'">'
       +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:'+numCol+';margin-bottom:3px;line-height:1">'+n+'</span>'
-      +'<span style="width:100%;height:'+px+'px;background:'+col+';display:block"></span>'
+      +'<div style="width:100%;height:'+H+'px;display:flex;flex-direction:column;justify-content:flex-end">'
+      +'<span style="width:100%;height:'+px+'px;background:'+col+';display:block"></span></div>'
+      +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:8px;line-height:1.5;color:'+(isToday?'var(--accent)':'var(--muted-soft)')+'">'+dd+'</span>'
+      +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:7px;line-height:1.3;color:'+(isToday?'var(--accent)':'var(--accent-dim)')+';white-space:nowrap">'+(isToday?'NOW':(showMonth?MON[parseInt(mo,10)-1]:'&nbsp;'))+'</span>'
       +'</div>';
   });
-  h+='</div>';
-
-  // Date axis. Thinned so labels never collide on a narrow screen, except that
-  // today is always labelled whatever the thinning interval works out to.
-  var step=Math.ceil(days.length/12);
-  h+='<div style="display:flex;gap:3px;margin-top:5px;overflow-x:auto">';
-  days.forEach(function(x,i){
-    var isToday = (x.day === todayKey);
-    var lab = isToday ? 'TODAY' : ((i%step===0||i===days.length-1)?x.day.slice(5).replace('-','/'):'');
-    var c = isToday ? 'var(--accent)' : 'var(--muted-soft)';
-    h+='<div style="flex:1 1 14px;min-width:16px;max-width:46px;text-align:center;font-family:\'JetBrains Mono\',monospace;font-size:7.5px;color:'+c+';white-space:nowrap">'+lab+'</div>';
-  });
-  h+='</div>';
+  h+='</div></div>';
 
   h+='<div style="font-size:11.5px;color:var(--muted-soft);margin-top:10px">'
     +'<b style="color:var(--text)">'+(d.total||0)+'</b> endorsements over <b style="color:var(--text)">'+days.length+'</b> '
@@ -1400,6 +1426,7 @@ function renderEndorseDays(d){
       +esc(String(o.from).slice(0,16))+'Z to '+esc(String(o.to).slice(11,16))+'Z on the same day) and were not recorded. '
       +'Counted from the arrival log, not added to the total above.</div>';
   }
+  h+=asOfLine();
   el.innerHTML=h;
 }
 function loadSupport(){
